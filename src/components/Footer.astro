@@ -1,0 +1,90 @@
+---
+import { contactInfo } from '../data/contact';
+
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { href: '#o-nas', label: 'O nas' },
+  { href: '#specjalisci', label: 'Nasz zespół' },
+  { href: '#uslugi', label: 'Usługi' },
+  { href: '#cennik', label: 'Cennik' },
+  { href: '#kontakt', label: 'Kontakt' }
+];
+---
+
+<footer class="bg-bg-light text-text py-12 mt-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <!-- Main info -->
+      <div class="lg:col-span-2">
+        <h3 class="text-lg font-semibold text-primary mb-4">
+          {contactInfo.name}
+        </h3>
+        <p class="text-text-light leading-relaxed mb-6">
+          Wspólnie tworzymy bezpieczną przestrzeń, gdzie każdy czuje się wysłuchany, 
+          zrozumiany i doceniony.
+        </p>
+        <div class="flex gap-4">
+          <a 
+            href={contactInfo.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors"
+            aria-label="Facebook"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Quick links -->
+      <div>
+        <h4 class="text-base font-semibold text-text mb-4">Szybkie linki</h4>
+        <ul class="space-y-2">
+          {quickLinks.map((link) => (
+            <li>
+              <a 
+                href={link.href}
+                class="text-text-light hover:text-primary transition-colors text-sm"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <!-- Contact -->
+      <div>
+        <h4 class="text-base font-semibold text-text mb-4">Kontakt</h4>
+        <address class="not-italic text-sm space-y-2">
+          <p class="text-text-light">
+            {contactInfo.address.street}<br>
+            {contactInfo.address.postalCode} {contactInfo.address.city}
+          </p>
+          <div class="space-y-1">
+            {contactInfo.phones.map((phone) => (
+              <p>
+                <a 
+                  href={`tel:+48${phone.replace(/\s/g, '')}`}
+                  class="text-primary hover:text-primary-dark transition-colors"
+                >
+                  tel. {phone}
+                </a>
+              </p>
+            ))}
+          </div>
+        </address>
+      </div>
+    </div>
+    
+    <!-- Bottom bar -->
+    <div class="border-t border-gray-300 pt-8 text-center">
+      <p class="text-text-light text-sm">
+        &copy; {currentYear} {contactInfo.name}. Wszelkie prawa zastrzeżone.
+      </p>
+    </div>
+  </div>
+</footer>

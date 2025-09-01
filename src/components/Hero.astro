@@ -1,0 +1,102 @@
+---
+const trustItems = [
+  { number: '3', label: 'Specjalistów' },
+  { number: '18+', label: 'Lat doświadczenia' },
+  { number: '100%', label: 'Zaangażowania' }
+];
+
+const missionStatement = `Wspólnie tworzymy bezpieczną przestrzeń, gdzie każdy czuje się wysłuchany, zrozumiany i doceniony. 
+Nasza praca opiera się na wzajemnym zaufaniu, szacunku i wsparciu. Każda z nas wnosi swoje unikalne 
+talenty, które razem budują coś trwałego i wartościowego. Kroczymy pewnie ku spełnieniu naszych 
+zawodowych marzeń z radością i odwagą przyjmując nowe wyzwania.`;
+---
+
+<section class="relative min-h-[80vh] flex items-center overflow-hidden bg-gradient-to-br from-bg-light to-bg">
+  <!-- Background decoration -->
+  <div class="absolute top-0 right-0 w-3/5 h-full">
+    <div class="w-full h-full bg-gradient-to-br from-primary/10 to-secondary/10 transform skew-x-12 translate-x-1/4"></div>
+  </div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-4xl py-16 md:py-24">
+      <div class="space-y-8">
+        <!-- Main heading -->
+        <div class="space-y-4 animate-fade-in-up">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary leading-tight">
+            Centrum Zdrowia Psychicznego i Mowy Harmonia
+          </h1>
+          <p class="text-xl md:text-2xl text-text-light">
+            Profesjonalna pomoc psychologiczna i logopedyczna w Inowrocławiu
+          </p>
+        </div>
+        
+        <!-- Mission quote -->
+        <blockquote class="bg-white border-l-4 border-accent p-6 md:p-8 rounded-2xl shadow-medium animate-fade-in-up animation-delay-200">
+          <p class="text-text italic leading-relaxed text-lg">
+            "{missionStatement}"
+          </p>
+        </blockquote>
+        
+        <!-- Call to action buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
+          <a 
+            href="#kontakt"
+            class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-xl text-lg hover:bg-primary-dark transition-all duration-300 hover:shadow-medium hover:-translate-y-0.5"
+          >
+            Umów wizytę
+          </a>
+          <a 
+            href="#uslugi"
+            class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-primary text-primary font-semibold rounded-xl text-lg hover:bg-primary hover:text-white transition-all duration-300"
+          >
+            Zobacz ofertę
+          </a>
+        </div>
+        
+        <!-- Trust indicators -->
+        <div class="flex justify-center sm:justify-start gap-8 md:gap-12 pt-8 animate-fade-in-up animation-delay-600">
+          {trustItems.map((item) => (
+            <div class="flex flex-col items-center text-center">
+              <span class="text-3xl md:text-4xl font-bold text-primary mb-1">
+                {item.number}
+              </span>
+              <span class="text-sm text-text-light">
+                {item.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+</style>

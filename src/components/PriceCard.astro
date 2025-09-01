@@ -1,0 +1,30 @@
+---
+import type { PriceItem } from '../types';
+
+export interface Props {
+  item: PriceItem;
+  class?: string;
+}
+
+const { item, class: className = '' } = Astro.props;
+
+const isDiscount = item.price < 0;
+const displayPrice = isDiscount ? `${item.price} zł` : `${item.price} zł`;
+---
+
+<div class={`bg-white rounded-lg p-4 border border-gray-200 hover:shadow-medium transition-shadow ${className}`}>
+  <div class="flex justify-between items-start mb-2">
+    <h4 class="font-semibold text-text text-sm">{item.name}</h4>
+    <span class={`font-bold text-lg ${isDiscount ? 'text-secondary' : 'text-primary'}`}>
+      {displayPrice}
+    </span>
+  </div>
+  
+  {item.duration && (
+    <p class="text-text-light text-xs mb-2">{item.duration}</p>
+  )}
+  
+  {item.description && (
+    <p class="text-text-light text-xs">{item.description}</p>
+  )}
+</div>
