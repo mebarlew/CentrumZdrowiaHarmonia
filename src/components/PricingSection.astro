@@ -38,7 +38,7 @@ import { pricingData } from '../data/pricing';
           {category.packages && category.packages.length > 0 && (
             <div class="space-y-6">
               <h4 class="text-xl font-semibold text-text text-center">
-                Pakiety {category.title.toLowerCase()}e (ważne 3 miesiące)
+                Pakiety {category.id === 'speech-therapy' ? 'logopedyczne' : 'psychologiczne'} (ważne 3 miesiące)
               </h4>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.packages.map((pkg) => (
