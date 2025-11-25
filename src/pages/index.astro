@@ -5,6 +5,7 @@ import SpecialistsSection from '../components/SpecialistsSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
 import PricingSection from '../components/PricingSection.astro';
 import ContactSection from '../components/ContactSection.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout 
@@ -30,17 +31,23 @@ import ContactSection from '../components/ContactSection.astro';
           </p>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <div class="text-center">
-              <div class="text-4xl mb-4">🤝</div>
+              <div class="flex justify-center text-primary mb-4">
+                <Icon name="trust" class="w-12 h-12" />
+              </div>
               <h3 class="text-lg font-semibold text-text mb-2">Zaufanie</h3>
               <p class="text-text-light">Budujemy relacje oparte na wzajemnym szacunku i zrozumieniu</p>
             </div>
             <div class="text-center">
-              <div class="text-4xl mb-4">🎯</div>
+              <div class="flex justify-center text-primary mb-4">
+                <Icon name="target" class="w-12 h-12" />
+              </div>
               <h3 class="text-lg font-semibold text-text mb-2">Profesjonalizm</h3>
               <p class="text-text-light">Wykorzystujemy sprawdzone metody terapeutyczne i najnowszą wiedzę</p>
             </div>
             <div class="text-center">
-              <div class="text-4xl mb-4">💚</div>
+              <div class="flex justify-center text-secondary mb-4">
+                <Icon name="heart" class="w-12 h-12" />
+              </div>
               <h3 class="text-lg font-semibold text-text mb-2">Bezpieczeństwo</h3>
               <p class="text-text-light">Tworzymy przestrzeń, gdzie każdy czuje się wysłuchany i zrozumiany</p>
             </div>

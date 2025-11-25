@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 
 export interface Props {
   title: string;
@@ -15,7 +16,14 @@ const { title, description = 'Centrum Zdrowia Psychicznego i Mowy Harmonia - pro
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
+    <meta name="keywords" content="psycholog Inowrocław, logopeda Inowrocław, terapia dzieci, terapia par, neurologopeda, psychotraumatolog, pomoc psychologiczna, terapia logopedyczna, centrum zdrowia psychicznego" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Centrum Zdrowia Psychicznego i Mowy Harmonia" />
+    <meta name="geo.region" content="PL-KP" />
+    <meta name="geo.placename" content="Inowrocław" />
+    <meta name="geo.position" content="52.7989;18.2610" />
+    <meta name="ICBM" content="52.7989, 18.2610" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     
@@ -24,7 +32,16 @@ const { title, description = 'Centrum Zdrowia Psychicznego i Mowy Harmonia - pro
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pl_PL" />
-    
+    <meta property="og:site_name" content="Centrum Zdrowia Psychicznego i Mowy Harmonia" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://centrumharmonia.pl" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,15 +55,27 @@ const { title, description = 'Centrum Zdrowia Psychicznego i Mowy Harmonia - pro
         "@context": "https://schema.org",
         "@type": "MedicalBusiness",
         "name": "Centrum Zdrowia Psychicznego i Mowy Harmonia",
+        "description": "Profesjonalna pomoc psychologiczna i logopedyczna w Inowrocławiu. Doświadczony zespół specjalistów oferuje terapię dla dzieci, młodzieży i dorosłych.",
+        "image": "https://centrumharmonia.pl/images/image_50735617.JPG",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "ul. Morelowa 3",
           "addressLocality": "Inowrocław",
+          "addressRegion": "Kujawsko-Pomorskie",
           "postalCode": "88-100",
           "addressCountry": "PL"
         },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "52.7989",
+          "longitude": "18.2610"
+        },
         "telephone": "+48505636848",
         "url": "https://centrumharmonia.pl",
+        "sameAs": [
+          "https://www.facebook.com/share/15jdfMYEbJ/?mibextid=wwXIfr"
+        ],
+        "priceRange": "100 zł - 250 zł",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -60,15 +89,37 @@ const { title, description = 'Centrum Zdrowia Psychicznego i Mowy Harmonia - pro
             "opens": "09:00",
             "closes": "14:00"
           }
+        ],
+        "medicalSpecialty": ["Psychology", "Speech Therapy", "Child Psychology"],
+        "employee": [
+          {
+            "@type": "Person",
+            "name": "Joanna Kurczewska-Szczerba",
+            "jobTitle": "Logopeda, neurologopeda, terapeuta miofunkcjonalny",
+            "telephone": "+48505636848",
+            "email": "logopeda.jkurczewska@gmail.com"
+          },
+          {
+            "@type": "Person",
+            "name": "Paulina Baczyńska",
+            "jobTitle": "Psycholog, psychotraumatolog, pedagog",
+            "telephone": "+48510056057",
+            "email": "psycholog.pbaczynska@gmail.com"
+          }
         ]
       }
     </script>
   </head>
   <body class="font-sans antialiased">
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-white">
+      Przejdź do treści głównej
+    </a>
     <Header />
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     <Footer />
+    <CookieConsent />
   </body>
 </html>

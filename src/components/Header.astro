@@ -10,9 +10,9 @@ const navItems = [
 
 <header class="bg-white shadow-soft sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <nav class="flex items-center justify-between py-4 gap-4">
+    <nav class="flex items-center justify-between py-4 gap-4" aria-label="Główna nawigacja">
       <!-- Logo -->
-      <a href="/" class="flex-shrink-0">
+      <a href="/" class="flex-shrink-0" aria-label="Strona główna - Centrum Zdrowia Harmonia">
         <div class="flex flex-col">
           <span class="font-bold text-primary leading-tight text-base md:text-lg">
             Centrum Zdrowia
@@ -24,9 +24,10 @@ const navItems = [
       </a>
       
       <!-- Mobile menu button -->
-      <button 
+      <button
         class="mobile-menu-toggle lg:hidden flex flex-col gap-1 p-2 rounded"
-        aria-label="Toggle menu"
+        aria-label="Przełącz menu"
+        aria-expanded="false"
       >
         <span class="w-6 h-0.5 bg-text transition-all duration-300"></span>
         <span class="w-6 h-0.5 bg-text transition-all duration-300"></span>
@@ -55,11 +56,12 @@ const navItems = [
       
       <!-- Contact button -->
       <div class="hidden lg:block flex-shrink-0">
-        <a 
+        <a
           href="tel:+48505636848"
           class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg font-medium text-sm hover:bg-primary hover:text-white transition-colors"
+          aria-label="Zadzwoń: 505 636 848"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
           505 636 848
@@ -72,10 +74,12 @@ const navItems = [
 <script>
   const toggle = document.querySelector('.mobile-menu-toggle');
   const menu = document.querySelector('.mobile-menu');
-  
+
   toggle?.addEventListener('click', () => {
     menu?.classList.toggle('hidden');
-    
+    const isExpanded = !menu?.classList.contains('hidden');
+    toggle?.setAttribute('aria-expanded', isExpanded.toString());
+
     // Animate hamburger icon
     const spans = toggle.querySelectorAll('span');
     if (menu?.classList.contains('hidden')) {
@@ -93,6 +97,7 @@ const navItems = [
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       menu?.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
       const spans = toggle?.querySelectorAll('span');
       if (spans) {
         spans[0].style.transform = '';
