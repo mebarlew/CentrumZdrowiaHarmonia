@@ -7,7 +7,7 @@ export const contactInfo: ContactInfo = {
     city: "Inowrocław", 
     postalCode: "88-100"
   },
-  phones: ["505 636 848", "510 056 057"],
+  phones: ["789 115 585"],
   facebook: "https://www.facebook.com/share/15jdfMYEbJ/?mibextid=wwXIfr",
   openingHours: {
     weekdays: "Poniedziałek - Piątek: 8:00 - 20:00",

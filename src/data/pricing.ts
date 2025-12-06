@@ -187,35 +187,6 @@ export const pricingData: PriceCategory[] = [
         validityMonths: 3,
         savings: 50
       },
-      {
-        id: 'children',
-        name: 'Pakiet dziecięcy',
-        sessions: 5,
-        price: 850,
-        validityMonths: 3,
-        savings: 50
-      }
-    ]
-  },
-  {
-    id: 'pedagogy',
-    title: 'Pedagogika | Terapia',
-    items: [
-      {
-        id: 'ped-therapy',
-        name: 'Terapia pedagogiczna (dla dzieci z trudnościami szkolnymi)',
-        price: 150
-      },
-      {
-        id: 'tus',
-        name: 'Trening Umiejętności Społecznych (TUS)',
-        price: 150
-      },
-      {
-        id: 'autism-therapy',
-        name: 'Terapia dzieci ze spektrum autyzmu (model DIR/Floortime)',
-        price: 150
-      }
     ]
   },
   {

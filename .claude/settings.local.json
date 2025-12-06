@@ -7,7 +7,9 @@
       "Bash(npm outdated:*)",
       "Bash(yarn upgrade:*)",
       "Bash(yarn install)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(curl:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }

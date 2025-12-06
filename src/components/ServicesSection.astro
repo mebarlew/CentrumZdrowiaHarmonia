@@ -112,89 +112,92 @@ const ageGroupLabels = {
       </div>
     </div>
 
-    <!-- Pedagogy Services -->
-    <div class="mb-16">
-      <div class="flex items-center gap-4 mb-8">
-        <div class="text-primary">
-          <Icon name="book" class="w-10 h-10" />
-        </div>
-        <h3 class="text-2xl md:text-3xl font-display font-semibold text-text">
-          Pedagogika i Terapia
-        </h3>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
-        {pedagogyServices.map((service) => (
-          <div class="bg-white rounded-2xl shadow-soft hover:shadow-large hover:-translate-y-2 transition-all duration-300 p-6 h-full">
-            <div class="flex items-start gap-4 mb-4">
-              <div class="text-primary flex-shrink-0">
-                <Icon name="book" class="w-8 h-8" />
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-semibold text-text mb-1">{service.title}</h3>
-                <span class="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
-                  {ageGroupLabels[service.ageGroup]}
-                </span>
-              </div>
-            </div>
-
-            <p class="text-text-light mb-6 leading-relaxed">{service.description}</p>
-
-            <ul class="space-y-3">
-              {service.items.map((item) => (
-                <li class="flex items-start gap-3">
-                  <svg class="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="20,6 9,17 4,12"/>
-                  </svg>
-                  <span class="text-text text-sm">{item}</span>
-                </li>
-              ))}
-            </ul>
+    <!-- Pedagogy & Sensory Integration Services - Side by Side -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+      <!-- Pedagogy Services -->
+      <div>
+        <div class="flex items-center gap-4 mb-8">
+          <div class="text-primary">
+            <Icon name="book" class="w-10 h-10" />
           </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- Sensory Integration Services -->
-    <div class="mb-16">
-      <div class="flex items-center gap-4 mb-8">
-        <div class="text-secondary">
-          <Icon name="sparkles" class="w-10 h-10" />
+          <h3 class="text-2xl md:text-3xl font-display font-semibold text-text">
+            Pedagogika i Terapia
+          </h3>
         </div>
-        <h3 class="text-2xl md:text-3xl font-display font-semibold text-text">
-          Integracja Sensoryczna
-        </h3>
+
+        <div class="space-y-6">
+          {pedagogyServices.map((service) => (
+            <div class="bg-white rounded-2xl shadow-soft hover:shadow-large hover:-translate-y-2 transition-all duration-300 p-6 h-full">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="text-primary flex-shrink-0">
+                  <Icon name="book" class="w-8 h-8" />
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold text-text mb-1">{service.title}</h3>
+                  <span class="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
+                    {ageGroupLabels[service.ageGroup]}
+                  </span>
+                </div>
+              </div>
+
+              <p class="text-text-light mb-6 leading-relaxed">{service.description}</p>
+
+              <ul class="space-y-3">
+                {service.items.map((item) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <polyline points="20,6 9,17 4,12"/>
+                    </svg>
+                    <span class="text-text text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
-        {sensoryIntegrationServices.map((service) => (
-          <div class="bg-white rounded-2xl shadow-soft hover:shadow-large hover:-translate-y-2 transition-all duration-300 p-6 h-full">
-            <div class="flex items-start gap-4 mb-4">
-              <div class="text-secondary flex-shrink-0">
-                <Icon name="sparkles" class="w-8 h-8" />
-              </div>
-              <div class="flex-1">
-                <h3 class="text-xl font-semibold text-text mb-1">{service.title}</h3>
-                <span class="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
-                  {ageGroupLabels[service.ageGroup]}
-                </span>
-              </div>
-            </div>
-
-            <p class="text-text-light mb-6 leading-relaxed">{service.description}</p>
-
-            <ul class="space-y-3">
-              {service.items.map((item) => (
-                <li class="flex items-start gap-3">
-                  <svg class="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="20,6 9,17 4,12"/>
-                  </svg>
-                  <span class="text-text text-sm">{item}</span>
-                </li>
-              ))}
-            </ul>
+      <!-- Sensory Integration Services -->
+      <div>
+        <div class="flex items-center gap-4 mb-8">
+          <div class="text-secondary">
+            <Icon name="sparkles" class="w-10 h-10" />
           </div>
-        ))}
+          <h3 class="text-2xl md:text-3xl font-display font-semibold text-text">
+            Integracja Sensoryczna
+          </h3>
+        </div>
+
+        <div class="space-y-6">
+          {sensoryIntegrationServices.map((service) => (
+            <div class="bg-white rounded-2xl shadow-soft hover:shadow-large hover:-translate-y-2 transition-all duration-300 p-6 h-full">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="text-secondary flex-shrink-0">
+                  <Icon name="sparkles" class="w-8 h-8" />
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-xl font-semibold text-text mb-1">{service.title}</h3>
+                  <span class="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
+                    {ageGroupLabels[service.ageGroup]}
+                  </span>
+                </div>
+              </div>
+
+              <p class="text-text-light mb-6 leading-relaxed">{service.description}</p>
+
+              <ul class="space-y-3">
+                {service.items.map((item) => (
+                  <li class="flex items-start gap-3">
+                    <svg class="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <polyline points="20,6 9,17 4,12"/>
+                    </svg>
+                    <span class="text-text text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
 
