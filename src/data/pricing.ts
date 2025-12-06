@@ -3,116 +3,137 @@ import type { PriceCategory } from '../types';
 export const pricingData: PriceCategory[] = [
   {
     id: 'speech-therapy',
-    title: 'Logopedia',
+    title: 'Logopedia | Neurologopedia | Terapia Miofunkcjonalna',
     items: [
       {
         id: 'diagnosis',
-        name: 'Diagnoza logopedyczna/neurologopedyczna',
-        duration: '1-2 spotkania, ok. 60 min',
-        price: 180,
+        name: 'Diagnoza logopedyczna / neurologopedyczna',
+        duration: '1-2 spotkania, 60 min',
+        price: 190,
         description: 'Kompleksowa ocena stanu logopedycznego'
-      },
-      {
-        id: 'consultation',
-        name: 'Konsultacja logopedyczna/neurologopedyczna',
-        duration: 'ok. 45 min',
-        price: 100
       },
       {
         id: 'therapy',
         name: 'Terapia logopedyczna',
-        duration: 'ok. 45 min',
-        price: 100
+        duration: '45 min',
+        price: 130
       },
       {
         id: 'neuro-therapy',
         name: 'Terapia neurologopedyczna',
-        duration: 'ok. 45 min',
-        price: 120
+        duration: '45 min',
+        price: 130
       },
       {
         id: 'myo-therapy',
         name: 'Terapia miofunkcjonalna',
+        duration: '45 min',
+        price: 130
+      },
+      {
+        id: 'electrostimulation',
+        name: 'Elektrostymulacja',
+        duration: '25 min',
+        price: 70
+      },
+      {
+        id: 'electrostimulation-first',
+        name: 'Pierwsza sesja elektrostymulacji (kwalifikacja)',
         duration: 'ok. 45 min',
-        price: 120
+        price: 100
+      },
+      {
+        id: 'massage-logo',
+        name: 'Masaż logopedyczny / twarzy',
+        price: 70
+      },
+      {
+        id: 'massage-tension',
+        name: 'Masaż redukujący napięcie mięśniowe',
+        price: 90
       },
       {
         id: 'opinion',
-        name: 'Opinia logopedyczna dla szkoły/przedszkola',
+        name: 'Opinia logopedyczna',
         price: 80
       }
     ],
     packages: [
       {
         id: 'speech-5',
-        name: '5 zajęć logopedycznych',
+        name: '5 terapii logopedycznych',
         sessions: 5,
-        price: 420,
+        price: 620,
         validityMonths: 3,
-        savings: 80
+        savings: 30
       },
       {
         id: 'speech-10',
-        name: '10 zajęć logopedycznych',
+        name: '10 terapii logopedycznych',
         sessions: 10,
-        price: 800,
+        price: 1200,
         validityMonths: 3,
-        savings: 200
+        savings: 100
       },
       {
         id: 'neuro-5',
-        name: '5 zajęć neurologopedycznych',
+        name: '5 terapii neurologopedycznych',
         sessions: 5,
-        price: 500,
+        price: 620,
         validityMonths: 3,
-        savings: 100
+        savings: 30
       },
       {
         id: 'neuro-10',
-        name: '10 zajęć neurologopedycznych',
+        name: '10 terapii neurologopedycznych',
         sessions: 10,
-        price: 900,
-        validityMonths: 3,
-        savings: 300
-      },
-      {
-        id: 'myo-5',
-        name: '5 zajęć miofunkcjonalnych',
-        sessions: 5,
-        price: 500,
+        price: 1200,
         validityMonths: 3,
         savings: 100
       },
       {
-        id: 'myo-10',
-        name: '10 zajęć miofunkcjonalnych',
-        sessions: 10,
-        price: 900,
+        id: 'myo-5',
+        name: '5 terapii miofunkcjonalnych',
+        sessions: 5,
+        price: 620,
         validityMonths: 3,
-        savings: 300
+        savings: 30
+      },
+      {
+        id: 'myo-10',
+        name: '10 terapii miofunkcjonalnych',
+        sessions: 10,
+        price: 1200,
+        validityMonths: 3,
+        savings: 100
+      },
+      {
+        id: 'electro-5',
+        name: '5 zabiegów elektrostymulacji',
+        sessions: 5,
+        price: 300,
+        validityMonths: 3,
+        savings: 50
       }
     ]
   },
   {
     id: 'psychology',
-    title: 'Psychologia',
+    title: 'Psychologia | Psychotraumatologia',
     items: [
       {
-        id: 'psych-consultation',
-        name: 'Konsultacja psychologiczna',
-        duration: '50 min',
-        price: 180
+        id: 'psych-diagnosis',
+        name: 'Diagnoza psychologiczna (pierwsza wizyta)',
+        price: 200
       },
       {
         id: 'individual-therapy',
-        name: 'Terapia indywidualna',
-        duration: '50 min',
+        name: 'Sesja indywidualna (dziecko / dorosły)',
         price: 180
       },
       {
-        id: 'trauma-support',
-        name: 'Wsparcie psychotraumatologiczne',
-        duration: '50 min',
+        id: 'trauma-therapy',
+        name: 'Psychotraumatolog',
         price: 180
       },
       {
@@ -120,18 +141,6 @@ export const pricingData: PriceCategory[] = [
         name: 'Terapia par',
         duration: '75 min',
         price: 250
-      },
-      {
-        id: 'crisis-support',
-        name: 'Pomoc w kryzysach',
-        duration: '50 min',
-        price: 180
-      },
-      {
-        id: 'children-therapy',
-        name: 'Terapia dla dzieci z trudnościami szkolnymi',
-        duration: '50 min',
-        price: 180
       },
       {
         id: 'psych-opinion',
@@ -142,50 +151,104 @@ export const pricingData: PriceCategory[] = [
         id: 'online-discount',
         name: 'Konsultacje online',
         price: -10,
-        description: 'Zniżka do wszystkich usług online'
+        description: 'Zniżka do wszystkich usług psychologicznych'
       }
     ],
     packages: [
       {
         id: 'starter',
-        name: 'Pakiet startowy',
+        name: 'Pakiet 3 sesje',
         sessions: 3,
         price: 500,
-        validityMonths: 2,
+        validityMonths: 3,
         savings: 40
       },
       {
         id: 'basic',
-        name: 'Pakiet podstawowy',
+        name: 'Pakiet 5 sesji',
         sessions: 5,
-        price: 750,
+        price: 800,
         validityMonths: 3,
-        savings: 150
+        savings: 100
       },
       {
         id: 'extended',
-        name: 'Pakiet rozszerzony',
+        name: 'Pakiet 10 sesji',
         sessions: 10,
-        price: 1400,
-        validityMonths: 6,
-        savings: 400
+        price: 1500,
+        validityMonths: 3,
+        savings: 300
       },
       {
         id: 'couples',
         name: 'Pakiet terapii par',
         sessions: 5,
-        price: 1000,
+        price: 1200,
         validityMonths: 3,
-        savings: 250
+        savings: 50
       },
       {
         id: 'children',
-        name: 'Pakiet konsultacji dziecięcych',
+        name: 'Pakiet dziecięcy',
         sessions: 5,
-        price: 800,
+        price: 850,
         validityMonths: 3,
-        savings: 100
+        savings: 50
+      }
+    ]
+  },
+  {
+    id: 'pedagogy',
+    title: 'Pedagogika | Terapia',
+    items: [
+      {
+        id: 'ped-therapy',
+        name: 'Terapia pedagogiczna (dla dzieci z trudnościami szkolnymi)',
+        price: 150
+      },
+      {
+        id: 'tus',
+        name: 'Trening Umiejętności Społecznych (TUS)',
+        price: 150
+      },
+      {
+        id: 'autism-therapy',
+        name: 'Terapia dzieci ze spektrum autyzmu (model DIR/Floortime)',
+        price: 150
+      }
+    ]
+  },
+  {
+    id: 'sensory-integration',
+    title: 'Integracja Sensoryczna',
+    items: [
+      {
+        id: 'si-diagnosis',
+        name: 'Diagnoza SI',
+        duration: '1-2 spotkania po ok. 60 min',
+        price: 180,
+        description: 'Cena za spotkanie'
+      },
+      {
+        id: 'si-individual',
+        name: 'Terapia indywidualna SI',
+        price: 130
+      },
+      {
+        id: 'si-group',
+        name: 'Terapia grupowa SI (grupy 4-osobowe)',
+        price: 80,
+        description: 'Cena za dziecko'
       }
     ]
   }
 ];
+
+// Electrostimulator rental info
+export const equipmentRental = {
+  electrostimulator: {
+    weekly: 200,
+    monthly: 700,
+    deposit: 400
+  }
+};

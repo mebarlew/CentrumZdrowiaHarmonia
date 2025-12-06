@@ -1,21 +1,27 @@
 import type { Service } from '../types';
 
 export const services: Service[] = [
+  // Psychology services
   {
     id: 'psychology-general',
-    title: 'Psychologia',
-    description: 'Profesjonalna pomoc psychologiczna dla wszystkich grup wiekowych z wykorzystaniem nowoczesnych metod terapeutycznych.',
+    title: 'Psycholog | Psychotraumatolog',
+    description: 'Profesjonalna pomoc psychologiczna dla dzieci, młodzieży i dorosłych z wykorzystaniem nowoczesnych metod terapeutycznych.',
     category: 'psychology',
     ageGroup: 'both',
     items: [
-      'Terapia wspierająca dla dzieci z trudnościami szkolnymi i wychowawczymi',
-      'Współpraca z innymi specjalistami',
-      'Usługi stacjonarne i online'
+      'Konsultacje psychologiczne dla dzieci, młodzieży i dorosłych',
+      'Terapia indywidualna (od 10 r.ż.)',
+      'Terapia dla dzieci z trudnościami emocjonalnymi i szkolnymi',
+      'Wsparcie psychotraumatologiczne (traumy rozwojowe, PTSD)',
+      'Terapia par',
+      'Pomoc w kryzysach emocjonalnych i życiowych',
+      'Możliwość terapii w języku angielskim',
+      'Terapia online'
     ]
   },
   {
     id: 'psychology-adults',
-    title: 'Psychologia - Dorośli i Seniorzy',
+    title: 'Psychologia - Dorośli',
     description: 'Specjalistyczna pomoc psychologiczna dla osób dorosłych w różnych obszarach życia.',
     category: 'psychology',
     ageGroup: 'adults',
@@ -46,19 +52,24 @@ export const services: Service[] = [
       'Wsparcie dla dzieci z doświadczeniem traumy'
     ]
   },
+  // Speech therapy services
   {
     id: 'speech-therapy-general',
-    title: 'Logopedia i Neurologopedia',
+    title: 'Logopeda | Neurologopeda | Terapeuta Miofunkcjonalny',
     description: 'Profesjonalna terapia logopedyczna i neurologopedyczna dla wszystkich grup wiekowych.',
     category: 'speech-therapy',
     ageGroup: 'both',
     items: [
       'Diagnoza logopedyczna i neurologopedyczna',
-      'Terapia wad wymowy, opóźnionego rozwoju mowy',
+      'Terapia wad wymowy, opóźnionego rozwoju mowy, trudności w komunikacji',
       'Terapia miofunkcjonalna',
-      'Terapia przed i po zabiegach podcięcia wędzidełka',
-      'Współpraca z innymi specjalistami',
-      'Usługi stacjonarne'
+      'Ćwiczenia przygotowujące przed i po zabiegu podcięcia wędzidełka języka lub warg',
+      'Terapia wspomagająca leczenie ortodontyczne',
+      'Terapia zaburzeń mowy po udarach, w chorobach neurologicznych i urazach',
+      'Wsparcie dla osób z trudnościami w artykulacji, komunikacji, oddychaniu, połykaniu',
+      'Praca z dziećmi w spektrum autyzmu',
+      'Masaż logopedyczny',
+      'Elektrostymulacja logopedyczna'
     ]
   },
   {
@@ -71,10 +82,10 @@ export const services: Service[] = [
       'Opóźniony rozwój mowy',
       'Wady wymowy',
       'Zaburzenia komunikacji w spektrum autyzmu',
-      'Zaburzenia miofunkcjonalne',
-      'Trudności w płynności mowy',
-      'Wspomaganie rozwoju kompetencji językowych',
-      'Wsparcie przed i po zabiegach wędzidełka'
+      'Zaburzenia miofunkcjonalne (zgryz, połykanie, oddychanie)',
+      'Problemy z płynnością mowy',
+      'Wsparcie językowe i artykulacyjne',
+      'Redukcja napięć mięśniowych'
     ]
   },
   {
@@ -84,11 +95,38 @@ export const services: Service[] = [
     category: 'speech-therapy',
     ageGroup: 'adults',
     items: [
-      'Wady wymowy w wieku dorosłym',
-      'Zaburzenia mowy po udarach, urazach',
-      'Terapia miofunkcjonalna wspomagająca leczenie ortodontyczne',
-      'Ćwiczenia usprawniające mowę i artykulację',
-      'Wsparcie logopedyczne przed i po zabiegach wędzidełka'
+      'Wady wymowy u dorosłych',
+      'Zaburzenia mowy po udarach, urazach, chorobach neurologicznych',
+      'Terapia wspomagająca leczenie ortodontyczne i redukcję chrapania',
+      'Redukcja napięć mięśniowych'
+    ]
+  },
+  // Pedagogy services
+  {
+    id: 'pedagogy-general',
+    title: 'Pedagog | Terapeuta',
+    description: 'Profesjonalna pomoc pedagogiczna i terapeutyczna dla dzieci z trudnościami w nauce i rozwoju.',
+    category: 'pedagogy',
+    ageGroup: 'children',
+    items: [
+      'Terapia pedagogiczna dla dzieci z trudnościami w nauce',
+      'Trening Umiejętności Społecznych (TUS)',
+      'Praca z dziećmi z zaburzeniami ze spektrum autyzmu',
+      'Indywidualne podejście dostosowane do potrzeb rozwojowych dziecka (model DIR/Floortime)'
+    ]
+  },
+  // Sensory Integration services
+  {
+    id: 'sensory-integration',
+    title: 'Terapeuta SI (Integracja Sensoryczna)',
+    description: 'Kompleksowa diagnoza i terapia procesów integracji sensorycznej w profesjonalnie wyposażonej sali.',
+    category: 'sensory-integration',
+    ageGroup: 'children',
+    items: [
+      'Diagnoza procesów integracji sensorycznej',
+      'Zajęcia indywidualne SI dla dzieci z trudnościami przetwarzania bodźców',
+      'Zajęcia grupowe SI (małe grupy 4-osobowe)',
+      'Praca w profesjonalnie wyposażonej sali sensorycznej'
     ]
   }
 ];

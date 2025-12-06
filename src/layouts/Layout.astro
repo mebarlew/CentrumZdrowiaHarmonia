@@ -24,7 +24,12 @@ const { title, description = 'Centrum Zdrowia Psychicznego i Mowy Harmonia - pro
     <meta name="geo.placename" content="Inowrocław" />
     <meta name="geo.position" content="52.7989;18.2610" />
     <meta name="ICBM" content="52.7989, 18.2610" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#4A90B8" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Open Graph -->
@@ -33,26 +38,39 @@ const { title, description = 'Centrum Zdrowia Psychicznego i Mowy Harmonia - pro
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pl_PL" />
     <meta property="og:site_name" content="Centrum Zdrowia Psychicznego i Mowy Harmonia" />
-    <meta property="og:image" content="https://centrumharmonia.pl/images/logo.PNG" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="https://centrumharmonia.pl/images/logo.webp" />
+    <meta property="og:image:width" content="200" />
+    <meta property="og:image:height" content="200" />
     <meta property="og:url" content="https://centrumharmonia.pl" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://centrumharmonia.pl/images/logo.PNG" />
+    <meta name="twitter:image" content="https://centrumharmonia.pl/images/logo.webp" />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://centrumharmonia.pl" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
-    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/images/logo.webp" as="image" type="image/webp" />
+
+    <!-- Fonts - async loading for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" />
+    </noscript>
+
     <title>{title}</title>
+
+    <!-- Critical CSS for fonts fallback -->
+    <style is:inline>
+      body { font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+      .font-display { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    </style>
     
     <!-- Local Business Schema -->
     <script type="application/ld+json" is:inline>
@@ -61,8 +79,8 @@ const { title, description = 'Centrum Zdrowia Psychicznego i Mowy Harmonia - pro
         "@type": "MedicalBusiness",
         "name": "Centrum Zdrowia Psychicznego i Mowy Harmonia",
         "description": "Profesjonalna pomoc psychologiczna i logopedyczna w Inowrocławiu. Doświadczony zespół specjalistów oferuje terapię dla dzieci, młodzieży i dorosłych.",
-        "image": "https://centrumharmonia.pl/images/logo.PNG",
-        "logo": "https://centrumharmonia.pl/images/logo.PNG",
+        "image": "https://centrumharmonia.pl/images/logo.webp",
+        "logo": "https://centrumharmonia.pl/images/logo.webp",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "ul. Morelowa 3",
@@ -81,7 +99,7 @@ const { title, description = 'Centrum Zdrowia Psychicznego i Mowy Harmonia - pro
         "sameAs": [
           "https://www.facebook.com/share/15jdfMYEbJ/?mibextid=wwXIfr"
         ],
-        "priceRange": "100 zł - 250 zł",
+        "priceRange": "130 zł - 250 zł",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",

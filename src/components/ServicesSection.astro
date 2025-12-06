@@ -4,10 +4,12 @@ import Icon from './Icon.astro';
 
 const psychologyServices = services.filter(service => service.category === 'psychology');
 const speechTherapyServices = services.filter(service => service.category === 'speech-therapy');
+const pedagogyServices = services.filter(service => service.category === 'pedagogy');
+const sensoryIntegrationServices = services.filter(service => service.category === 'sensory-integration');
 
 const ageGroupLabels = {
   children: 'Dzieci',
-  adults: 'Dorośli', 
+  adults: 'Dorośli',
   both: 'Dzieci i Dorośli'
 };
 ---
@@ -23,7 +25,7 @@ const ageGroupLabels = {
         Oferujemy kompleksową pomoc w zakresie zdrowia psychicznego i terapii mowy
       </p>
     </div>
-    
+
     <!-- Psychology Services -->
     <div class="mb-16">
       <div class="flex items-center gap-4 mb-8">
@@ -34,7 +36,7 @@ const ageGroupLabels = {
           Psychologia
         </h3>
       </div>
-      
+
       <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
         {psychologyServices.map((service) => (
           <div class="bg-white rounded-2xl shadow-soft hover:shadow-large hover:-translate-y-2 transition-all duration-300 p-6 h-full">
@@ -49,9 +51,9 @@ const ageGroupLabels = {
                 </span>
               </div>
             </div>
-            
+
             <p class="text-text-light mb-6 leading-relaxed">{service.description}</p>
-            
+
             <ul class="space-y-3">
               {service.items.map((item) => (
                 <li class="flex items-start gap-3">
@@ -66,7 +68,7 @@ const ageGroupLabels = {
         ))}
       </div>
     </div>
-    
+
     <!-- Speech Therapy Services -->
     <div class="mb-16">
       <div class="flex items-center gap-4 mb-8">
@@ -77,7 +79,7 @@ const ageGroupLabels = {
           Logopedia i Neurologopedia
         </h3>
       </div>
-      
+
       <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
         {speechTherapyServices.map((service) => (
           <div class="bg-white rounded-2xl shadow-soft hover:shadow-large hover:-translate-y-2 transition-all duration-300 p-6 h-full">
@@ -92,9 +94,9 @@ const ageGroupLabels = {
                 </span>
               </div>
             </div>
-            
+
             <p class="text-text-light mb-6 leading-relaxed">{service.description}</p>
-            
+
             <ul class="space-y-3">
               {service.items.map((item) => (
                 <li class="flex items-start gap-3">
@@ -109,13 +111,99 @@ const ageGroupLabels = {
         ))}
       </div>
     </div>
-    
+
+    <!-- Pedagogy Services -->
+    <div class="mb-16">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="text-primary">
+          <Icon name="book" class="w-10 h-10" />
+        </div>
+        <h3 class="text-2xl md:text-3xl font-display font-semibold text-text">
+          Pedagogika i Terapia
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+        {pedagogyServices.map((service) => (
+          <div class="bg-white rounded-2xl shadow-soft hover:shadow-large hover:-translate-y-2 transition-all duration-300 p-6 h-full">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="text-primary flex-shrink-0">
+                <Icon name="book" class="w-8 h-8" />
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-semibold text-text mb-1">{service.title}</h3>
+                <span class="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
+                  {ageGroupLabels[service.ageGroup]}
+                </span>
+              </div>
+            </div>
+
+            <p class="text-text-light mb-6 leading-relaxed">{service.description}</p>
+
+            <ul class="space-y-3">
+              {service.items.map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                  <span class="text-text text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Sensory Integration Services -->
+    <div class="mb-16">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="text-secondary">
+          <Icon name="sparkles" class="w-10 h-10" />
+        </div>
+        <h3 class="text-2xl md:text-3xl font-display font-semibold text-text">
+          Integracja Sensoryczna
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+        {sensoryIntegrationServices.map((service) => (
+          <div class="bg-white rounded-2xl shadow-soft hover:shadow-large hover:-translate-y-2 transition-all duration-300 p-6 h-full">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="text-secondary flex-shrink-0">
+                <Icon name="sparkles" class="w-8 h-8" />
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-semibold text-text mb-1">{service.title}</h3>
+                <span class="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full">
+                  {ageGroupLabels[service.ageGroup]}
+                </span>
+              </div>
+            </div>
+
+            <p class="text-text-light mb-6 leading-relaxed">{service.description}</p>
+
+            <ul class="space-y-3">
+              {service.items.map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <polyline points="20,6 9,17 4,12"/>
+                  </svg>
+                  <span class="text-text text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
     <!-- Call to action -->
     <div class="text-center">
       <p class="text-lg text-text-light mb-6">
         Potrzebujesz więcej informacji o naszych usługach?
       </p>
-      <a 
+      <a
         href="#kontakt"
         class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-semibold rounded-xl text-lg hover:bg-primary-dark transition-all duration-300 hover:shadow-medium hover:-translate-y-0.5"
       >

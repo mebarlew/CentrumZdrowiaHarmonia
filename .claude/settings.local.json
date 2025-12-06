@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Bash(npm outdated:*)",
+      "Bash(yarn upgrade:*)",
+      "Bash(yarn install)",
+      "Bash(git rm:*)"
+    ],
+    "deny": []
+  }
+}

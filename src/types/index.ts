@@ -12,7 +12,7 @@ export interface Service {
   id: string;
   title: string;
   description: string;
-  category: 'psychology' | 'speech-therapy';
+  category: 'psychology' | 'speech-therapy' | 'pedagogy' | 'sensory-integration';
   ageGroup: 'children' | 'adults' | 'both';
   items: string[];
 }

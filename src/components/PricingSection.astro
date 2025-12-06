@@ -1,7 +1,14 @@
 ---
 import PriceCard from './PriceCard.astro';
 import PackageCard from './PackageCard.astro';
-import { pricingData } from '../data/pricing';
+import { pricingData, equipmentRental } from '../data/pricing';
+
+const packageLabels: Record<string, string> = {
+  'speech-therapy': 'logopedyczne',
+  'psychology': 'psychologiczne',
+  'pedagogy': 'pedagogiczne',
+  'sensory-integration': 'SI'
+};
 ---
 
 <section id="cennik" class="py-16 md:py-24 bg-bg-lighter">
@@ -14,8 +21,11 @@ import { pricingData } from '../data/pricing';
       <p class="text-lg md:text-xl text-text-light leading-relaxed">
         Przejrzyste ceny dla wszystkich naszych usług i pakietów
       </p>
+      <p class="text-sm text-text-light mt-2">
+        Cennik obowiązuje od 1 grudnia 2025 r.
+      </p>
     </div>
-    
+
     <!-- Pricing categories -->
     <div class="space-y-16">
       {pricingData.map((category) => (
@@ -26,19 +36,19 @@ import { pricingData } from '../data/pricing';
               {category.title}
             </h3>
           </div>
-          
+
           <!-- Individual services -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {category.items.map((item) => (
               <PriceCard item={item} />
             ))}
           </div>
-          
+
           <!-- Packages -->
           {category.packages && category.packages.length > 0 && (
             <div class="space-y-6">
               <h4 class="text-xl font-semibold text-text text-center">
-                Pakiety {category.id === 'speech-therapy' ? 'logopedyczne' : 'psychologiczne'} (ważne 3 miesiące)
+                Pakiety {packageLabels[category.id] || ''} (ważne 3 miesiące)
               </h4>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.packages.map((pkg) => (
@@ -47,17 +57,40 @@ import { pricingData } from '../data/pricing';
               </div>
             </div>
           )}
+
+          <!-- Equipment rental for speech therapy -->
+          {category.id === 'speech-therapy' && (
+            <div class="bg-white rounded-2xl shadow-soft p-6 max-w-md mx-auto">
+              <h4 class="text-lg font-semibold text-text mb-4 text-center">
+                Wypożyczenie elektrostymulatora
+              </h4>
+              <ul class="space-y-2 text-text-light">
+                <li class="flex justify-between">
+                  <span>Tydzień</span>
+                  <span class="font-semibold text-text">{equipmentRental.electrostimulator.weekly} zł</span>
+                </li>
+                <li class="flex justify-between">
+                  <span>Miesiąc</span>
+                  <span class="font-semibold text-text">{equipmentRental.electrostimulator.monthly} zł</span>
+                </li>
+                <li class="flex justify-between text-sm">
+                  <span>+ kaucja zwrotna</span>
+                  <span>{equipmentRental.electrostimulator.deposit} zł</span>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       ))}
     </div>
-    
+
     <!-- Contact CTA -->
     <div class="mt-16 text-center">
       <p class="text-lg text-text-light mb-6">
         Masz pytania o cennik? Skontaktuj się z nami!
       </p>
-      <a 
-        href="#kontakt" 
+      <a
+        href="#kontakt"
         class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-colors"
       >
         Skontaktuj się
