@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://centrumharmonia.pl/sitemap.xml
+Sitemap: https://www.harmonia-centrum.pl/sitemap.xml
