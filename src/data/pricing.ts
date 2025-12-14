@@ -183,9 +183,9 @@ export const pricingData: PriceCategory[] = [
         id: 'couples',
         name: 'Pakiet terapii par',
         sessions: 5,
-        price: 1200,
+        price: 1100,
         validityMonths: 3,
-        savings: 50
+        savings: 150
       },
     ]
   },
