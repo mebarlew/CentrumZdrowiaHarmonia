@@ -147,3 +147,6 @@ vite.config.ts.timestamp-*
 ._*
 .Spotlight-V100
 .Trashes
+
+# Claude Code local settings
+.claude/
