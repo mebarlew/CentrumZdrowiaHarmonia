@@ -60,24 +60,13 @@ const packageLabels: Record<string, string> = {
 
           <!-- Equipment rental for speech therapy -->
           {category.id === 'speech-therapy' && (
-            <div class="bg-white rounded-2xl shadow-soft p-6 max-w-md">
-              <h4 class="text-lg font-semibold text-text mb-4">
-                Wypożyczenie elektrostymulatora
-              </h4>
-              <ul class="space-y-2 text-text-light">
-                <li class="flex justify-between">
-                  <span>Tydzień</span>
-                  <span class="font-semibold text-text">{equipmentRental.electrostimulator.weekly} zł</span>
-                </li>
-                <li class="flex justify-between">
-                  <span>Miesiąc</span>
-                  <span class="font-semibold text-text">{equipmentRental.electrostimulator.monthly} zł</span>
-                </li>
-                <li class="flex justify-between text-sm">
-                  <span>+ kaucja zwrotna</span>
-                  <span>{equipmentRental.electrostimulator.deposit} zł</span>
-                </li>
-              </ul>
+            <div class="mt-6 py-4 px-6 bg-primary/5 border-l-4 border-primary rounded-r-lg">
+              <p class="text-text-light">
+                <span class="font-medium text-text">Niektóre terapie wymagają elektrostymulatora</span> — dostępny do wypożyczenia:
+                <span class="font-semibold text-text">{equipmentRental.electrostimulator.weekly} zł</span>/tydzień lub
+                <span class="font-semibold text-text">{equipmentRental.electrostimulator.monthly} zł</span>/miesiąc
+                <span class="text-sm">(+ kaucja zwrotna {equipmentRental.electrostimulator.deposit} zł)</span>
+              </p>
             </div>
           )}
         </div>
