@@ -138,6 +138,5 @@ Copyright © 2025 Centrum Zdrowia Psychicznego i Mowy Harmonia. All rights reser
 
 **Centrum Zdrowia Psychicznego i Mowy Harmonia**
 - 📍 ul. Morelowa 3, 88-100 Inowrocław
-- 📞 505 636 848 | 510 056 057
 - 🌐 https://www.harmonia-centrum.pl
 - 📘 [Facebook](https://www.facebook.com/share/15jdfMYEbJ/?mibextid=wwXIfr)
