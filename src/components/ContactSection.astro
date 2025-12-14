@@ -15,7 +15,7 @@ import ContactForm from './ContactForm.astro';
         Jesteśmy tutaj, aby Ci pomóc. Skontaktuj się z nami w dogodny dla Ciebie sposób.
       </p>
     </div>
-    
+
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
       <!-- Contact Form -->
       <div class="order-2 lg:order-1">
@@ -27,7 +27,7 @@ import ContactForm from './ContactForm.astro';
         <!-- Main contact -->
         <div class="bg-bg-light rounded-2xl p-8">
           <h3 class="text-xl font-semibold text-text mb-6">Informacje kontaktowe</h3>
-          
+
           <div class="space-y-4">
             <div class="flex items-start gap-4">
               <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@ import ContactForm from './ContactForm.astro';
                 <p class="text-text-light">{contactInfo.address.postalCode} {contactInfo.address.city}</p>
               </div>
             </div>
-            
+
             <div class="flex items-start gap-4">
               <svg class="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -50,12 +50,12 @@ import ContactForm from './ContactForm.astro';
                 <p class="text-text">{contactInfo.openingHours.sunday}</p>
               </div>
             </div>
-            
+
             <div class="flex items-center gap-4">
               <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
-              <a 
+              <a
                 href={contactInfo.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -66,126 +66,21 @@ import ContactForm from './ContactForm.astro';
             </div>
           </div>
         </div>
-        
-        <!-- Map - lazy loaded -->
+
+        <!-- Google Maps Embed -->
         <div class="bg-bg-light rounded-2xl overflow-hidden h-80">
-          <div id="map" class="w-full h-full flex items-center justify-center text-text-light">
-            <span class="map-placeholder">Ładowanie mapy...</span>
-          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.5!2d18.26683910094284!3d52.78544526649062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDQ3JzA3LjYiTiAxOMKwMTYnMDAuNiJF!5e0!3m2!1spl!2spl!4v1"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Lokalizacja Centrum Zdrowia Harmonia"
+          ></iframe>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  /* Fix z-index for Leaflet map container to not overlap sticky header (z-50) */
-  #map {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* Override all Leaflet z-index values to stay below header */
-  :global(.leaflet-pane) {
-    z-index: 1 !important;
-  }
-
-  :global(.leaflet-tile-pane) {
-    z-index: 1 !important;
-  }
-
-  :global(.leaflet-overlay-pane) {
-    z-index: 2 !important;
-  }
-
-  :global(.leaflet-shadow-pane) {
-    z-index: 3 !important;
-  }
-
-  :global(.leaflet-marker-pane) {
-    z-index: 4 !important;
-  }
-
-  :global(.leaflet-tooltip-pane) {
-    z-index: 5 !important;
-  }
-
-  :global(.leaflet-popup-pane) {
-    z-index: 6 !important;
-  }
-
-  :global(.leaflet-map-pane) {
-    z-index: 1 !important;
-  }
-
-  :global(.leaflet-top),
-  :global(.leaflet-bottom) {
-    z-index: 10 !important;
-  }
-
-  :global(.leaflet-container) {
-    z-index: 1 !important;
-  }
-</style>
-
-<script is:inline>
-  // Lazy load Leaflet when map comes into view
-  let mapLoaded = false;
-
-  function loadLeaflet() {
-    if (mapLoaded) return;
-    mapLoaded = true;
-
-    // Load CSS
-    const css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-    css.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
-    css.crossOrigin = '';
-    document.head.appendChild(css);
-
-    // Load JS
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-    script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
-    script.crossOrigin = '';
-    script.onload = initMap;
-    document.head.appendChild(script);
-  }
-
-  function initMap() {
-    const mapEl = document.getElementById('map');
-    const placeholder = mapEl.querySelector('.map-placeholder');
-    if (placeholder) placeholder.remove();
-
-    const map = L.map('map').setView([52.78544526649062, 18.26683910094284], 15);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      maxZoom: 19
-    }).addTo(map);
-
-    const marker = L.marker([52.78544526649062, 18.26683910094284]).addTo(map);
-    marker.bindPopup('<b>Centrum Zdrowia Psychicznego i Mowy Harmonia</b><br>ul. Morelowa 3<br>88-100 Inowrocław').openPopup();
-  }
-
-  // Use Intersection Observer to lazy load
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          loadLeaflet();
-          observer.disconnect();
-        }
-      });
-    }, { rootMargin: '200px' });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const mapEl = document.getElementById('map');
-      if (mapEl) observer.observe(mapEl);
-    });
-  } else {
-    // Fallback for old browsers
-    document.addEventListener('DOMContentLoaded', loadLeaflet);
-  }
-</script>
