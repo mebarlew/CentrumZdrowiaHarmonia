@@ -4,6 +4,7 @@ const navItems = [
   { href: '#specjalisci', label: 'Specjaliści' },
   { href: '#uslugi', label: 'Usługi' },
   { href: '#cennik', label: 'Cennik' },
+  { href: '/aktualnosci', label: 'Aktualności' },
   { href: '#kontakt', label: 'Kontakt' }
 ];
 ---
@@ -23,7 +24,7 @@ const navItems = [
           </span>
         </div>
       </a>
-      
+
       <!-- Mobile menu button -->
       <button
         class="mobile-menu-toggle lg:hidden flex flex-col gap-1 p-2 rounded"
@@ -34,18 +35,18 @@ const navItems = [
         <span class="w-6 h-0.5 bg-text transition-all duration-300"></span>
         <span class="w-6 h-0.5 bg-text transition-all duration-300"></span>
       </button>
-      
+
       <!-- Navigation menu -->
       <ul class="
-        mobile-menu hidden lg:flex items-center space-x-8 
+        mobile-menu hidden lg:flex items-center space-x-8
         lg:relative lg:top-0 lg:bg-transparent lg:shadow-none lg:p-0
         absolute top-full left-0 right-0 bg-white shadow-large
         flex-col lg:flex-row p-6 space-y-4 lg:space-y-0
       ">
         {navItems.map(item => (
           <li>
-            <a 
-              href={item.href} 
+            <a
+              href={item.href}
               class="nav-link relative font-medium text-text hover:text-primary transition-colors duration-300 py-2 px-1 block"
             >
               {item.label}
@@ -54,7 +55,7 @@ const navItems = [
           </li>
         ))}
       </ul>
-      
+
       <!-- Contact button -->
       <div class="hidden lg:block flex-shrink-0">
         <a
@@ -93,7 +94,7 @@ const navItems = [
       spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
     }
   });
-  
+
   // Close menu when clicking nav links
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {

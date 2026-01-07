@@ -1,29 +1,40 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
+import keystatic from "@keystatic/astro";
+import vercel from "@astrojs/vercel";
 
 export default defineConfig({
-  site: 'https://www.harmonia-centrum.pl',
-  output: 'static',
+  site: "https://www.harmonia-centrum.pl",
+  output: "static",
+  adapter: vercel(),
   compressHTML: true,
   build: {
-    inlineStylesheets: 'auto',
-    // Disable source maps in production for security
-    sourcemap: false
+    inlineStylesheets: "auto",
+    sourcemap: false,
   },
   vite: {
+    define: {
+      "import.meta.env.KEYSTATIC_GITHUB_CLIENT_ID": JSON.stringify(
+        process.env.KEYSTATIC_GITHUB_CLIENT_ID,
+      ),
+      "import.meta.env.KEYSTATIC_GITHUB_CLIENT_SECRET": JSON.stringify(
+        process.env.KEYSTATIC_GITHUB_CLIENT_SECRET,
+      ),
+      "import.meta.env.KEYSTATIC_SECRET": JSON.stringify(
+        process.env.KEYSTATIC_SECRET,
+      ),
+    },
     build: {
-      // Minify code in production
-      minify: 'esbuild',
-      // Disable source maps
+      minify: "esbuild",
       sourcemap: false,
-      // Remove console logs in production
       terserOptions: {
         compress: {
           drop_console: true,
-          drop_debugger: true
-        }
-      }
-    }
+          drop_debugger: true,
+        },
+      },
+    },
   },
-  integrations: [tailwind()]
+  integrations: [tailwind(), react(), keystatic()],
 });

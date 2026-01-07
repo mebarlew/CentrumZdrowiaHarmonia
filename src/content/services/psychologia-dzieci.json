@@ -1,0 +1,17 @@
+{
+  "title": "Psychologia - Dzieci i Młodzież",
+  "description": "Kompleksowa opieka psychologiczna dostosowana do potrzeb młodych ludzi.",
+  "category": "psychology",
+  "ageGroup": "children",
+  "items": [
+    "Depresja i wahania nastroju",
+    "Lęki, fobie, napięcia emocjonalne",
+    "Trudności adaptacyjne i szkolne",
+    "Zaburzenia odżywiania",
+    "Niska samoocena, nieśmiałość, wycofanie",
+    "Samookaleczenia, zachowania ryzykowne",
+    "Relacje rówieśnicze i problemy społeczne",
+    "Wsparcie dla dzieci z doświadczeniem traumy"
+  ],
+  "order": 3
+}

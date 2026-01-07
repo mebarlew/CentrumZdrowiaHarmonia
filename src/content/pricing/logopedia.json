@@ -1,0 +1,111 @@
+{
+  "title": "Logopedia | Neurologopedia | Terapia Miofunkcjonalna",
+  "items": [
+    {
+      "name": "Diagnoza logopedyczna / neurologopedyczna",
+      "duration": "1-2 spotkania, 60 min",
+      "price": 190,
+      "description": "Kompleksowa ocena stanu logopedycznego"
+    },
+    {
+      "name": "Terapia logopedyczna",
+      "duration": "45 min",
+      "price": 130,
+      "description": ""
+    },
+    {
+      "name": "Terapia neurologopedyczna",
+      "duration": "45 min",
+      "price": 130,
+      "description": ""
+    },
+    {
+      "name": "Terapia miofunkcjonalna",
+      "duration": "45 min",
+      "price": 130,
+      "description": ""
+    },
+    {
+      "name": "Elektrostymulacja",
+      "duration": "25 min",
+      "price": 70,
+      "description": ""
+    },
+    {
+      "name": "Pierwsza sesja elektrostymulacji (kwalifikacja)",
+      "duration": "ok. 45 min",
+      "price": 100,
+      "description": ""
+    },
+    {
+      "name": "Masaż logopedyczny / twarzy",
+      "duration": "",
+      "price": 70,
+      "description": ""
+    },
+    {
+      "name": "Masaż redukujący napięcie mięśniowe",
+      "duration": "",
+      "price": 90,
+      "description": ""
+    },
+    {
+      "name": "Opinia logopedyczna",
+      "duration": "",
+      "price": 80,
+      "description": ""
+    }
+  ],
+  "packages": [
+    {
+      "name": "5 terapii logopedycznych",
+      "sessions": 5,
+      "price": 620,
+      "validityMonths": 3,
+      "savings": 30
+    },
+    {
+      "name": "10 terapii logopedycznych",
+      "sessions": 10,
+      "price": 1200,
+      "validityMonths": 3,
+      "savings": 100
+    },
+    {
+      "name": "5 terapii neurologopedycznych",
+      "sessions": 5,
+      "price": 620,
+      "validityMonths": 3,
+      "savings": 30
+    },
+    {
+      "name": "10 terapii neurologopedycznych",
+      "sessions": 10,
+      "price": 1200,
+      "validityMonths": 3,
+      "savings": 100
+    },
+    {
+      "name": "5 terapii miofunkcjonalnych",
+      "sessions": 5,
+      "price": 620,
+      "validityMonths": 3,
+      "savings": 30
+    },
+    {
+      "name": "10 terapii miofunkcjonalnych",
+      "sessions": 10,
+      "price": 1200,
+      "validityMonths": 3,
+      "savings": 100
+    },
+    {
+      "name": "5 zabiegów elektrostymulacji",
+      "sessions": 5,
+      "price": 300,
+      "validityMonths": 3,
+      "savings": 50
+    }
+  ],
+  "order": 1
+}

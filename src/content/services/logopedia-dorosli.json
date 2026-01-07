@@ -1,0 +1,13 @@
+{
+  "title": "Logopedia - Dorośli",
+  "description": "Terapia logopedyczna dla dorosłych pacjentów z różnorodnymi potrzebami.",
+  "category": "speech-therapy",
+  "ageGroup": "adults",
+  "items": [
+    "Wady wymowy u dorosłych",
+    "Zaburzenia mowy po udarach, urazach, chorobach neurologicznych",
+    "Terapia wspomagająca leczenie ortodontyczne i redukcję chrapania",
+    "Redukcja napięć mięśniowych"
+  ],
+  "order": 6
+}
