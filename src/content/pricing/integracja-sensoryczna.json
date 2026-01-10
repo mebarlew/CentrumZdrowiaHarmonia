@@ -1,20 +1,20 @@
 {
-  "title": "Integracja Sensoryczna",
+  "title": "Sensoryka i Emocje",
   "items": [
     {
-      "name": "Diagnoza SI",
+      "name": "Ocena funkcjonowania sensorycznego dziecka",
       "duration": "1-2 spotkania po ok. 60 min",
       "price": 180,
       "description": "Cena za spotkanie"
     },
     {
-      "name": "Terapia indywidualna SI",
+      "name": "Indywidualne zajęcia wspierające regulację sensoryczno-emocjonalną",
       "duration": "",
       "price": 130,
       "description": ""
     },
     {
-      "name": "Terapia grupowa SI (grupy 4-osobowe)",
+      "name": "Grupowe zajęcia wspierające samoregulację (grupy 4-osobowe)",
       "duration": "",
       "price": 80,
       "description": "Cena za dziecko"
