@@ -6,10 +6,16 @@ Professional website for Mental Health and Speech Center "Harmonia" in Inowrocł
 
 - **Astro 5.16.0** - Modern static site framework
 - **Tailwind CSS 3.4.18** - Utility-first CSS framework
+- **Keystatic CMS** - Git-based content management
 - **Leaflet.js 1.9.4** - Interactive maps (OpenStreetMap)
 - **TypeScript** - Static typing
 
 ## Features
+
+✅ **CMS (Keystatic)**
+- Edit content via web UI at `/keystatic`
+- Manage news, services, pricing, contact info
+- Git-based - all changes committed to repo
 
 ✅ **SEO Optimization**
 - Meta tags for Google, Facebook, Twitter
@@ -59,6 +65,27 @@ yarn build
 yarn preview
 ```
 
+## CMS (Keystatic)
+
+### Accessing the CMS
+
+1. Go to https://www.harmonia-centrum.pl/keystatic/
+2. Sign in with GitHub (requires write access to repo)
+3. Edit content through the UI
+
+### Content Structure
+
+- **Aktualności** - News/blog posts
+- **Usługi** - Services offered
+- **Cennik** - Pricing for each service category
+- **Dane kontaktowe** - Contact information
+- **Wypożyczalnia sprzętu** - Equipment rental info
+
+### Giving CMS Access to Others
+
+Add them as collaborators with Write permission:
+https://github.com/mebarlew/CentrumZdrowiaHarmonia/settings/access
+
 ## Project Structure
 
 ```
@@ -69,24 +96,21 @@ yarn preview
 │   └── sitemap.xml       # Site map for SEO
 ├── src/
 │   ├── components/       # Astro components
-│   │   ├── Header.astro
-│   │   ├── Footer.astro
-│   │   ├── Hero.astro
-│   │   ├── SpecialistsSection.astro
-│   │   ├── ServicesSection.astro
-│   │   ├── PricingSection.astro
-│   │   ├── ContactSection.astro
-│   │   ├── CookieConsent.astro
-│   │   └── Icon.astro
-│   ├── data/            # Configuration data
-│   │   └── contact.ts
-│   ├── layouts/         # Layouts
-│   │   └── Layout.astro
-│   └── pages/           # Pages
+│   ├── content/          # CMS content (JSON/Markdoc)
+│   │   ├── news/         # News posts
+│   │   ├── services/     # Service descriptions
+│   │   ├── pricing/      # Pricing data
+│   │   ├── contact.json  # Contact info
+│   │   └── equipment.json # Equipment rental
+│   ├── data/             # Static configuration
+│   ├── layouts/          # Layouts
+│   └── pages/            # Pages
 │       ├── index.astro
+│       ├── aktualnosci.astro
 │       └── polityka-prywatnosci.astro
-├── astro.config.mjs     # Astro configuration
-├── tailwind.config.js   # Tailwind configuration
+├── keystatic.config.ts   # CMS configuration
+├── astro.config.mjs      # Astro configuration
+├── tailwind.config.js    # Tailwind configuration
 └── package.json
 ```
 
@@ -99,28 +123,35 @@ yarn preview      # Preview production build
 yarn astro        # Astro CLI
 ```
 
-## Production Configuration
+## Deployment (Vercel)
 
-Production build includes:
-- ❌ No source maps
-- ✅ Code minification (esbuild)
-- ✅ Remove console.log and debugger statements
-- ✅ HTML compression
-- ✅ CSS/JS optimization
+### Important: Always deploy with Vercel building
 
-## Deployment
+```bash
+# Correct - Vercel builds with access to env vars
+vercel deploy --prod
 
-1. Build the project:
-   ```bash
-   yarn build
-   ```
+# Wrong - env vars won't be embedded
+vercel deploy --prod --prebuilt
+```
 
-2. Upload the contents of `dist/` folder to your hosting
+### Environment Variables (Vercel)
 
-3. Ensure your server supports:
-   - gzip/brotli compression
-   - HTTPS
-   - Cache headers for static assets
+Required for Keystatic CMS to work:
+
+```
+KEYSTATIC_GITHUB_CLIENT_ID=<from GitHub App>
+KEYSTATIC_GITHUB_CLIENT_SECRET=<from GitHub App>
+KEYSTATIC_SECRET=<64 char random string>
+PUBLIC_KEYSTATIC_GITHUB_APP_SLUG=harmonia-cms
+```
+
+### GitHub App Setup
+
+The CMS uses a GitHub App (not OAuth App) for authentication:
+- App name: `harmonia-cms`
+- Callback URL: `https://www.harmonia-centrum.pl/api/keystatic/github/oauth/callback`
+- Permissions: Contents (read/write), Metadata (read), Pull requests (read)
 
 ## Browser Support
 
@@ -137,6 +168,6 @@ Copyright © 2025 Centrum Zdrowia Psychicznego i Mowy Harmonia. All rights reser
 ## Kontakt
 
 **Centrum Zdrowia Psychicznego i Mowy Harmonia**
-- 📍 ul. Morelowa 3, 88-100 Inowrocław
-- 🌐 https://www.harmonia-centrum.pl
-- 📘 [Facebook](https://www.facebook.com/share/15jdfMYEbJ/?mibextid=wwXIfr)
+- ul. Morelowa 3, 88-100 Inowrocław
+- https://www.harmonia-centrum.pl
+- [Facebook](https://www.facebook.com/share/15jdfMYEbJ/?mibextid=wwXIfr)
