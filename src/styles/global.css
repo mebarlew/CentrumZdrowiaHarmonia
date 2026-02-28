@@ -155,9 +155,20 @@ a:hover {
   border-width: 0;
 }
 
-/* GSAP animation initial states */
+/* GSAP animation initial states — with fallback if JS fails */
 [data-animate] {
   opacity: 0;
+  animation: fallback-show 0s 2.5s forwards;
+}
+
+@keyframes fallback-show {
+  to { opacity: 1; }
+}
+
+/* GSAP sets inline opacity, which overrides the animation.
+   Once JS runs, this class disables the fallback. */
+.js-loaded [data-animate] {
+  animation: none;
 }
 
 /* Reduced motion */

@@ -205,8 +205,14 @@ function initFadeUpAnimations() {
 }
 
 function initSectionLineart() {
-  const svgs = document.querySelectorAll('svg:has(.section-line)');
-  svgs.forEach((svg) => {
+  const allLines = document.querySelectorAll('.section-line') as NodeListOf<SVGPathElement>;
+  const svgSet = new Set<SVGSVGElement>();
+  allLines.forEach((line) => {
+    const svg = line.closest('svg');
+    if (svg) svgSet.add(svg as SVGSVGElement);
+  });
+
+  svgSet.forEach((svg) => {
     const lines = svg.querySelectorAll('.section-line') as NodeListOf<SVGPathElement>;
     lines.forEach((el) => {
       const length = el.getTotalLength();
@@ -246,6 +252,8 @@ function initParallax() {
 }
 
 export function initAnimations() {
+  document.documentElement.classList.add('js-loaded');
+
   if (prefersReducedMotion) {
     document.querySelectorAll('[data-animate]').forEach((el) => {
       (el as HTMLElement).style.opacity = '1';
