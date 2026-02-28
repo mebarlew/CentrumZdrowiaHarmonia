@@ -6,7 +6,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 
 export default [
   {
-    ignores: ['dist/**', 'node_modules/**', '.astro/**', '*.config.js', '*.config.cjs'],
+    ignores: ['dist/**', 'node_modules/**', '.astro/**', '.vercel/**', '*.config.js', '*.config.cjs'],
   },
   eslint.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
@@ -17,6 +17,19 @@ export default [
       parser: tsparser,
       parserOptions: {
         project: './tsconfig.json',
+      },
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+        navigator: 'readonly',
+        localStorage: 'readonly',
+        setTimeout: 'readonly',
+        HTMLElement: 'readonly',
+        HTMLFormElement: 'readonly',
+        HTMLButtonElement: 'readonly',
+        FormData: 'readonly',
+        fetch: 'readonly',
+        requestAnimationFrame: 'readonly',
       },
     },
     plugins: {

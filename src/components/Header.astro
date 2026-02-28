@@ -4,22 +4,21 @@ const navItems = [
   { href: '#specjalisci', label: 'Specjaliści' },
   { href: '#uslugi', label: 'Usługi' },
   { href: '#cennik', label: 'Cennik' },
-  { href: '/aktualnosci', label: 'Aktualności' },
   { href: '#kontakt', label: 'Kontakt' }
 ];
 ---
 
-<header class="bg-white shadow-soft sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
     <nav class="flex items-center justify-between py-4 gap-4" aria-label="Główna nawigacja">
       <!-- Logo -->
       <a href="/" class="flex-shrink-0 flex items-center gap-3" aria-label="Strona główna - Centrum Zdrowia Harmonia">
         <img src="/images/logo.webp" alt="Logo Centrum Zdrowia Harmonia" class="h-12 md:h-14 w-auto" width="56" height="56" fetchpriority="high" />
         <div class="flex flex-col">
-          <span class="font-bold text-primary leading-tight text-sm md:text-base">
+          <span class="font-semibold text-charcoal leading-tight text-sm md:text-base">
             Centrum Zdrowia
           </span>
-          <span class="text-text-light leading-tight text-xs md:text-sm">
+          <span class="text-stone leading-tight text-xs md:text-sm">
             Psychicznego i Mowy Harmonia
           </span>
         </div>
@@ -27,30 +26,30 @@ const navItems = [
 
       <!-- Mobile menu button -->
       <button
-        class="mobile-menu-toggle lg:hidden flex flex-col gap-1 p-2 rounded"
+        class="mobile-menu-toggle lg:hidden flex flex-col gap-1.5 p-2 rounded-lg"
         aria-label="Przełącz menu"
         aria-expanded="false"
       >
-        <span class="w-6 h-0.5 bg-text transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-text transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-text transition-all duration-300"></span>
+        <span class="w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center"></span>
+        <span class="w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center"></span>
+        <span class="w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center"></span>
       </button>
 
       <!-- Navigation menu -->
       <ul class="
-        mobile-menu hidden lg:flex items-center space-x-8
-        lg:relative lg:top-0 lg:bg-transparent lg:shadow-none lg:p-0
-        absolute top-full left-0 right-0 bg-white shadow-large
-        flex-col lg:flex-row p-6 space-y-4 lg:space-y-0
+        mobile-menu hidden lg:flex items-center gap-8
+        lg:relative lg:top-0 lg:bg-transparent lg:shadow-none lg:p-0 lg:rounded-none
+        absolute top-full left-4 right-4 glass rounded-2xl
+        flex-col lg:flex-row p-6 gap-4 lg:gap-8 mt-2 lg:mt-0
       ">
         {navItems.map(item => (
           <li>
             <a
               href={item.href}
-              class="nav-link relative font-medium text-text hover:text-primary transition-colors duration-300 py-2 px-1 block"
+              class="nav-link relative font-medium text-charcoal hover:text-sage transition-colors duration-300 py-2 px-1 block text-[0.9375rem]"
             >
               {item.label}
-              <span class="absolute bottom-0 left-0 right-0 h-0.5 bg-primary transform transition-transform duration-300 origin-left scale-x-0 hover:scale-x-100"></span>
+              <span class="absolute bottom-0 left-0 right-0 h-0.5 bg-gold transform transition-transform duration-300 origin-left scale-x-0 hover:scale-x-100"></span>
             </a>
           </li>
         ))}
@@ -60,7 +59,7 @@ const navItems = [
       <div class="hidden lg:block flex-shrink-0">
         <a
           href="tel:+48789115585"
-          class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg font-medium text-sm hover:bg-primary hover:text-white transition-colors"
+          class="inline-flex items-center gap-2 bg-sage/10 text-sage px-5 py-2.5 rounded-lg font-medium text-sm hover:bg-sage hover:text-white transition-all duration-300"
           aria-label="Zadzwoń: 789 115 585"
         >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -73,6 +72,22 @@ const navItems = [
   </div>
 </header>
 
+<style>
+  header {
+    background: transparent;
+    box-shadow: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  header.header-scrolled {
+    background: rgba(250, 246, 240, 0.80);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(43, 43, 43, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.30);
+  }
+</style>
+
 <script>
   const toggle = document.querySelector('.mobile-menu-toggle');
   const menu = document.querySelector('.mobile-menu');
@@ -82,20 +97,18 @@ const navItems = [
     const isExpanded = !menu?.classList.contains('hidden');
     toggle?.setAttribute('aria-expanded', isExpanded.toString());
 
-    // Animate hamburger icon
     const spans = toggle.querySelectorAll('span');
     if (menu?.classList.contains('hidden')) {
       spans[0].style.transform = '';
       spans[1].style.opacity = '';
       spans[2].style.transform = '';
     } else {
-      spans[0].style.transform = 'rotate(45deg) translateY(8px)';
+      spans[0].style.transform = 'rotate(45deg) translateY(6px)';
       spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
+      spans[2].style.transform = 'rotate(-45deg) translateY(-6px)';
     }
   });
 
-  // Close menu when clicking nav links
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       menu?.classList.add('hidden');

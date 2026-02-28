@@ -4,42 +4,56 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#4A90B8',
-          dark: '#357098'
+        cream: {
+          DEFAULT: '#FAF6F0',
+          dark: '#F0E9DD',
         },
-        secondary: {
-          DEFAULT: '#6B9B7A',
-          dark: '#5A8A69'
+        sage: {
+          DEFAULT: '#5B7553',
+          dark: '#3D5435',
+          light: '#8BA583',
+          muted: '#C8D5C2',
         },
-        accent: '#E8B444',
-        text: {
-          DEFAULT: '#333333',
-          light: '#666666'
+        gold: {
+          DEFAULT: '#C9A84C',
+          light: '#E8D5A0',
+          dark: '#A68A3A',
         },
-        bg: {
-          DEFAULT: '#FFFFFF',
-          light: '#F5F5F5',
-          lighter: '#FAFAFA'
-        }
+        charcoal: '#2A2A2A',
+        stone: '#4A4A4A',
+        pebble: '#6B6B6B',
+        sand: '#D4CFC7',
+        cloud: '#F5F2ED',
+        error: {
+          DEFAULT: '#C45C4A',
+          light: '#FAE8E5',
+        },
       },
       fontFamily: {
-        'sans': ['Source Sans Pro', 'system-ui', 'sans-serif'],
-        'display': ['Poppins', 'system-ui', 'sans-serif']
+        display: ['Playfair Display', 'Georgia', 'serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'soft': '0 2px 4px rgba(0,0,0,0.1)',
-        'medium': '0 4px 8px rgba(0,0,0,0.1)',
-        'large': '0 8px 16px rgba(0,0,0,0.1)'
+        soft: '0 2px 8px rgba(43,43,43,0.04), 0 1px 2px rgba(43,43,43,0.06)',
+        medium: '0 4px 16px rgba(43,43,43,0.06), 0 2px 4px rgba(43,43,43,0.04)',
+        large: '0 12px 40px rgba(43,43,43,0.08), 0 4px 12px rgba(43,43,43,0.04)',
+        glass: '0 8px 32px rgba(43,43,43,0.08)',
+        glow: '0 0 40px rgba(201,168,76,0.15)',
       },
-      screens: {
-        'sr-only': {'raw': '(max-width: 0px)'}
-      }
+      borderRadius: {
+        xl: '16px',
+        '2xl': '24px',
+        '3xl': '32px',
+      },
+      backdropBlur: {
+        glass: '20px',
+      },
     },
   },
   plugins: [
-    function({ addUtilities }) {
-      const newUtilities = {
+    function ({ addUtilities }) {
+      addUtilities({
         '.sr-only': {
           position: 'absolute',
           width: '1px',
@@ -61,9 +75,7 @@ module.exports = {
           clip: 'auto',
           whiteSpace: 'normal',
         },
-      }
-      addUtilities(newUtilities)
-    }
+      });
+    },
   ],
-}
-
+};
