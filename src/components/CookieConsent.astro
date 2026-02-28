@@ -1,59 +1,56 @@
 ---
-// Cookie Consent Banner Component
+
 ---
 
-<div id="cookie-consent" class="fixed bottom-0 left-0 right-0 bg-white shadow-large p-4 md:p-6 z-50 transform translate-y-full transition-transform duration-300" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <div class="flex-1">
-        <h3 id="cookie-title" class="text-lg font-semibold text-text mb-2">Używamy plików cookies</h3>
-        <p id="cookie-description" class="text-sm text-text-light">
-          Ta strona używa plików cookies w celu zapewnienia prawidłowego działania i analizy ruchu.
-          Kontynuując przeglądanie strony, wyrażasz zgodę na używanie cookies.
-          <a href="/polityka-prywatnosci" class="text-primary hover:text-primary-dark underline">
-            Dowiedz się więcej
-          </a>
-        </p>
-      </div>
-      <div class="flex gap-3 flex-shrink-0">
-        <button
-          id="reject-cookies"
-          class="px-4 py-2 border border-gray-300 text-text rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
-          aria-label="Odrzuć cookies"
-        >
-          Odrzuć
-        </button>
-        <button
-          id="accept-cookies"
-          class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors text-sm font-medium"
-          aria-label="Akceptuj cookies"
-        >
-          Akceptuj
-        </button>
+<div id="cookie-consent" class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-300" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
+  <div class="m-4 md:m-6">
+    <div class="max-w-4xl mx-auto glass rounded-2xl p-6 md:p-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="flex-1">
+          <h3 id="cookie-title" class="text-base font-display font-semibold text-charcoal mb-1.5">Używamy plików cookies</h3>
+          <p id="cookie-description" class="text-sm text-stone leading-relaxed">
+            Ta strona używa plików cookies w celu zapewnienia prawidłowego działania i analizy ruchu.
+            <a href="/polityka-prywatnosci" class="text-sage hover:text-sage-dark underline">
+              Dowiedz się więcej
+            </a>
+          </p>
+        </div>
+        <div class="flex gap-3 flex-shrink-0">
+          <button
+            id="reject-cookies"
+            class="px-5 py-2.5 border border-sand text-stone rounded-lg hover:bg-cream-dark transition-all duration-300 text-sm font-medium"
+            aria-label="Odrzuć cookies"
+          >
+            Odrzuć
+          </button>
+          <button
+            id="accept-cookies"
+            class="px-6 py-2.5 bg-sage text-white rounded-lg hover:bg-sage-dark transition-all duration-300 text-sm font-medium"
+            aria-label="Akceptuj cookies"
+          >
+            Akceptuj
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  // Check if user has already made a choice
   const cookieConsent = localStorage.getItem('cookie-consent');
   const banner = document.getElementById('cookie-consent');
 
   if (!cookieConsent && banner) {
-    // Show banner after a short delay
     setTimeout(() => {
       banner.classList.remove('translate-y-full');
     }, 1000);
   }
 
-  // Handle accept button
   document.getElementById('accept-cookies')?.addEventListener('click', () => {
     localStorage.setItem('cookie-consent', 'accepted');
     hideBanner();
   });
 
-  // Handle reject button
   document.getElementById('reject-cookies')?.addEventListener('click', () => {
     localStorage.setItem('cookie-consent', 'rejected');
     hideBanner();

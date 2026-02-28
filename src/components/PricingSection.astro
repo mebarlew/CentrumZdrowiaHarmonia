@@ -11,61 +11,80 @@ const packageLabels: Record<string, string> = {
 };
 ---
 
-<section id="cennik" class="py-16 md:py-24 bg-bg-lighter">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="cennik" class="relative py-24 md:py-32 bg-cloud overflow-hidden" data-animate="section">
+  <!-- Section lineart — right -->
+  <svg class="absolute top-0 right-0 w-[60%] md:w-[30%] h-full pointer-events-none opacity-50 md:opacity-100" viewBox="0 0 300 700" fill="none" aria-hidden="true">
+    <path class="section-line" d="M320 60 C260 100, 200 50, 150 140 C100 230, 180 280, 140 380 C100 480, 200 520, 160 620" stroke="#C8D5C2" stroke-width="1.5" stroke-linecap="round" fill="none" />
+    <path class="section-line" d="M300 250 C250 230, 200 270, 180 340" stroke="#8BA583" stroke-width="1" stroke-linecap="round" fill="none" />
+    <circle class="section-line" cx="150" cy="140" r="28" stroke="#C9A84C" stroke-width="1" fill="none" />
+    <path class="section-line" d="M310 400 C260 380, 210 420, 190 480 C170 540, 220 560, 200 620" stroke="#E8D5A0" stroke-width="0.8" stroke-linecap="round" fill="none" />
+    <circle class="section-line" cx="140" cy="380" r="5" stroke="#5B7553" stroke-width="1.5" fill="none" />
+    <path class="section-line" d="M160 620 C120 660, 140 690, 100 700" stroke="#C8D5C2" stroke-width="0.8" stroke-linecap="round" fill="none" />
+    <path class="section-line" d="M150 140 C120 120, 90 130, 80 160 C70 190, 100 200, 130 185" stroke="#8BA583" stroke-width="1" stroke-linecap="round" fill="none" />
+  </svg>
+  <!-- Section lineart — left -->
+  <svg class="absolute top-20 left-0 w-[50%] md:w-[22%] h-[70%] pointer-events-none opacity-50 md:opacity-100" viewBox="0 0 220 500" fill="none" aria-hidden="true">
+    <path class="section-line" d="M-20 40 C40 70, 100 30, 140 100 C180 170, 100 220, 160 300" stroke="#C8D5C2" stroke-width="1" stroke-linecap="round" fill="none" />
+    <path class="section-line" d="M-10 200 C30 180, 60 220, 40 280 C20 340, 70 360, 50 420" stroke="#E8D5A0" stroke-width="0.8" stroke-linecap="round" fill="none" />
+    <circle class="section-line" cx="140" cy="100" r="20" stroke="#C9A84C" stroke-width="1" fill="none" />
+    <circle class="section-line" cx="160" cy="300" r="4" stroke="#8BA583" stroke-width="1" fill="none" />
+    <path class="section-line" d="M50 420 C90 400, 130 440, 110 500" stroke="#8BA583" stroke-width="0.8" stroke-linecap="round" fill="none" />
+  </svg>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
     <!-- Section header -->
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-display font-bold text-primary mb-6">
-        Cennik usług
-      </h2>
-      <p class="text-lg md:text-xl text-text-light leading-relaxed">
-        Przejrzyste ceny dla wszystkich naszych usług i pakietów
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <p class="font-sans font-medium tracking-[0.15em] uppercase text-sage text-sm mb-4" data-animate="section-subtitle">
+        Cennik
       </p>
-      <p class="text-sm text-text-light mt-2">
+      <h2 class="mb-6">
+        Przejrzyste ceny usług
+      </h2>
+      <p class="text-lg text-stone leading-relaxed" data-animate="section-subtitle">
+        Oferujemy konkurencyjne ceny oraz atrakcyjne pakiety
+      </p>
+      <p class="text-sm text-pebble mt-3" data-animate="section-subtitle">
         Cennik obowiązuje od 1 grudnia 2025 r.
       </p>
     </div>
 
     <!-- Pricing categories -->
-    <div class="space-y-16">
+    <div class="space-y-20">
       {pricingData.map((category) => (
-        <div class="space-y-8">
+        <div data-animate="section">
           <!-- Category title -->
-          <div class="text-center">
-            <h3 class="text-2xl md:text-3xl font-display font-semibold text-text mb-4">
-              {category.title}
-            </h3>
-          </div>
+          <h3 class="text-2xl md:text-3xl text-center mb-10">
+            {category.title}
+          </h3>
 
           <!-- Individual services -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-animate="cards">
             {category.items.map((item) => (
-              <PriceCard item={item} />
+              <PriceCard item={item} data-animate="card" />
             ))}
           </div>
 
           <!-- Packages -->
           {category.packages && category.packages.length > 0 && (
-            <div class="space-y-6">
-              <h4 class="text-xl font-semibold text-text text-center">
-                Pakiety {packageLabels[category.id] || ''} (ważne 3 miesiące)
+            <div class="mt-10">
+              <h4 class="text-lg font-display font-semibold text-charcoal text-center mb-6">
+                Pakiety {packageLabels[category.id] || ''} <span class="text-pebble font-normal text-sm">(ważne 3 miesiące)</span>
               </h4>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-animate="cards">
                 {category.packages.map((pkg) => (
-                  <PackageCard package={pkg} />
+                  <PackageCard package={pkg} data-animate="card" />
                 ))}
               </div>
             </div>
           )}
 
-          <!-- Equipment rental for speech therapy -->
+          <!-- Equipment rental note -->
           {category.id === 'speech-therapy' && (
-            <div class="mt-6 py-4 px-6 bg-primary/5 border-l-4 border-primary rounded-r-lg">
-              <p class="text-text-light">
-                <span class="font-medium text-text">Niektóre terapie wymagają elektrostymulatora</span> — dostępny do wypożyczenia:
-                <span class="font-semibold text-text">{equipmentRental.electrostimulator.weekly} zł</span>/tydzień lub
-                <span class="font-semibold text-text">{equipmentRental.electrostimulator.monthly} zł</span>/miesiąc
-                <span class="text-sm">(+ kaucja zwrotna {equipmentRental.electrostimulator.deposit} zł)</span>
+            <div class="mt-8 py-4 px-6 bg-sage/5 border-l-4 border-sage rounded-r-xl" data-animate="fade-up">
+              <p class="text-stone">
+                <span class="font-medium text-charcoal">Niektóre terapie wymagają elektrostymulatora</span> — dostępny do wypożyczenia:
+                <span class="font-semibold text-charcoal">{equipmentRental.electrostimulator.weekly} zł</span>/tydzień lub
+                <span class="font-semibold text-charcoal">{equipmentRental.electrostimulator.monthly} zł</span>/miesiąc
+                <span class="text-sm text-pebble">(+ kaucja zwrotna {equipmentRental.electrostimulator.deposit} zł)</span>
               </p>
             </div>
           )}
@@ -74,14 +93,11 @@ const packageLabels: Record<string, string> = {
     </div>
 
     <!-- Contact CTA -->
-    <div class="mt-16 text-center">
-      <p class="text-lg text-text-light mb-6">
+    <div class="mt-20 text-center" data-animate="fade-up">
+      <p class="text-lg text-stone mb-6">
         Masz pytania o cennik? Skontaktuj się z nami!
       </p>
-      <a
-        href="#kontakt"
-        class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-xl font-semibold hover:bg-primary-dark transition-colors"
-      >
+      <a href="#kontakt" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-charcoal font-semibold text-base rounded-xl shadow-soft border border-sand hover:border-sage hover:text-sage-dark hover:shadow-medium transition-all duration-300 hover:-translate-y-0.5">
         Skontaktuj się
       </a>
     </div>

@@ -7,24 +7,21 @@ export interface Props {
 }
 
 const { item, class: className = '' } = Astro.props;
-
-const isDiscount = item.price < 0;
-const displayPrice = isDiscount ? `${item.price} zł` : `${item.price} zł`;
 ---
 
-<div class={`bg-white rounded-lg p-4 border border-gray-200 hover:shadow-medium transition-shadow ${className}`}>
-  <div class="flex justify-between items-start mb-2">
-    <h4 class="font-semibold text-text text-sm">{item.name}</h4>
-    <span class={`font-bold text-lg whitespace-nowrap ${isDiscount ? 'text-secondary' : 'text-primary'}`}>
-      {displayPrice}
+<div class={`bg-white rounded-xl p-5 border border-sand hover:border-sage-muted hover:shadow-soft transition-all duration-300 ${className}`}>
+  <div class="flex justify-between items-start gap-4 mb-1">
+    <h4 class="font-semibold text-charcoal text-sm leading-snug">{item.name}</h4>
+    <span class="font-display text-xl font-bold text-sage whitespace-nowrap">
+      {item.price} zł
     </span>
   </div>
-  
+
   {item.duration && (
-    <p class="text-text-light text-xs mb-2">{item.duration}</p>
+    <p class="text-pebble text-xs mb-1">{item.duration}</p>
   )}
-  
+
   {item.description && (
-    <p class="text-text-light text-xs">{item.description}</p>
+    <p class="text-stone text-xs leading-relaxed">{item.description}</p>
   )}
 </div>
