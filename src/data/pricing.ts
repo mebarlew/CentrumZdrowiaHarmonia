@@ -190,6 +190,27 @@ export const pricingData: PriceCategory[] = [
     ]
   },
   {
+    id: 'pedagogy',
+    title: 'Pedagogika | Terapia',
+    items: [
+      {
+        id: 'ped-therapy',
+        name: 'Terapia pedagogiczna (dla dzieci z trudnościami szkolnymi)',
+        price: 150
+      },
+      {
+        id: 'tus',
+        name: 'Trening Umiejętności Społecznych (TUS)',
+        price: 150
+      },
+      {
+        id: 'autism-therapy',
+        name: 'Terapia dzieci ze spektrum autyzmu (model DIR/Floortime)',
+        price: 150
+      }
+    ]
+  },
+  {
     id: 'sensory-integration',
     title: 'Integracja Sensoryczna',
     items: [
