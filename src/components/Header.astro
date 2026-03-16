@@ -10,7 +10,7 @@ const navItems = [
 
 <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
   <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-    <nav class="flex items-center justify-between py-4 gap-4" aria-label="Główna nawigacja">
+    <nav class="relative flex items-center justify-between py-4 gap-4" aria-label="Główna nawigacja">
       <!-- Logo -->
       <a href="/" class="flex-shrink-0 flex items-center gap-3" aria-label="Strona główna - Centrum Zdrowia Harmonia">
         <img src="/images/logo.webp" alt="Logo Centrum Zdrowia Harmonia" class="h-12 md:h-14 w-auto" width="56" height="56" fetchpriority="high" />
@@ -38,8 +38,8 @@ const navItems = [
       <!-- Navigation menu -->
       <ul class="
         mobile-menu hidden lg:flex items-center gap-8
-        lg:relative lg:top-0 lg:bg-transparent lg:shadow-none lg:p-0 lg:rounded-none
-        absolute top-full left-4 right-4 glass rounded-2xl
+        lg:relative lg:top-0 lg:bg-transparent lg:shadow-none lg:p-0 lg:rounded-none lg:z-auto
+        absolute top-full left-4 right-4 z-50 glass rounded-2xl shadow-large
         flex-col lg:flex-row p-6 gap-4 lg:gap-8 mt-2 lg:mt-0
       ">
         {navItems.map(item => (
@@ -92,10 +92,23 @@ const navItems = [
   const toggle = document.querySelector('.mobile-menu-toggle');
   const menu = document.querySelector('.mobile-menu');
 
+  function closeMenu() {
+    menu?.classList.add('hidden');
+    toggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    const spans = toggle?.querySelectorAll('span');
+    if (spans) {
+      spans[0].style.transform = '';
+      spans[1].style.opacity = '';
+      spans[2].style.transform = '';
+    }
+  }
+
   toggle?.addEventListener('click', () => {
     menu?.classList.toggle('hidden');
     const isExpanded = !menu?.classList.contains('hidden');
     toggle?.setAttribute('aria-expanded', isExpanded.toString());
+    document.body.style.overflow = isExpanded ? 'hidden' : '';
 
     const spans = toggle.querySelectorAll('span');
     if (menu?.classList.contains('hidden')) {
@@ -110,15 +123,6 @@ const navItems = [
   });
 
   document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      menu?.classList.add('hidden');
-      toggle?.setAttribute('aria-expanded', 'false');
-      const spans = toggle?.querySelectorAll('span');
-      if (spans) {
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '';
-        spans[2].style.transform = '';
-      }
-    });
+    link.addEventListener('click', () => closeMenu());
   });
 </script>
