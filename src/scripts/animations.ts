@@ -94,9 +94,9 @@ function initHeroAnimations() {
       const target = parseInt(counter.getAttribute('data-count') || '0', 10);
       const numEl = counter.querySelector('.counter-number');
       if (numEl && target) {
-        gsap.fromTo(
+        numEl.textContent = '0';
+        gsap.to(
           { val: 0 },
-          { val: target },
           {
             val: target,
             duration: 1.5,
