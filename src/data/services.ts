@@ -118,15 +118,16 @@ export const services: Service[] = [
   // Sensory Integration services
   {
     id: 'sensory-integration',
-    title: 'Terapeuta SI (Integracja Sensoryczna)',
-    description: 'Kompleksowa diagnoza i terapia procesów integracji sensorycznej w profesjonalnie wyposażonej sali.',
+    title: 'Regulacja sensoryczno-emocjonalna – wsparcie psychologiczne',
+    description: 'Kompleksowe wsparcie psychologiczne dzieci z trudnościami w zakresie przetwarzania bodźców, samoregulacji oraz regulacji emocjonalnej, prowadzone w bezpiecznym i przyjaznym środowisku.',
     category: 'sensory-integration',
     ageGroup: 'children',
     items: [
-      'Diagnoza procesów integracji sensorycznej',
-      'Zajęcia indywidualne SI dla dzieci z trudnościami przetwarzania bodźców',
-      'Zajęcia grupowe SI (małe grupy 4-osobowe)',
-      'Praca w profesjonalnie wyposażonej sali sensorycznej'
+      'Ocena funkcjonowania sensorycznego dziecka (profil przetwarzania sensorycznego, obserwacja kliniczna)',
+      'Indywidualne zajęcia wspierające regulację sensoryczno-emocjonalną',
+      'Zajęcia grupowe wspomagające samoregulację (małe grupy 4-osobowe)',
+      'Praca z ciałem, emocjami i napięciem w oparciu o wiedzę psychologiczną',
+      'Wsparcie dla dzieci z nadwrażliwością sensoryczną, trudnościami adaptacyjnymi, ADHD, lękiem'
     ]
   }
 ];
