@@ -1,13 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import AboutSection from '../components/AboutSection.astro';
 import SpecialistsSection from '../components/SpecialistsSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
 import PricingSection from '../components/PricingSection.astro';
 import ContactSection from '../components/ContactSection.astro';
-import Icon from '../components/Icon.astro';
-
-const missionStatement = `Wspólnie tworzymy bezpieczną przestrzeń, gdzie każdy czuje się wysłuchany, zrozumiany i doceniony. Nasza praca opiera się na wzajemnym zaufaniu, szacunku i wsparciu.`;
 ---
 
 <Layout
@@ -18,93 +16,7 @@ const missionStatement = `Wspólnie tworzymy bezpieczną przestrzeń, gdzie każ
   <Hero />
 
   <!-- About Us -->
-  <section id="o-nas" class="relative py-24 md:py-32 bg-cream overflow-hidden" data-animate="section">
-    <!-- Section lineart — left -->
-    <svg class="absolute top-0 left-0 w-[60%] md:w-[30%] h-full pointer-events-none opacity-50 md:opacity-100" viewBox="0 0 300 600" fill="none" aria-hidden="true">
-      <path class="section-line" d="M-20 50 C60 80, 120 30, 180 100 C240 170, 140 220, 200 300" stroke="#C8D5C2" stroke-width="1.5" stroke-linecap="round" fill="none" />
-      <path class="section-line" d="M-10 200 C50 180, 100 220, 80 300 C60 380, 120 400, 100 480" stroke="#E8D5A0" stroke-width="1" stroke-linecap="round" fill="none" />
-      <circle class="section-line" cx="180" cy="100" r="30" stroke="#C9A84C" stroke-width="1" fill="none" />
-      <path class="section-line" d="M-30 380 C20 360, 60 400, 40 460 C20 520, 80 540, 60 600" stroke="#8BA583" stroke-width="1" stroke-linecap="round" fill="none" />
-      <circle class="section-line" cx="200" cy="300" r="6" stroke="#8BA583" stroke-width="1.5" fill="none" />
-      <path class="section-line" d="M100 480 C140 460, 180 500, 160 560" stroke="#C8D5C2" stroke-width="0.8" stroke-linecap="round" fill="none" />
-    </svg>
-    <!-- Section lineart — right -->
-    <svg class="absolute top-10 right-0 w-[55%] md:w-[25%] h-[70%] pointer-events-none opacity-50 md:opacity-100" viewBox="0 0 250 500" fill="none" aria-hidden="true">
-      <path class="section-line" d="M270 40 C220 80, 170 50, 130 120 C90 190, 160 230, 120 320" stroke="#C8D5C2" stroke-width="1" stroke-linecap="round" fill="none" />
-      <path class="section-line" d="M260 200 C210 180, 160 220, 140 290" stroke="#E8D5A0" stroke-width="0.8" stroke-linecap="round" fill="none" />
-      <circle class="section-line" cx="130" cy="120" r="20" stroke="#C9A84C" stroke-width="1" fill="none" />
-      <path class="section-line" d="M120 320 C80 360, 100 400, 60 440 C20 480, 60 500, 40 500" stroke="#8BA583" stroke-width="1" stroke-linecap="round" fill="none" />
-      <circle class="section-line" cx="60" cy="440" r="4" stroke="#C9A84C" stroke-width="1" fill="none" />
-    </svg>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-      <!-- Two-column layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20 items-center mb-20">
-        <!-- Text column -->
-        <div class="lg:col-span-3">
-          <p class="font-sans font-medium tracking-[0.15em] uppercase text-sage text-sm mb-4" data-animate="fade-up">
-            O naszym centrum
-          </p>
-          <h2 class="mb-8" data-animate="fade-up">
-            Miejsce, gdzie profesjonalizm spotyka się z empatią
-          </h2>
-          <p class="text-lg text-stone leading-relaxed mb-8" data-animate="fade-up">
-            Centrum Zdrowia Psychicznego i Mowy Harmonia to miejsce, gdzie profesjonalizm
-            spotyka się z empatią i zrozumieniem. Nasz zespół składa się z doświadczonych
-            specjalistów w dziedzinie psychologii i logopedii, którzy z pasją pomagają
-            pacjentom w każdym wieku.
-          </p>
-
-          <!-- Mission quote -->
-          <blockquote class="border-l-4 border-gold bg-cream-dark p-6 md:p-8 rounded-r-2xl" data-animate="fade-up">
-            <p class="text-charcoal italic leading-relaxed text-lg">
-              "{missionStatement}"
-            </p>
-          </blockquote>
-        </div>
-
-        <!-- Image column -->
-        <div class="lg:col-span-2" data-animate="fade-up">
-          <div class="relative">
-            <img
-              src="/images/about.webp"
-              alt="Przytulne wnętrze gabinetu terapeutycznego"
-              class="w-full h-auto rounded-3xl shadow-medium object-cover aspect-[3/4]"
-              loading="lazy"
-              decoding="async"
-            />
-            <!-- Decorative accent -->
-            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gold/20 rounded-full blur-2xl -z-10"></div>
-            <div class="absolute -top-4 -left-4 w-20 h-20 bg-sage/15 rounded-full blur-2xl -z-10"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Value cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8" data-animate="cards">
-        <div class="bg-white rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1" data-animate="card">
-          <div class="w-14 h-14 bg-sage/10 rounded-2xl flex items-center justify-center mb-6 text-sage">
-            <Icon name="trust" class="w-7 h-7" />
-          </div>
-          <h3 class="text-xl mb-3">Zaufanie</h3>
-          <p class="text-stone leading-relaxed">Budujemy relacje oparte na wzajemnym szacunku i zrozumieniu</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1" data-animate="card">
-          <div class="w-14 h-14 bg-sage/10 rounded-2xl flex items-center justify-center mb-6 text-sage">
-            <Icon name="target" class="w-7 h-7" />
-          </div>
-          <h3 class="text-xl mb-3">Profesjonalizm</h3>
-          <p class="text-stone leading-relaxed">Wykorzystujemy sprawdzone metody terapeutyczne i najnowszą wiedzę</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1" data-animate="card">
-          <div class="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center mb-6 text-gold">
-            <Icon name="heart" class="w-7 h-7" />
-          </div>
-          <h3 class="text-xl mb-3">Bezpieczeństwo</h3>
-          <p class="text-stone leading-relaxed">Tworzymy przestrzeń, gdzie każdy czuje się wysłuchany i zrozumiany</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <AboutSection />
 
   <!-- Specialists Section -->
   <SpecialistsSection />
@@ -120,8 +32,6 @@ const missionStatement = `Wspólnie tworzymy bezpieczną przestrzeń, gdzie każ
 </Layout>
 
 <script>
-  import gsap from 'gsap';
-
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -129,22 +39,7 @@ const missionStatement = `Wspólnie tworzymy bezpieczną przestrzeń, gdzie każ
       if (href) {
         const target = document.querySelector(href);
         if (target) {
-          const headerHeight = 80;
-          const targetY = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-          const startY = window.scrollY;
-
-          gsap.fromTo(
-            { y: startY },
-            { y: targetY },
-            {
-              y: targetY,
-              duration: 1.4,
-              ease: 'power3.inOut',
-              onUpdate: function () {
-                window.scrollTo(0, this.targets()[0].y);
-              },
-            }
-          );
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
     });

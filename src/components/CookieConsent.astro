@@ -4,30 +4,20 @@
 
 <div id="cookie-consent" class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-300" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
   <div class="m-4 md:m-6">
-    <div class="max-w-4xl mx-auto glass rounded-2xl p-6 md:p-8">
+    <div class="max-w-4xl mx-auto bg-surface/95 backdrop-blur-xl rounded-2xl p-6 md:p-8 shadow-lg">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div class="flex-1">
-          <h3 id="cookie-title" class="text-base font-display font-semibold text-charcoal mb-1.5">Używamy plików cookies</h3>
-          <p id="cookie-description" class="text-sm text-stone leading-relaxed">
+          <h3 id="cookie-title" class="text-base font-headline font-semibold text-on-surface mb-1.5">Używamy plików cookies</h3>
+          <p id="cookie-description" class="text-sm text-on-surface-variant leading-relaxed">
             Ta strona używa plików cookies w celu zapewnienia prawidłowego działania i analizy ruchu.
-            <a href="/polityka-prywatnosci" class="text-sage hover:text-sage-dark underline">
-              Dowiedz się więcej
-            </a>
+            <a href="/polityka-prywatnosci" class="text-primary hover:underline">Dowiedz się więcej</a>
           </p>
         </div>
         <div class="flex gap-3 flex-shrink-0">
-          <button
-            id="reject-cookies"
-            class="px-5 py-2.5 border border-sand text-stone rounded-lg hover:bg-cream-dark transition-all duration-300 text-sm font-medium"
-            aria-label="Odrzuć cookies"
-          >
+          <button id="reject-cookies" class="px-5 py-2.5 border border-outline-variant text-on-surface-variant rounded-full hover:bg-surface-container-high transition-all duration-300 text-sm font-medium" aria-label="Odrzuć cookies">
             Odrzuć
           </button>
-          <button
-            id="accept-cookies"
-            class="px-6 py-2.5 bg-sage text-white rounded-lg hover:bg-sage-dark transition-all duration-300 text-sm font-medium"
-            aria-label="Akceptuj cookies"
-          >
+          <button id="accept-cookies" class="px-6 py-2.5 bg-primary text-on-primary rounded-full hover:bg-on-primary-container transition-all duration-300 text-sm font-medium" aria-label="Akceptuj cookies">
             Akceptuj
           </button>
         </div>
