@@ -1,157 +1,94 @@
 ---
-import { services } from '../data/services';
-import Icon from './Icon.astro';
-
-const psychologyServices = services.filter(service => service.category === 'psychology');
-const speechTherapyServices = services.filter(service => service.category === 'speech-therapy');
-const pedagogyServices = services.filter(service => service.category === 'pedagogy');
-const sensoryIntegrationServices = services.filter(service => service.category === 'sensory-integration');
-
-const ageGroupLabels: Record<string, string> = {
-  children: 'Dzieci',
-  adults: 'Dorośli',
-  both: 'Dzieci i Dorośli'
-};
-
-const categories = [
-  { id: 'psychology', title: 'Psychologia', icon: 'brain', services: psychologyServices, iconColor: 'text-sage' },
-  { id: 'speech-therapy', title: 'Logopedia i Neurologopedia', icon: 'speech', services: speechTherapyServices, iconColor: 'text-sage-light' },
-];
-
-const singleCategories = [
-  { id: 'pedagogy', title: 'Pedagogika i Terapia', icon: 'book', services: pedagogyServices, iconColor: 'text-sage' },
-  { id: 'sensory-integration', title: 'Sensoryka i Emocje', icon: 'sparkles', services: sensoryIntegrationServices, iconColor: 'text-gold' },
-];
 ---
 
-<section id="uslugi" class="relative py-24 md:py-32 bg-cream overflow-hidden" data-animate="section">
-  <!-- Section lineart — left -->
-  <svg class="absolute top-0 left-0 w-[60%] md:w-[30%] h-full pointer-events-none opacity-50 md:opacity-100" viewBox="0 0 300 800" fill="none" aria-hidden="true">
-    <path class="section-line" d="M-30 60 C50 30, 120 80, 100 160 C80 240, 160 280, 130 380 C100 480, 180 520, 140 640" stroke="#C8D5C2" stroke-width="1.5" stroke-linecap="round" fill="none" />
-    <path class="section-line" d="M-10 300 C40 280, 80 320, 60 380 C40 440, 100 460, 80 520" stroke="#E8D5A0" stroke-width="1" stroke-linecap="round" fill="none" />
-    <circle class="section-line" cx="100" cy="160" r="35" stroke="#C9A84C" stroke-width="1" fill="none" />
-    <circle class="section-line" cx="130" cy="380" r="8" stroke="#8BA583" stroke-width="1.5" fill="none" />
-    <path class="section-line" d="M-20 550 C30 530, 70 560, 50 620 C30 680, 80 700, 60 760" stroke="#8BA583" stroke-width="1" stroke-linecap="round" fill="none" />
-    <path class="section-line" d="M140 640 C180 620, 220 660, 200 720 C180 780, 230 800, 210 800" stroke="#C8D5C2" stroke-width="0.8" stroke-linecap="round" fill="none" />
-    <circle class="section-line" cx="50" cy="620" r="5" stroke="#C9A84C" stroke-width="1" fill="none" />
-    <path class="section-line" d="M100 160 C70 140, 40 150, 30 180 C20 210, 50 220, 80 200" stroke="#5B7553" stroke-width="1" stroke-linecap="round" fill="none" />
-  </svg>
-  <!-- Section lineart — right -->
-  <svg class="absolute top-0 right-0 w-[55%] md:w-[25%] h-full pointer-events-none opacity-50 md:opacity-100" viewBox="0 0 250 800" fill="none" aria-hidden="true">
-    <path class="section-line" d="M270 50 C220 80, 170 40, 130 120 C90 200, 160 240, 120 340 C80 440, 160 480, 120 580" stroke="#C8D5C2" stroke-width="1" stroke-linecap="round" fill="none" />
-    <circle class="section-line" cx="130" cy="120" r="22" stroke="#C9A84C" stroke-width="1" fill="none" />
-    <path class="section-line" d="M260 250 C210 230, 160 270, 140 340 C120 410, 170 430, 150 500" stroke="#E8D5A0" stroke-width="0.8" stroke-linecap="round" fill="none" />
-    <path class="section-line" d="M120 580 C80 620, 100 660, 60 700 C20 740, 60 770, 40 800" stroke="#8BA583" stroke-width="1" stroke-linecap="round" fill="none" />
-    <circle class="section-line" cx="120" cy="340" r="5" stroke="#5B7553" stroke-width="1.5" fill="none" />
-    <circle class="section-line" cx="60" cy="700" r="4" stroke="#C9A84C" stroke-width="1" fill="none" />
-    <path class="section-line" d="M250 600 C210 620, 170 590, 130 640 C90 690, 130 720, 90 760" stroke="#C8D5C2" stroke-width="0.8" stroke-linecap="round" fill="none" />
-  </svg>
-  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-    <!-- Section header -->
-    <div class="text-center max-w-3xl mx-auto mb-20">
-      <p class="font-sans font-medium tracking-[0.15em] uppercase text-sage text-sm mb-4" data-animate="section-subtitle">
-        Nasze usługi
-      </p>
-      <h2 class="mb-6">
-        Kompleksowa pomoc dla całej rodziny
-      </h2>
-      <p class="text-lg text-stone leading-relaxed" data-animate="section-subtitle">
-        Oferujemy szeroki zakres usług w dziedzinie zdrowia psychicznego i terapii mowy
+<section id="uslugi" class="relative pt-32 pb-24 overflow-hidden" data-animate="section">
+  <!-- Background Accents -->
+  <div class="absolute bg-secondary-fixed w-96 h-96 -top-20 -left-20 z-0 blur-[60px] rounded-full opacity-[0.15]"></div>
+  <div class="absolute bg-primary-container w-[500px] h-[500px] -bottom-32 -right-32 z-0 blur-[60px] rounded-full opacity-[0.15]"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <!-- Header Section -->
+    <div class="mb-20 space-y-4">
+      <span class="text-primary font-semibold tracking-widest uppercase font-label">Specjalistyczna Opieka</span>
+      <h1 class="text-5xl md:text-7xl font-headline font-bold text-on-background tracking-tight">Nasze Usługi</h1>
+      <p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+        W Harmonii łączymy naukowe podejście z empatią, tworząc bezpieczną przestrzeń do rozwoju i zdrowienia dla całej rodziny.
       </p>
     </div>
 
-    <!-- Service categories -->
-    <div class="space-y-24">
-      {categories.map((category) => (
-        <div data-animate="section">
-          <!-- Category header -->
-          <div class="flex items-center gap-4 mb-10">
-            <div class={`w-12 h-12 rounded-2xl bg-sage/10 flex items-center justify-center ${category.iconColor}`}>
-              <Icon name={category.icon} class="w-6 h-6" />
-            </div>
-            <h3 class="text-2xl md:text-3xl">{category.title}</h3>
-          </div>
-
-          <!-- Service cards -->
-          <div class={`grid gap-6 ${category.services.length === 1 ? 'grid-cols-1 max-w-2xl' : 'grid-cols-1 lg:grid-cols-2 xl:grid-cols-3'}`} data-animate="cards">
-            {category.services.map((service) => (
-              <div class="bg-white rounded-2xl p-8 shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-sage-muted" data-animate="card">
-                <div class="flex items-start justify-between gap-4 mb-5">
-                  <h4 class="text-lg font-semibold text-charcoal leading-snug">{service.title}</h4>
-                  <span class="text-xs font-medium bg-gold-light text-gold-dark px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0">
-                    {ageGroupLabels[service.ageGroup]}
-                  </span>
-                </div>
-
-                <p class="text-stone mb-6 leading-relaxed text-[0.9375rem]">{service.description}</p>
-
-                <ul class="space-y-2.5">
-                  {service.items.map((item) => (
-                    <li class="flex items-start gap-3">
-                      <div class="w-5 h-5 rounded-full bg-sage/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg class="w-3 h-3 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <polyline points="20,6 9,17 4,12" stroke-width="3"/>
-                        </svg>
-                      </div>
-                      <span class="text-charcoal text-sm leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+    <!-- Services Grid (Bento Style 2x2) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <!-- Card 1: Psychologia -->
+      <div class="group bg-surface-container-lowest p-10 rounded-lg shadow-[0_20px_40px_rgba(74,66,56,0.06)] flex flex-col items-start transition-all duration-500 hover:-translate-y-2" data-animate="card">
+        <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center mb-8 text-primary">
+          <span class="material-symbols-outlined text-4xl">psychology</span>
         </div>
-      ))}
+        <h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">Psychologia i Psychotraumatologia</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-8 flex-grow">
+          Specjalistyczne wsparcie w obszarze zdrowia psychicznego i terapii traumy. Pomagamy odnaleźć wewnętrzny spokój i zasoby do radzenia sobie z trudnościami.
+        </p>
+        <a class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300" href="#cennik">
+          Dowiedz się więcej
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </a>
+      </div>
 
-      <!-- Single-service categories side by side -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" data-animate="section">
-        {singleCategories.map((category) => (
-          <div data-animate="card">
-            <div class="flex items-center gap-4 mb-6">
-              <div class={`w-12 h-12 rounded-2xl bg-sage/10 flex items-center justify-center ${category.iconColor}`}>
-                <Icon name={category.icon} class="w-6 h-6" />
-              </div>
-              <h3 class="text-2xl">{category.title}</h3>
-            </div>
+      <!-- Card 2: Logopedia -->
+      <div class="group bg-surface-container-low p-10 rounded-lg shadow-[0_20px_40px_rgba(74,66,56,0.06)] flex flex-col items-start transition-all duration-500 hover:-translate-y-2 md:mt-12" data-animate="card">
+        <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center mb-8 text-primary">
+          <span class="material-symbols-outlined text-4xl">forum</span>
+        </div>
+        <h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">Logopedia i Neurologopedia</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-8 flex-grow">
+          Terapia mowy i komunikacji dla dzieci oraz dorosłych z deficytami neurologicznymi. Skupiamy się na przywracaniu radości z porozumiewania się.
+        </p>
+        <a class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300" href="#cennik">
+          Dowiedz się więcej
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </a>
+      </div>
 
-            {category.services.map((service) => (
-              <div class="bg-white rounded-2xl p-8 shadow-soft hover:shadow-medium hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-sage-muted">
-                <div class="flex items-start justify-between gap-4 mb-5">
-                  <h4 class="text-lg font-semibold text-charcoal leading-snug">{service.title}</h4>
-                  <span class="text-xs font-medium bg-gold-light text-gold-dark px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0">
-                    {ageGroupLabels[service.ageGroup]}
-                  </span>
-                </div>
+      <!-- Card 3: Pedagogika -->
+      <div class="group bg-surface-container-low p-10 rounded-lg shadow-[0_20px_40px_rgba(74,66,56,0.06)] flex flex-col items-start transition-all duration-500 hover:-translate-y-2 md:-mt-12" data-animate="card">
+        <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center mb-8 text-primary">
+          <span class="material-symbols-outlined text-4xl">auto_stories</span>
+        </div>
+        <h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">Pedagogika i Terapia</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-8 flex-grow">
+          Wsparcie rozwoju dziecka i terapia pedagogiczna dostosowana do indywidualnych potrzeb. Wspólnie budujemy fundamenty pewności siebie.
+        </p>
+        <a class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300" href="#cennik">
+          Dowiedz się więcej
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </a>
+      </div>
 
-                <p class="text-stone mb-6 leading-relaxed text-[0.9375rem]">{service.description}</p>
-
-                <ul class="space-y-2.5">
-                  {service.items.map((item) => (
-                    <li class="flex items-start gap-3">
-                      <div class="w-5 h-5 rounded-full bg-sage/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <svg class="w-3 h-3 text-sage" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <polyline points="20,6 9,17 4,12" stroke-width="3"/>
-                        </svg>
-                      </div>
-                      <span class="text-charcoal text-sm leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        ))}
+      <!-- Card 4: Integracja Sensoryczna -->
+      <div class="group bg-surface-container-lowest p-10 rounded-lg shadow-[0_20px_40px_rgba(74,66,56,0.06)] flex flex-col items-start transition-all duration-500 hover:-translate-y-2" data-animate="card">
+        <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center mb-8 text-primary">
+          <span class="material-symbols-outlined text-4xl">hub</span>
+        </div>
+        <h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">Integracja Sensoryczna</h3>
+        <p class="text-on-surface-variant leading-relaxed mb-8 flex-grow">
+          Terapia wspomagająca prawidłowy rozwój układu nerwowego i przetwarzania bodźców. Uczymy ciało i umysł współpracy ze światem.
+        </p>
+        <a class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300" href="#cennik">
+          Dowiedz się więcej
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </a>
       </div>
     </div>
 
-    <!-- Call to action -->
-    <div class="text-center mt-20" data-animate="fade-up">
-      <p class="text-lg text-stone mb-6">
-        Potrzebujesz więcej informacji o naszych usługach?
-      </p>
-      <a href="#kontakt" class="inline-flex items-center gap-2.5 px-8 py-4 bg-sage-dark text-white font-semibold text-base rounded-xl shadow-medium hover:bg-charcoal hover:shadow-large transition-all duration-300 hover:-translate-y-0.5">
-        Skontaktuj się z nami
-      </a>
+    <!-- Footer Quote / Call to Action -->
+    <div class="mt-32 p-12 bg-surface-container rounded-lg relative overflow-hidden text-center" data-animate="card">
+      <div class="absolute top-0 right-0 w-64 h-64 opacity-10 pointer-events-none">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M47.1,-63.1C59.9,-54.2,68.4,-39.1,72.9,-23.1C77.4,-7.1,77.9,9.8,71.1,23.1C64.3,36.4,50.1,46,36,53.3C21.8,60.6,7.8,65.6,-7.7,64.3C-23.2,63,-40.2,55.4,-52.1,43.2C-64,31.1,-70.7,14.4,-71.4,-2.4C-72.1,-19.1,-66.8,-35.9,-55.4,-45.5C-44,-55.1,-26.5,-57.4,-10.1,-60.9C6.4,-64.4,22.8,-69.1,47.1,-63.1Z" fill="#536350" transform="translate(100 100)"></path>
+        </svg>
+      </div>
+      <h2 class="text-3xl font-headline font-bold mb-6 text-on-surface">Nie wiesz, od czego zacząć?</h2>
+      <p class="text-lg text-on-surface-variant mb-10 max-w-xl mx-auto">Nasi specjaliści pomogą Ci dobrać odpowiednią formę wsparcia podczas krótkiej konsultacji telefonicznej.</p>
+      <a href="#kontakt" class="inline-block bg-primary text-on-primary px-10 py-4 rounded-full font-semibold shadow-xl hover:bg-primary/90 transition-all">Skontaktuj się z nami</a>
     </div>
   </div>
 </section>

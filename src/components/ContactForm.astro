@@ -2,131 +2,129 @@
 const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 ---
 
-<div class="bg-white rounded-3xl shadow-soft p-8 md:p-10">
-  <h3 class="text-xl font-display font-semibold text-charcoal mb-8">Wyślij wiadomość</h3>
+<h3 class="text-xl font-headline font-semibold text-on-surface mb-8">Wyślij wiadomość</h3>
 
-  <form id="contact-form" class="space-y-5" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value={web3formsKey} />
-    <input type="hidden" name="subject" value="Nowa wiadomość z formularza kontaktowego - Centrum Harmonia" />
-    <input type="hidden" name="from_name" value="Centrum Zdrowia Harmonia" />
-    <input type="hidden" name="botcheck" class="hidden" style="display: none;" />
+<form id="contact-form" class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value={web3formsKey} />
+  <input type="hidden" name="subject" value="Nowa wiadomość z formularza kontaktowego - Centrum Harmonia" />
+  <input type="hidden" name="from_name" value="Centrum Zdrowia Harmonia" />
+  <input type="hidden" name="botcheck" class="hidden" style="display: none;" />
 
-    <!-- Name -->
-    <div>
-      <label for="name" class="block text-sm font-medium text-charcoal mb-2 tracking-wide">
-        Imię i nazwisko <span class="text-error">*</span>
-      </label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        class="w-full px-5 py-4 border border-sand rounded-xl focus:ring-2 focus:ring-sage/20 focus:border-sage outline-none transition-all bg-cream/50"
-        placeholder="Jan Kowalski"
-      />
-    </div>
+  <!-- Name -->
+  <div class="group">
+    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="name">
+      Imię i nazwisko <span class="text-error">*</span>
+    </label>
+    <input
+      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder-on-surface-variant/40"
+      placeholder="Twoje imię"
+      type="text"
+      id="name"
+      name="name"
+      required
+    />
+  </div>
 
-    <!-- Email -->
-    <div>
-      <label for="email" class="block text-sm font-medium text-charcoal mb-2 tracking-wide">
-        Email <span class="text-error">*</span>
-      </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        class="w-full px-5 py-4 border border-sand rounded-xl focus:ring-2 focus:ring-sage/20 focus:border-sage outline-none transition-all bg-cream/50"
-        placeholder="jan.kowalski@example.com"
-      />
-    </div>
+  <!-- Email -->
+  <div class="group">
+    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="email">
+      Email <span class="text-error">*</span>
+    </label>
+    <input
+      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder-on-surface-variant/40"
+      placeholder="twoj@email.pl"
+      type="email"
+      id="email"
+      name="email"
+      required
+    />
+  </div>
 
-    <!-- Phone -->
-    <div>
-      <label for="phone" class="block text-sm font-medium text-charcoal mb-2 tracking-wide">
-        Telefon
-      </label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        class="w-full px-5 py-4 border border-sand rounded-xl focus:ring-2 focus:ring-sage/20 focus:border-sage outline-none transition-all bg-cream/50"
-        placeholder="123 456 789"
-      />
-    </div>
+  <!-- Phone -->
+  <div class="group">
+    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="phone">
+      Telefon
+    </label>
+    <input
+      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder-on-surface-variant/40"
+      placeholder="+48 000 000 000"
+      type="tel"
+      id="phone"
+      name="phone"
+    />
+  </div>
 
-    <!-- Subject -->
-    <div>
-      <label for="subject" class="block text-sm font-medium text-charcoal mb-2 tracking-wide">
-        Temat <span class="text-error">*</span>
-      </label>
-      <select
-        id="subject"
-        name="subject"
-        required
-        class="w-full px-5 py-4 border border-sand rounded-xl focus:ring-2 focus:ring-sage/20 focus:border-sage outline-none transition-all bg-cream/50"
-      >
-        <option value="">Wybierz temat</option>
-        <option value="psychology">Konsultacja psychologiczna</option>
-        <option value="speech-therapy">Konsultacja logopedyczna</option>
-        <option value="appointment">Umówienie wizyty</option>
-        <option value="other">Inne pytanie</option>
-      </select>
-    </div>
-
-    <!-- Message -->
-    <div>
-      <label for="message" class="block text-sm font-medium text-charcoal mb-2 tracking-wide">
-        Wiadomość <span class="text-error">*</span>
-      </label>
-      <textarea
-        id="message"
-        name="message"
-        required
-        rows="5"
-        class="w-full px-5 py-4 border border-sand rounded-xl focus:ring-2 focus:ring-sage/20 focus:border-sage outline-none transition-all resize-none bg-cream/50"
-        placeholder="Opisz jak możemy Ci pomóc..."
-      ></textarea>
-    </div>
-
-    <!-- Privacy consent -->
-    <div class="flex items-start gap-3">
-      <input
-        type="checkbox"
-        id="privacy"
-        name="privacy"
-        required
-        class="mt-1 w-4 h-4 text-sage border-sand rounded focus:ring-2 focus:ring-sage/20 accent-sage"
-      />
-      <label for="privacy" class="text-sm text-stone leading-relaxed">
-        Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z
-        <a href="/polityka-prywatnosci" class="text-sage hover:text-sage-dark underline">
-          Polityką Prywatności
-        </a> <span class="text-error">*</span>
-      </label>
-    </div>
-
-    <!-- Submit button -->
-    <button
-      type="submit"
-      class="w-full py-4 text-base bg-sage-dark text-white font-semibold rounded-xl shadow-medium hover:bg-charcoal hover:shadow-large transition-all duration-300"
+  <!-- Subject -->
+  <div class="group">
+    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="subject">
+      Temat <span class="text-error">*</span>
+    </label>
+    <select
+      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all text-on-surface-variant appearance-auto cursor-pointer"
+      id="subject"
+      name="subject"
+      required
     >
-      Wyślij wiadomość
-    </button>
+      <option value="">Wybierz temat</option>
+      <option value="psychology">Konsultacja psychologiczna</option>
+      <option value="speech-therapy">Konsultacja logopedyczna</option>
+      <option value="appointment">Umówienie wizyty</option>
+      <option value="other">Inne pytanie</option>
+    </select>
+  </div>
 
-    <!-- Success message -->
-    <div id="form-success" class="hidden bg-sage/10 border border-sage-muted text-sage-dark px-5 py-4 rounded-xl">
-      <p class="font-medium">Dziękujemy za wiadomość!</p>
-      <p class="text-sm mt-1">Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
-    </div>
+  <!-- Message -->
+  <div class="group">
+    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="message">
+      Wiadomość <span class="text-error">*</span>
+    </label>
+    <textarea
+      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder-on-surface-variant/40 resize-none"
+      placeholder="W czym możemy pomóc?"
+      rows="4"
+      id="message"
+      name="message"
+      required
+    ></textarea>
+  </div>
 
-    <!-- Error message -->
-    <div id="form-error" class="hidden bg-error-light border border-error/20 text-error px-5 py-4 rounded-xl">
-      <p class="font-medium">Wystąpił błąd</p>
-      <p class="text-sm mt-1">Spróbuj ponownie lub skontaktuj się z nami telefonicznie.</p>
-    </div>
-  </form>
-</div>
+  <!-- Privacy consent -->
+  <div class="flex items-start gap-3">
+    <input
+      type="checkbox"
+      id="privacy"
+      name="privacy"
+      required
+      class="mt-1 w-4 h-4 text-primary border-outline-variant rounded focus:ring-2 focus:ring-primary/20 accent-primary"
+    />
+    <label for="privacy" class="text-sm text-on-surface-variant leading-relaxed">
+      Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z
+      <a href="/polityka-prywatnosci" class="text-primary hover:text-secondary underline">
+        Polityką Prywatności
+      </a> <span class="text-error">*</span>
+    </label>
+  </div>
+
+  <!-- Submit button -->
+  <button
+    type="submit"
+    class="w-full bg-secondary text-on-secondary py-4 rounded-md font-semibold text-lg hover:scale-[1.02] transition-transform shadow-lg shadow-secondary/20"
+  >
+    Wyślij wiadomość
+  </button>
+
+  <!-- Success message -->
+  <div id="form-success" class="hidden bg-primary-fixed border border-primary/20 text-on-primary-fixed px-5 py-4 rounded-xl">
+    <p class="font-medium">Dziękujemy za wiadomość!</p>
+    <p class="text-sm mt-1">Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
+  </div>
+
+  <!-- Error message -->
+  <div id="form-error" class="hidden bg-error-container border border-error/20 text-on-error-container px-5 py-4 rounded-xl">
+    <p class="font-medium">Wystąpił błąd</p>
+    <p class="text-sm mt-1">Spróbuj ponownie lub skontaktuj się z nami telefonicznie.</p>
+  </div>
+</form>
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;

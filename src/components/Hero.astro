@@ -2,139 +2,67 @@
 
 ---
 
-<section data-hero class="relative flex items-center overflow-hidden bg-cream">
-  <!-- SVG Lineart — left side -->
-  <svg
-    class="hero-lineart absolute top-0 left-[-5%] w-[70%] md:w-[40%] h-full pointer-events-none"
-    viewBox="0 0 400 800"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path class="hero-line" d="M-20 30 C60 80, 120 20, 160 120 C200 220, 120 280, 180 380" stroke="#C8D5C2" stroke-width="1.5" stroke-linecap="round" fill="none" />
-    <path class="hero-line" d="M-10 200 C40 180, 80 230, 60 310 C40 390, 100 420, 80 520" stroke="#E8D5A0" stroke-width="1" stroke-linecap="round" fill="none" />
-    <path class="hero-line" d="M160 120 C130 100, 90 110, 70 140 C50 170, 80 190, 110 180" stroke="#5B7553" stroke-width="1.2" stroke-linecap="round" fill="none" />
-    <circle class="hero-line" cx="160" cy="120" r="25" stroke="#C9A84C" stroke-width="1" fill="none" />
-    <path class="hero-line" d="M-30 500 C30 480, 90 520, 70 600 C50 680, 120 700, 100 780" stroke="#8BA583" stroke-width="1" stroke-linecap="round" fill="none" />
-    <circle class="hero-line" cx="70" cy="140" r="5" stroke="#C9A84C" stroke-width="1.5" fill="none" />
-    <path class="hero-line" d="M80 520 C120 500, 160 540, 140 600" stroke="#C8D5C2" stroke-width="0.8" stroke-linecap="round" fill="none" />
-  </svg>
+<!-- Direct from Stitch hero.html -->
+<section data-hero class="relative min-h-screen flex items-center overflow-hidden bg-surface pt-20">
+  <!-- Aura background shapes -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="aura-shape absolute -top-20 -right-20 w-[600px] h-[600px] bg-primary rounded-full"></div>
+    <div class="aura-shape absolute top-1/2 -left-40 w-[500px] h-[500px] bg-primary-container rounded-full"></div>
+    <div class="aura-shape absolute bottom-[-10%] right-[10%] w-[400px] h-[400px] bg-secondary-container rounded-full"></div>
+    <svg class="absolute top-0 right-0 w-1/2 h-full opacity-10" viewBox="0 0 500 800" xmlns="http://www.w3.org/2000/svg">
+      <path d="M414.5,565.5Q341,631,234,651.5Q127,672,89.5,586Q52,500,41,393Q30,286,88,198.5Q146,111,257.5,95.5Q369,80,428.5,190Q488,300,451.25,432.75Q414.5,565.5Z" fill="#536350"/>
+    </svg>
+    <svg class="absolute -bottom-20 left-0 w-1/3 h-1/2 opacity-10" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+      <path d="M447.5,335.5Q398,421,304,449.5Q210,478,131,418Q52,358,47,258.5Q42,159,127.5,102Q213,45,310.5,73Q408,101,452.5,175.5Q497,250,447.5,335.5Z" fill="#a8b9a3"/>
+    </svg>
+  </div>
 
-  <!-- SVG Lineart — right side -->
-  <svg
-    class="hero-lineart absolute top-0 right-[-5%] w-[80%] md:w-[50%] h-full pointer-events-none"
-    viewBox="0 0 500 800"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-  >
-    <path class="hero-line" d="M450 0 C400 100, 250 140, 220 280 C190 420, 320 480, 280 620 C260 720, 160 760, 100 800" stroke="#C8D5C2" stroke-width="2" stroke-linecap="round" fill="none" />
-    <path class="hero-line" d="M500 150 C420 220, 310 200, 260 320 C210 440, 300 520, 200 660" stroke="#8BA583" stroke-width="1.5" stroke-linecap="round" fill="none" />
-    <path class="hero-line" d="M220 280 C170 240, 110 230, 70 260 C30 290, 50 340, 100 360" stroke="#5B7553" stroke-width="1.8" stroke-linecap="round" fill="none" />
-    <circle class="hero-line" cx="280" cy="320" r="50" stroke="#C9A84C" stroke-width="1.5" fill="none" />
-    <path class="hero-line" d="M440 60 C410 90, 380 130, 400 180" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" fill="none" />
-    <path class="hero-line" d="M280 320 C320 350, 360 330, 390 370 C420 410, 400 450, 360 470" stroke="#E8D5A0" stroke-width="1.2" stroke-linecap="round" fill="none" />
-    <path class="hero-line" d="M70 260 C50 235, 25 245, 20 270 C15 295, 40 300, 60 285" stroke="#8BA583" stroke-width="1" stroke-linecap="round" fill="none" />
-    <circle class="hero-line" cx="100" cy="360" r="6" stroke="#C9A84C" stroke-width="1.5" fill="none" />
-    <path class="hero-line" d="M480 400 C440 420, 400 380, 360 430 C320 480, 360 530, 320 580" stroke="#C8D5C2" stroke-width="1" stroke-linecap="round" fill="none" />
-    <path class="hero-line" d="M200 660 C160 690, 120 670, 90 710 C60 750, 100 780, 80 800" stroke="#E8D5A0" stroke-width="1" stroke-linecap="round" fill="none" />
-    <circle class="hero-line" cx="360" cy="470" r="4" stroke="#8BA583" stroke-width="1.5" fill="none" />
-    <circle class="hero-line" cx="320" cy="580" r="3" stroke="#C9A84C" stroke-width="1" fill="none" />
-    <path class="hero-line" d="M500 600 C460 620, 420 590, 380 640 C340 690, 380 720, 340 760" stroke="#C8D5C2" stroke-width="0.8" stroke-linecap="round" fill="none" />
-  </svg>
-
-  <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-32 pb-20 md:pt-40 md:pb-28">
-    <div class="max-w-3xl">
-      <p class="font-sans font-medium tracking-[0.2em] uppercase text-sage-dark text-sm mb-6" data-animate="eyebrow">
-        Centrum Zdrowia Harmonia
-      </p>
-
-      <h1 class="text-charcoal mb-8" data-animate="hero-title">
-        Profesjonalna pomoc
-        <span class="text-sage-dark"> psychologiczna</span> i
-        <span class="text-sage-dark"> logopedyczna</span>
-      </h1>
-
-      <p class="text-xl md:text-2xl text-charcoal/70 leading-relaxed mb-12 max-w-2xl" data-animate="subtitle">
-        Wspólnie tworzymy bezpieczną przestrzeń, gdzie każdy czuje się wysłuchany, zrozumiany i doceniony.
-      </p>
-
-      <div class="flex items-center gap-5 mb-16" data-animate="ctas">
-        <a
-          href="#kontakt"
-          class="inline-flex items-center gap-2.5 px-8 py-4 bg-sage-dark text-white font-semibold text-base rounded-xl shadow-medium hover:bg-charcoal hover:shadow-large transition-all duration-300 hover:-translate-y-0.5"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-          </svg>
-          Umów wizytę
-        </a>
-        <a
-          href="#uslugi"
-          class="inline-flex items-center gap-2 px-8 py-4 bg-white text-charcoal font-semibold text-base rounded-xl shadow-soft border border-sand hover:border-sage hover:text-sage-dark hover:shadow-medium transition-all duration-300 hover:-translate-y-0.5"
-        >
-          Zobacz ofertę
-        </a>
+  <div class="relative z-10 max-w-7xl mx-auto px-8 w-full grid md:grid-cols-12 gap-12 items-center">
+    <!-- Left column -->
+    <div class="md:col-span-7 flex flex-col items-start gap-8">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-full text-primary font-medium text-sm" data-animate="eyebrow">
+        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+        Centrum Zdrowia Psychicznego i Mowy
       </div>
 
-      <div class="flex flex-wrap gap-12 md:gap-16">
-        <div data-animate="counter" data-count="2">
-          <span class="block font-display text-4xl md:text-5xl font-bold text-sage-dark counter-number">2</span>
-          <span class="text-charcoal/60 text-sm mt-1 block">Specjalistów</span>
-        </div>
-        <div data-animate="counter" data-count="18">
-          <span class="block font-display text-4xl md:text-5xl font-bold text-sage-dark counter-number">18</span>
-          <span class="text-charcoal/60 text-sm mt-1 block">Lat doświadczenia</span>
-        </div>
-        <div data-animate="counter" data-count="100">
-          <div class="flex items-baseline">
-            <span class="block font-display text-4xl md:text-5xl font-bold text-sage-dark counter-number">100</span>
-            <span class="font-display text-4xl md:text-5xl font-bold text-sage-dark">%</span>
+      <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl text-on-surface leading-[1.1] tracking-tight" data-animate="hero-title">
+        Twoja droga do <span class="text-primary italic">harmonii</span> zaczyna się tutaj
+      </h1>
+
+      <p class="font-body text-lg md:text-xl text-tertiary max-w-2xl leading-relaxed" data-animate="subtitle">
+        Centrum Zdrowia Psychicznego i Mowy w Inowrocławiu. Specjalistyczne wsparcie w obszarach psychologii, logopedii, pedagogiki oraz profesjonalna integracja sensoryczna.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 items-start sm:items-center mt-4" data-animate="ctas">
+        <a href="#kontakt" class="group relative px-10 py-5 bg-secondary text-on-secondary rounded-full text-lg font-semibold transition-all hover:shadow-2xl hover:shadow-secondary/20 active:scale-95 duration-200 overflow-hidden">
+          <span class="relative z-10">Umów wizytę</span>
+          <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+        </a>
+        <a class="group flex items-center gap-3 text-on-surface font-semibold hover:text-primary transition-colors" href="#uslugi">
+          <span class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant group-hover:border-primary group-hover:bg-primary/5 transition-all">
+            <span class="material-symbols-outlined text-xl">arrow_downward</span>
+          </span>
+          <span>Nasze usługi</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right column — image card -->
+    <div class="md:col-span-5 relative hidden md:block" data-animate="fade-up">
+      <div class="relative w-full aspect-square rounded-full flex items-center justify-center p-8">
+        <div class="absolute inset-0 bg-primary-container/20 rounded-full blur-3xl opacity-50"></div>
+        <div class="relative z-10 w-full h-full rounded-[3rem] overflow-hidden rotate-3 hover:rotate-0 transition-transform duration-700 bg-surface-container shadow-2xl shadow-primary/10">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary-container/30"></div>
+          <img class="w-full h-full object-cover mix-blend-multiply opacity-80" alt="Wnętrze gabinetu terapeutycznego" src="/images/about.webp" />
+          <div class="absolute inset-0 p-12 flex flex-col justify-end text-on-primary-container">
+            <div class="bg-surface/90 backdrop-blur-md p-6 rounded-2xl border border-white/20">
+              <p class="font-headline text-2xl mb-2 italic">"Spokój umysłu to fundament rozwoju."</p>
+              <div class="w-12 h-1 bg-secondary rounded-full"></div>
+            </div>
           </div>
-          <span class="text-charcoal/60 text-sm mt-1 block">Zaangażowania</span>
         </div>
       </div>
     </div>
   </div>
+
 </section>
-
-<style>
-  .hero-line {
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-    animation: draw-line 2.5s ease-in-out forwards;
-  }
-
-  @keyframes draw-line {
-    to { stroke-dashoffset: 0; }
-  }
-
-  .hero-line:nth-child(1) { animation-delay: 0s; }
-  .hero-line:nth-child(2) { animation-delay: 0.15s; }
-  .hero-line:nth-child(3) { animation-delay: 0.3s; }
-  .hero-line:nth-child(4) { animation-delay: 0.5s; }
-  .hero-line:nth-child(5) { animation-delay: 0.2s; }
-  .hero-line:nth-child(6) { animation-delay: 0.6s; }
-  .hero-line:nth-child(7) { animation-delay: 0.4s; }
-  .hero-line:nth-child(8) { animation-delay: 0.7s; }
-  .hero-line:nth-child(9) { animation-delay: 0.35s; }
-  .hero-line:nth-child(10) { animation-delay: 0.55s; }
-  .hero-line:nth-child(11) { animation-delay: 0.8s; }
-  .hero-line:nth-child(12) { animation-delay: 0.9s; }
-  .hero-line:nth-child(13) { animation-delay: 0.75s; }
-
-  @media (max-width: 768px) {
-    .hero-lineart {
-      opacity: 0.7;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-line {
-      animation: none;
-      stroke-dasharray: none;
-      stroke-dashoffset: 0;
-    }
-  }
-</style>

@@ -34,7 +34,7 @@ const currentPageUrl = `${siteUrl}${currentPath === '/' ? '' : currentPath}`;
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#5B7553" />
+    <meta name="theme-color" content="#536350" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Open Graph -->
@@ -63,13 +63,22 @@ const currentPageUrl = `${siteUrl}${currentPath === '/' ? '' : currentPath}`;
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
     <title>{title}</title>
 
     <style is:inline>
-      body { font-family: 'Inter', system-ui, sans-serif; }
-      h1, h2, h3, h4, h5, h6, .font-display { font-family: 'Playfair Display', Georgia, serif; }
+      body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+      h1, h2, h3, h4, h5, h6, .font-display, .font-headline { font-family: 'Noto Serif', Georgia, serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .aura-shape {
+        filter: blur(80px);
+        opacity: 0.15;
+        z-index: 0;
+      }
     </style>
 
     <!-- Local Business Schema -->
@@ -132,7 +141,7 @@ const currentPageUrl = `${siteUrl}${currentPath === '/' ? '' : currentPath}`;
       }
     </script>
   </head>
-  <body class="font-sans antialiased bg-cream text-charcoal">
+  <body class="bg-surface text-on-surface font-body selection:bg-secondary-container/30">
     <!-- Skip to content link for accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-sage focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-white">
       Przejdź do treści głównej
