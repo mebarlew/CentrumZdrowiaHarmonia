@@ -17,7 +17,7 @@ section[id] {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   color: #211b11;
   background-color: #fff8f3;
   line-height: 1.7;
@@ -26,8 +26,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Noto Serif', Georgia, serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Noto Serif", Georgia, serif;
   color: #211b11;
   line-height: 1.15;
 }
@@ -62,7 +67,9 @@ a:hover {
 }
 
 @keyframes fallback-show {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 
 .js-loaded [data-animate] {
@@ -71,7 +78,9 @@ a:hover {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;

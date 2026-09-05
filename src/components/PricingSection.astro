@@ -53,7 +53,7 @@ import { pricingData, equipmentRental } from '../data/pricing';
                   {item.duration && <p class="text-sm text-tertiary mt-1">{item.duration}</p>}
                   {item.description && <p class="text-sm text-tertiary mt-1">{item.description}</p>}
                 </div>
-                <span class="font-headline text-2xl text-primary whitespace-nowrap ml-4">{item.price} zł</span>
+                <span class="font-headline text-2xl text-primary whitespace-nowrap ml-4">{item.priceFrom && 'od '}{item.price} zł</span>
               </div>
             ))}
           </div>
@@ -117,6 +117,14 @@ import { pricingData, equipmentRental } from '../data/pricing';
     <span class="material-symbols-outlined text-secondary">info</span>
     <p class="text-sm text-on-surface-variant leading-relaxed">
       Płatność gotówką lub kartą po spotkaniu. Wystawiamy faktury VAT.
+    </p>
+  </div>
+
+  <!-- Loyalty pricing info -->
+  <div class="mt-4 bg-surface-container-highest p-5 rounded-2xl flex items-start gap-4 max-w-3xl">
+    <span class="material-symbols-outlined text-secondary">favorite</span>
+    <p class="text-sm text-on-surface-variant leading-relaxed">
+      <span class="font-medium text-on-surface">Ważna informacja:</span> Pacjenci, którzy regularnie korzystają z naszych usług i mają zaplanowane cykliczne wizyty, pozostają przy dotychczasowym cenniku.
     </p>
   </div>
 

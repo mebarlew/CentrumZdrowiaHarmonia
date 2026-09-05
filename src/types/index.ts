@@ -12,8 +12,13 @@ export interface Service {
   id: string;
   title: string;
   description: string;
-  category: 'psychology' | 'speech-therapy' | 'pedagogy' | 'sensory-integration';
-  ageGroup: 'children' | 'adults' | 'both';
+  category:
+    | "psychology"
+    | "speech-therapy"
+    | "pedagogy"
+    | "feeding-therapy"
+    | "sensory-integration";
+  ageGroup: "children" | "adults" | "both";
   items: string[];
 }
 
@@ -22,6 +27,7 @@ export interface PriceItem {
   name: string;
   duration?: string;
   price: number;
+  priceFrom?: boolean;
   description?: string;
 }
 

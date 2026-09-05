@@ -13,11 +13,13 @@ Professional website for Mental Health and Speech Center "Harmonia" in Inowrocł
 ## Features
 
 ✅ **CMS (Keystatic)**
+
 - Edit content via web UI at `/keystatic`
 - Manage news, services, pricing, contact info
 - Git-based - all changes committed to repo
 
 ✅ **SEO Optimization**
+
 - Meta tags for Google, Facebook, Twitter
 - Schema.org structured data (MedicalBusiness)
 - Sitemap.xml and robots.txt
@@ -25,6 +27,7 @@ Professional website for Mental Health and Speech Center "Harmonia" in Inowrocł
 - Canonical URLs
 
 ✅ **Accessibility (WCAG 2.1 AA)**
+
 - Skip-to-content link
 - Proper ARIA labels
 - Semantic HTML
@@ -32,17 +35,20 @@ Professional website for Mental Health and Speech Center "Harmonia" in Inowrocł
 - High color contrast
 
 ✅ **GDPR Compliance**
+
 - Cookie consent banner
 - Privacy policy page
 - LocalStorage for consent management
 
 ✅ **Performance**
+
 - HTML/CSS/JS minification
 - Image optimization (lazy loading)
 - Preconnect for external resources
 - No source maps in production
 
 ✅ **Functionality**
+
 - Responsive design (mobile-first)
 - Interactive map (no API key required)
 - Specialists section
@@ -149,6 +155,7 @@ PUBLIC_KEYSTATIC_GITHUB_APP_SLUG=harmonia-cms
 ### GitHub App Setup
 
 The CMS uses a GitHub App (not OAuth App) for authentication:
+
 - App name: `harmonia-cms`
 - Callback URL: `https://www.harmonia-centrum.pl/api/keystatic/github/oauth/callback`
 - Permissions: Contents (read/write), Metadata (read), Pull requests (read)
@@ -168,6 +175,7 @@ Copyright © 2025 Centrum Zdrowia Psychicznego i Mowy Harmonia. All rights reser
 ## Kontakt
 
 **Centrum Zdrowia Psychicznego i Mowy Harmonia**
+
 - ul. Morelowa 3, 88-100 Inowrocław
 - https://www.harmonia-centrum.pl
 - [Facebook](https://www.facebook.com/share/15jdfMYEbJ/?mibextid=wwXIfr)
