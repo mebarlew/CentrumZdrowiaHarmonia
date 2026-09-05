@@ -15,3 +15,12 @@ export const contactInfo: ContactInfo = {
     sunday: "Niedziela: Zamknięte",
   },
 };
+
+export const phoneHref = (phone: string) => `tel:+48${phone.replace(/\s/g, "")}`;
+
+export const openingHoursRows = Object.values(contactInfo.openingHours).map(
+  (line) => {
+    const [label, time] = line.split(": ");
+    return { label, time };
+  },
+);

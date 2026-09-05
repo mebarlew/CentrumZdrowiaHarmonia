@@ -1,109 +1,95 @@
 ---
+import { services, categoryLabels } from '../data/services';
+import type { Service } from '../types';
+
+type Category = Service['category'];
+
+const descriptionFor = (category: Category) =>
+  services.find(service => service.category === category)?.description ?? '';
+
+// Bento layout: each card has its own footprint, so the layout classes live next to the data.
+const cards: {
+  category: Category;
+  number: string;
+  icon: string;
+  wrapper: string;
+  body: string;
+  heading: string;
+  description: string;
+  link?: string;
+}[] = [
+  {
+    category: 'psychology',
+    number: '01',
+    icon: 'psychology',
+    wrapper: 'md:col-span-8',
+    body: 'mt-24 md:mt-48 max-w-xl',
+    heading: 'text-headline-lg md:text-[64px] mb-6 leading-none group-hover:ml-4 transition-all duration-500 ease-out',
+    description: 'text-body-md mb-8',
+  },
+  {
+    category: 'speech-therapy',
+    number: '02',
+    icon: 'record_voice_over',
+    wrapper: 'md:col-span-4 md:row-span-2 relative overflow-hidden',
+    body: 'mt-24 relative z-10',
+    heading: 'text-headline-lg mb-6 leading-none',
+    description: 'text-body-md mb-12',
+  },
+  {
+    category: 'pedagogy',
+    number: '03',
+    icon: 'auto_stories',
+    wrapper: 'md:col-span-4',
+    body: 'mt-12',
+    heading: 'text-headline-lg-mobile mb-4',
+    description: 'text-body-md text-sm mb-6',
+  },
+  {
+    category: 'sensory-integration',
+    number: '04',
+    icon: 'interests',
+    wrapper: 'md:col-span-4',
+    body: 'mt-12',
+    heading: 'text-headline-lg-mobile mb-4',
+    description: 'text-body-md text-sm mb-6',
+  },
+  {
+    category: 'feeding-therapy',
+    number: '05',
+    icon: 'restaurant',
+    wrapper: 'md:col-span-12',
+    body: 'mt-12 md:mt-24 md:grid md:grid-cols-12 md:gap-gutter md:items-end',
+    heading: 'text-headline-lg mb-4 leading-none md:mb-0 md:col-span-5',
+    description: 'text-body-md mb-6 md:mb-0 md:col-span-5',
+    link: 'md:col-span-2 md:justify-self-end',
+  },
+];
 ---
 
-<section id="uslugi" class="relative pt-32 pb-24 overflow-hidden" data-animate="section">
-  <!-- Background Accents -->
-  <div class="absolute bg-secondary-fixed w-96 h-96 -top-20 -left-20 z-0 blur-[60px] rounded-full opacity-[0.15]"></div>
-  <div class="absolute bg-primary-container w-[500px] h-[500px] -bottom-32 -right-32 z-0 blur-[60px] rounded-full opacity-[0.15]"></div>
-
-  <div class="max-w-6xl mx-auto px-6 relative z-10">
-    <!-- Header Section -->
-    <div class="mb-20 space-y-4">
-      <span class="text-primary font-semibold tracking-widest uppercase font-label">Specjalistyczna Opieka</span>
-      <h1 class="text-5xl md:text-7xl font-headline font-bold text-on-background tracking-tight">Nasze Usługi</h1>
-      <p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-        W Harmonii łączymy naukowe podejście z empatią, tworząc bezpieczną przestrzeń do rozwoju i zdrowienia dla całej rodziny.
-      </p>
-    </div>
-
-    <!-- Services Grid (Bento Style 2x2) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-      <!-- Card 1: Psychologia -->
-      <div class="group bg-surface-container-lowest p-10 rounded-lg shadow-[0_20px_40px_rgba(74,66,56,0.06)] flex flex-col items-start transition-all duration-500 hover:-translate-y-2" data-animate="card">
-        <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center mb-8 text-primary">
-          <span class="material-symbols-outlined text-4xl">psychology</span>
+<section id="terapie" class="px-6 md:px-edge-margin py-section-gap max-w-container-max mx-auto" data-animate="section">
+  <div class="flex flex-col md:flex-row justify-between items-start mb-24 gap-12">
+    <h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface tracking-tighter max-w-2xl">Nasze<br />Terapie</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant max-w-md md:mt-6" data-animate="section-subtitle">
+      Pięć obszarów specjalistycznego wsparcia dla dzieci, młodzieży i dorosłych. Łączymy sprawdzone metody terapeutyczne z uważnością na potrzeby każdej osoby, która do nas trafia.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-12 auto-rows-[minmax(300px,auto)] gap-4 md:gap-6" data-animate="cards">
+    {cards.map(card => (
+      <article class={`${card.wrapper} glass-panel rounded-3xl p-8 md:p-12 flex flex-col justify-between group hover:bg-surface-bright/80 transition-colors duration-700`} data-animate="card">
+        {card.category === 'speech-therapy' && (
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-variant/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+        )}
+        <div class="flex justify-between items-start relative z-10">
+          <span class="font-ui-label text-ui-label px-4 py-2 border-[0.5px] border-primary/20 rounded-full text-primary">{card.number}</span>
+          <span class="material-symbols-outlined text-4xl text-primary font-light" aria-hidden="true">{card.icon}</span>
         </div>
-        <h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">Psychologia i Psychotraumatologia</h3>
-        <p class="text-on-surface-variant leading-relaxed mb-8 flex-grow">
-          Specjalistyczne wsparcie w obszarze zdrowia psychicznego i terapii traumy. Pomagamy odnaleźć wewnętrzny spokój i zasoby do radzenia sobie z trudnościami.
-        </p>
-        <a class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300" href="#cennik">
-          Dowiedz się więcej
-          <span class="material-symbols-outlined text-lg">arrow_forward</span>
-        </a>
-      </div>
-
-      <!-- Card 2: Logopedia -->
-      <div class="group bg-surface-container-low p-10 rounded-lg shadow-[0_20px_40px_rgba(74,66,56,0.06)] flex flex-col items-start transition-all duration-500 hover:-translate-y-2 md:mt-12" data-animate="card">
-        <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center mb-8 text-primary">
-          <span class="material-symbols-outlined text-4xl">forum</span>
+        <div class={card.body}>
+          <h3 class={`font-display-lg tracking-tighter text-on-surface ${card.heading}`}>{categoryLabels[card.category]}</h3>
+          <p class={`font-body-md text-on-surface-variant ${card.description}`}>{descriptionFor(card.category)}</p>
+          <a class={`btn-primary font-ui-label text-ui-label text-primary ${card.link ?? ''}`} href={`/kontakt?topic=${encodeURIComponent(categoryLabels[card.category])}`}>Umów konsultację</a>
         </div>
-        <h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">Logopedia i Neurologopedia</h3>
-        <p class="text-on-surface-variant leading-relaxed mb-8 flex-grow">
-          Terapia mowy i komunikacji dla dzieci oraz dorosłych z deficytami neurologicznymi. Skupiamy się na przywracaniu radości z porozumiewania się.
-        </p>
-        <a class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300" href="#cennik">
-          Dowiedz się więcej
-          <span class="material-symbols-outlined text-lg">arrow_forward</span>
-        </a>
-      </div>
-
-      <!-- Card 3: Pedagogika -->
-      <div class="group bg-surface-container-low p-10 rounded-lg shadow-[0_20px_40px_rgba(74,66,56,0.06)] flex flex-col items-start transition-all duration-500 hover:-translate-y-2 md:-mt-12" data-animate="card">
-        <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center mb-8 text-primary">
-          <span class="material-symbols-outlined text-4xl">auto_stories</span>
-        </div>
-        <h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">Pedagogika i Terapia</h3>
-        <p class="text-on-surface-variant leading-relaxed mb-8 flex-grow">
-          Wsparcie rozwoju dziecka i terapia pedagogiczna dostosowana do indywidualnych potrzeb. Wspólnie budujemy fundamenty pewności siebie.
-        </p>
-        <a class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300" href="#cennik">
-          Dowiedz się więcej
-          <span class="material-symbols-outlined text-lg">arrow_forward</span>
-        </a>
-      </div>
-
-      <!-- Card 4: Integracja Sensoryczna -->
-      <div class="group bg-surface-container-lowest p-10 rounded-lg shadow-[0_20px_40px_rgba(74,66,56,0.06)] flex flex-col items-start transition-all duration-500 hover:-translate-y-2" data-animate="card">
-        <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center mb-8 text-primary">
-          <span class="material-symbols-outlined text-4xl">hub</span>
-        </div>
-        <h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">Sensoryka i Emocje</h3>
-        <p class="text-on-surface-variant leading-relaxed mb-8 flex-grow">
-          Terapia wspomagająca prawidłowy rozwój układu nerwowego i przetwarzania bodźców. Uczymy ciało i umysł współpracy ze światem.
-        </p>
-        <a class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300" href="#cennik">
-          Dowiedz się więcej
-          <span class="material-symbols-outlined text-lg">arrow_forward</span>
-        </a>
-      </div>
-
-      <!-- Card 5: Terapia Karmienia -->
-      <div class="group bg-surface-container-low p-10 rounded-lg shadow-[0_20px_40px_rgba(74,66,56,0.06)] flex flex-col items-start transition-all duration-500 hover:-translate-y-2 md:col-span-2" data-animate="card">
-        <div class="w-16 h-16 rounded-2xl bg-primary-container/20 flex items-center justify-center mb-8 text-primary">
-          <span class="material-symbols-outlined text-4xl">restaurant</span>
-        </div>
-        <h3 class="text-2xl font-headline font-bold mb-4 text-on-surface">Terapia Karmienia</h3>
-        <p class="text-on-surface-variant leading-relaxed mb-8 flex-grow">
-          Specjalistyczne wsparcie dla dzieci z trudnościami w jedzeniu, piciu i akceptacji nowych pokarmów. Pomagamy, by wspólne posiłki przestały być źródłem stresu.
-        </p>
-        <a class="text-secondary font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300" href="#cennik">
-          Dowiedz się więcej
-          <span class="material-symbols-outlined text-lg">arrow_forward</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Footer Quote / Call to Action -->
-    <div class="mt-32 p-12 bg-surface-container rounded-lg relative overflow-hidden text-center" data-animate="card">
-      <div class="absolute top-0 right-0 w-64 h-64 opacity-10 pointer-events-none">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <path d="M47.1,-63.1C59.9,-54.2,68.4,-39.1,72.9,-23.1C77.4,-7.1,77.9,9.8,71.1,23.1C64.3,36.4,50.1,46,36,53.3C21.8,60.6,7.8,65.6,-7.7,64.3C-23.2,63,-40.2,55.4,-52.1,43.2C-64,31.1,-70.7,14.4,-71.4,-2.4C-72.1,-19.1,-66.8,-35.9,-55.4,-45.5C-44,-55.1,-26.5,-57.4,-10.1,-60.9C6.4,-64.4,22.8,-69.1,47.1,-63.1Z" fill="#536350" transform="translate(100 100)"></path>
-        </svg>
-      </div>
-      <h2 class="text-3xl font-headline font-bold mb-6 text-on-surface">Nie wiesz, od czego zacząć?</h2>
-      <p class="text-lg text-on-surface-variant mb-10 max-w-xl mx-auto">Nasi specjaliści pomogą Ci dobrać odpowiednią formę wsparcia podczas krótkiej konsultacji telefonicznej.</p>
-      <a href="#kontakt" class="inline-block bg-primary text-on-primary px-10 py-4 rounded-full font-semibold shadow-xl hover:bg-primary/90 transition-all">Skontaktuj się z nami</a>
-    </div>
+      </article>
+    ))}
   </div>
 </section>

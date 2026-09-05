@@ -1,47 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import AboutSection from '../components/AboutSection.astro';
-import SpecialistsSection from '../components/SpecialistsSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
+import PhilosophySection from '../components/PhilosophySection.astro';
+import SpecialistsSection from '../components/SpecialistsSection.astro';
 import PricingSection from '../components/PricingSection.astro';
-import ContactSection from '../components/ContactSection.astro';
 ---
 
 <Layout
   title="Centrum Zdrowia Psychicznego i Mowy Harmonia - Inowrocław"
   description="Profesjonalna pomoc psychologiczna i logopedyczna w Inowrocławiu. Doświadczony zespół specjalistów oferuje terapię dla dzieci, młodzieży i dorosłych. Umów wizytę już dziś!"
 >
-  <!-- Hero Section -->
   <Hero />
-
-  <!-- About Us -->
-  <AboutSection />
-
-  <!-- Specialists Section -->
-  <SpecialistsSection />
-
-  <!-- Services Section -->
   <ServicesSection />
-
-  <!-- Pricing Section -->
+  <PhilosophySection />
+  <SpecialistsSection />
   <PricingSection />
-
-  <!-- Contact Section -->
-  <ContactSection />
 </Layout>
-
-<script>
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const href = this.getAttribute('href');
-      if (href) {
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
-</script>

@@ -1,184 +1,67 @@
 ---
-import { pricingData, equipmentRental } from '../data/pricing';
+import { pricingData } from '../data/pricing';
+import { categoryLabels } from '../data/services';
+
+// Home page shows one headline service per category; the full price list lives on /cennik.
+const featured = [
+  { category: 'psychology', itemId: 'individual-therapy', popular: false },
+  { category: 'speech-therapy', itemId: 'therapy', popular: true },
+  { category: 'sensory-integration', itemId: 'si-individual', popular: false },
+] as const;
+
+const cards = featured.flatMap(entry => {
+  const category = pricingData.find(candidate => candidate.id === entry.category);
+  const item = category?.items.find(candidate => candidate.id === entry.itemId);
+  if (!category || !item) return [];
+  const others = category.items.filter(candidate => candidate.id !== entry.itemId).slice(0, 3);
+  return [{ ...entry, label: categoryLabels[entry.category], item, others }];
+});
 ---
 
-<section id="cennik" class="pt-32 pb-20 px-6 max-w-7xl mx-auto" data-animate="section">
-  <!-- Header -->
-  <header class="mb-12 text-center md:text-left md:max-w-2xl">
-    <h2 class="font-headline text-5xl md:text-7xl text-primary font-medium tracking-tight leading-tight mb-6">
-      Inwestycja w Twój <span class="italic font-light">spokój</span>
-    </h2>
-    <p class="text-lg text-tertiary leading-relaxed font-body">
-      Przejrzysty cennik i atrakcyjne pakiety wsparcia.
+<section id="cennik" class="px-6 md:px-edge-margin py-section-gap max-w-container-max mx-auto" data-animate="section">
+  <div class="text-center mb-24">
+    <h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface tracking-tighter mb-6">Przejrzysty<br />Cennik</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto" data-animate="section-subtitle">
+      Jasne stawki bez ukrytych kosztów. Pakiety sesji pozwalają zaoszczędzić nawet 300 zł, a pełny cennik wszystkich terapii znajdziesz na osobnej stronie.
     </p>
-  </header>
-
-  <!-- Category tabs -->
-  <div class="flex flex-wrap gap-2 mb-10" role="tablist">
-    {pricingData.map((category, i) => (
-      <button
-        role="tab"
-        aria-selected={i === 0 ? 'true' : 'false'}
-        aria-controls={`panel-${category.id}`}
-        data-tab={category.id}
-        class={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${i === 0 ? 'bg-primary text-on-primary' : 'bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest'}`}
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-animate="cards">
+    {cards.map(card => (
+      <article
+        class={`glass-panel p-8 md:p-12 rounded-3xl flex flex-col hover:-translate-y-2 transition-transform duration-500 ${card.popular ? 'relative bg-surface-container-high/30' : ''}`}
+        data-animate="card"
       >
-        {category.title.split('|')[0].trim()}
-      </button>
+        {card.popular && (
+          <div class="absolute top-0 right-8 bg-primary text-on-primary font-ui-label text-[10px] px-3 py-1 rounded-b-lg tracking-widest uppercase">Popularne</div>
+        )}
+        <h3 class="font-display-lg text-headline-lg-mobile tracking-tighter text-on-surface mb-2">{card.label}</h3>
+        <p class="font-body-md text-on-surface-variant mb-8 text-sm">{card.item.name}</p>
+        <div class="font-display-lg text-headline-lg text-primary mb-8 border-b-[0.5px] border-primary/20 pb-8">
+          {card.item.priceFrom ? 'od ' : ''}{card.item.price} zł
+          {card.item.duration && <span class="font-body-md text-sm text-outline">/ {card.item.duration}</span>}
+        </div>
+        <ul class="flex flex-col gap-4 mb-12 flex-grow">
+          {card.others.map(other => (
+            <li class="flex items-center gap-3 font-body-md text-sm text-on-surface-variant">
+              <span class="material-symbols-outlined text-primary text-sm" aria-hidden="true">check</span>
+              {other.name}
+            </li>
+          ))}
+        </ul>
+        <a
+          href={`/kontakt?topic=${encodeURIComponent(card.label)}`}
+          class={`block text-center w-full py-4 rounded-xl font-ui-label text-ui-label uppercase tracking-widest transition-colors duration-300 ${
+            card.popular
+              ? 'bg-primary text-on-primary hover:bg-surface-tint'
+              : 'border border-primary text-primary hover:bg-primary hover:text-on-primary'
+          }`}
+        >
+          Rezerwuj
+        </a>
+      </article>
     ))}
   </div>
-
-  <!-- Tab panels -->
-  {pricingData.map((category, i) => (
-    <div
-      id={`panel-${category.id}`}
-      role="tabpanel"
-      data-panel={category.id}
-      class={`${i === 0 ? '' : 'hidden'}`}
-    >
-      <!-- Bento Grid — exact Stitch layout -->
-      <div class={`grid gap-8 items-start ${category.packages && category.packages.length > 0 ? 'grid-cols-1 lg:grid-cols-12' : ''}`}>
-        <!-- Services list -->
-        <div class={`bg-surface-container-low p-8 md:p-12 rounded-[2rem] ${category.packages && category.packages.length > 0 ? 'lg:col-span-7' : 'max-w-3xl'}`}>
-          <div class="flex items-center gap-3 mb-8">
-            <span class="material-symbols-outlined text-primary text-3xl">medical_services</span>
-            <h3 class="font-headline text-2xl text-on-surface">{category.title}</h3>
-          </div>
-
-          <div class="space-y-0">
-            {category.items.map((item) => (
-              <div class="group flex justify-between items-end pb-4 pt-4 first:pt-0 border-b border-outline-variant/30 hover:border-primary/40 transition-colors">
-                <div>
-                  <h4 class="font-headline text-xl text-on-surface group-hover:text-primary transition-colors">{item.name}</h4>
-                  {item.duration && <p class="text-sm text-tertiary mt-1">{item.duration}</p>}
-                  {item.description && <p class="text-sm text-tertiary mt-1">{item.description}</p>}
-                </div>
-                <span class="font-headline text-2xl text-primary whitespace-nowrap ml-4">{item.priceFrom && 'od '}{item.price} zł</span>
-              </div>
-            ))}
-          </div>
-
-          {category.id === 'speech-therapy' && (
-            <div class="mt-8 bg-surface-container-highest p-5 rounded-2xl flex items-start gap-4">
-              <span class="material-symbols-outlined text-secondary">info</span>
-              <p class="text-sm text-on-surface-variant leading-relaxed">
-                <span class="font-medium text-on-surface">Elektrostymulator do wypożyczenia:</span> {equipmentRental.electrostimulator.weekly} zł/tydzień lub {equipmentRental.electrostimulator.monthly} zł/miesiąc (+ kaucja zwrotna {equipmentRental.electrostimulator.deposit} zł)
-              </p>
-            </div>
-          )}
-        </div>
-
-        <!-- Packages -->
-        {category.packages && category.packages.length > 0 && (
-          <div class="lg:col-span-5 space-y-4">
-            <div class="relative overflow-hidden bg-primary p-6 rounded-[2rem] text-on-primary">
-              <div class="relative z-10">
-                <h4 class="font-headline text-xl mb-1">Pakiety wsparcia</h4>
-                <p class="opacity-90 text-xs">Wybierz regularność i oszczędzaj.</p>
-              </div>
-              <div class="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-12 -mt-12 blur-3xl"></div>
-            </div>
-
-            {category.packages.map((pkg) => {
-              const isBest = pkg.sessions === 10 && pkg.savings && pkg.savings >= 100;
-              return isBest ? (
-                <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-[0px_12px_24px_rgba(74,66,56,0.1)] border-2 border-secondary/20 relative">
-                  <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-secondary text-on-primary text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                    Najlepsza wartość
-                  </div>
-                  <div class="flex justify-between items-center mt-1">
-                    <h4 class="font-headline text-lg">{pkg.name}</h4>
-                    <span class="font-headline text-xl text-secondary font-bold">{pkg.price} zł</span>
-                  </div>
-                  <p class="text-tertiary text-xs mt-1">{pkg.sessions} sesji &bull; {pkg.validityMonths} mies.</p>
-                  {pkg.savings && <p class="text-secondary text-xs font-semibold mt-1">Oszczędzasz {pkg.savings} zł</p>}
-                  <a href="#kontakt" class="block w-full py-3 mt-4 rounded-xl bg-secondary text-on-primary font-semibold text-sm text-center hover:opacity-90 transition-all">Kup teraz</a>
-                </div>
-              ) : (
-                <div class="bg-surface-container-high p-5 rounded-2xl hover:shadow-lg transition-all group">
-                  <div class="flex justify-between items-center">
-                    <h4 class="font-headline text-base">{pkg.name}</h4>
-                    <span class="font-headline text-lg text-primary font-bold">{pkg.price} zł</span>
-                  </div>
-                  <p class="text-tertiary text-xs mt-1">{pkg.sessions} sesji &bull; {pkg.validityMonths} mies.</p>
-                  {pkg.savings && <p class="text-primary text-xs font-medium mt-1">Oszczędzasz {pkg.savings} zł</p>}
-                  <a href="#kontakt" class="block w-full py-2.5 mt-3 rounded-xl border border-primary/20 text-primary font-semibold text-sm text-center group-hover:bg-primary group-hover:text-on-primary transition-all">Wybierz</a>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    </div>
-  ))}
-
-  <!-- Payment info -->
-  <div class="mt-10 bg-surface-container-highest p-5 rounded-2xl flex items-start gap-4 max-w-3xl">
-    <span class="material-symbols-outlined text-secondary">info</span>
-    <p class="text-sm text-on-surface-variant leading-relaxed">
-      Płatność gotówką lub kartą po spotkaniu. Wystawiamy faktury VAT.
-    </p>
-  </div>
-
-  <!-- Loyalty pricing info -->
-  <div class="mt-4 bg-surface-container-highest p-5 rounded-2xl flex items-start gap-4 max-w-3xl">
-    <span class="material-symbols-outlined text-secondary">favorite</span>
-    <p class="text-sm text-on-surface-variant leading-relaxed">
-      <span class="font-medium text-on-surface">Ważna informacja:</span> Pacjenci, którzy regularnie korzystają z naszych usług i mają zaplanowane cykliczne wizyty, pozostają przy dotychczasowym cenniku.
-    </p>
-  </div>
-
-  <!-- Trust Section -->
-  <div class="mt-16 grid md:grid-cols-3 gap-10 border-t border-outline-variant/30 pt-12">
-    <div class="text-center">
-      <div class="w-14 h-14 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-4">
-        <span class="material-symbols-outlined text-primary text-2xl">verified_user</span>
-      </div>
-      <h5 class="font-headline text-lg mb-2">Pełna dyskrecja</h5>
-      <p class="text-sm text-tertiary">Całkowita poufność wizyt i danych medycznych.</p>
-    </div>
-    <div class="text-center">
-      <div class="w-14 h-14 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-4">
-        <span class="material-symbols-outlined text-primary text-2xl">event_available</span>
-      </div>
-      <h5 class="font-headline text-lg mb-2">Elastyczne terminy</h5>
-      <p class="text-sm text-tertiary">Sesje wieczorne i sobotnie.</p>
-    </div>
-    <div class="text-center">
-      <div class="w-14 h-14 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-4">
-        <span class="material-symbols-outlined text-primary text-2xl">handshake</span>
-      </div>
-      <h5 class="font-headline text-lg mb-2">Indywidualne podejście</h5>
-      <p class="text-sm text-tertiary">Spersonalizowany plan terapii.</p>
-    </div>
+  <div class="flex justify-center mt-16">
+    <a class="btn-primary font-ui-label text-ui-label uppercase tracking-widest text-primary" href="/cennik">Zobacz pełny cennik</a>
   </div>
 </section>
-
-<script>
-  const tabs = document.querySelectorAll('[data-tab]');
-  const panels = document.querySelectorAll('[data-panel]');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.getAttribute('data-tab');
-
-      tabs.forEach(t => {
-        t.classList.remove('bg-primary', 'text-on-primary');
-        t.classList.add('bg-surface-container-high', 'text-on-surface-variant');
-        t.setAttribute('aria-selected', 'false');
-      });
-
-      tab.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
-      tab.classList.add('bg-primary', 'text-on-primary');
-      tab.setAttribute('aria-selected', 'true');
-
-      panels.forEach(p => {
-        if (p.getAttribute('data-panel') === target) {
-          p.classList.remove('hidden');
-        } else {
-          p.classList.add('hidden');
-        }
-      });
-    });
-  });
-</script>

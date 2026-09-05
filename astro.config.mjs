@@ -23,5 +23,5 @@ export default defineConfig({
       },
     },
   },
-  integrations: [tailwind()],
+  integrations: [tailwind({ applyBaseStyles: false })],
 });
