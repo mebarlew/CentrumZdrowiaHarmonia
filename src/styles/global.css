@@ -10,18 +10,21 @@
 
 html {
   scroll-behavior: smooth;
+  /* clip, not hidden: hidden on body/html turns it into a scroll container and breaks hash scrolling in Chromium */
+  overflow-x: clip;
 }
 
-section[id] {
-  scroll-margin-top: 5rem;
+/* Zero specificity so a page can override the offset with a scroll-mt-* utility */
+:where(section[id]) {
+  scroll-margin-top: 6rem;
 }
 
 body {
-  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
-  color: #211b11;
-  background-color: #fff8f3;
-  line-height: 1.7;
-  font-size: 1.0625rem;
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 160%;
+  color: #1c1b21;
+  background-color: #faf8ff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,36 +35,70 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Noto Serif", Georgia, serif;
-  color: #211b11;
-  line-height: 1.15;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 400;
 }
 
 a {
-  color: #536350;
+  color: inherit;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-a:hover {
-  color: #3c4b39;
+/* Variable icon font: leave the weight axis to font-weight so `font-light` works */
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
-/* Screen reader only */
-.sr-only {
+.glass-panel {
+  background: rgba(250, 248, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.05);
+}
+
+/* Zero specificity so display utilities like inline-flex can override the default */
+:where(.btn-primary) {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-primary::after {
+  content: "";
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  height: 0.5px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
 }
 
-/* GSAP animation initial states */
-[data-animate] {
+.btn-primary:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.ambient-shadow {
+  box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.08);
+}
+
+/* GSAP reveal targets start hidden. Containers (section, cards, ctas) stay visible
+   because the script animates their children, never the container itself. */
+[data-animate="eyebrow"],
+[data-animate="hero-title"],
+[data-animate="subtitle"],
+[data-animate="section-subtitle"],
+[data-animate="card"],
+[data-animate="fade-up"],
+[data-animate="section"] h2,
+[data-animate="ctas"] > * {
   opacity: 0;
   animation: fallback-show 0s 2s forwards;
 }
@@ -72,7 +109,9 @@ a:hover {
   }
 }
 
-.js-loaded [data-animate] {
+.js-loaded [data-animate],
+.js-loaded [data-animate] h2,
+.js-loaded [data-animate] > * {
   animation: none;
 }
 
@@ -86,7 +125,9 @@ a:hover {
     scroll-behavior: auto !important;
   }
 
-  [data-animate] {
+  [data-animate],
+  [data-animate] h2,
+  [data-animate] > * {
     opacity: 1;
   }
 }

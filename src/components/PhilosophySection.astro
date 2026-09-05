@@ -1,0 +1,40 @@
+---
+const steps = [
+  {
+    numeral: 'I',
+    title: 'Diagnoza',
+    text: 'Zrozumienie fundamentów. Przeprowadzamy dogłębną analizę Twoich potrzeb, historii i obecnych wyzwań.',
+  },
+  {
+    numeral: 'II',
+    title: 'Plan terapii',
+    text: 'Projektowanie drogi. Tworzymy spersonalizowaną ścieżkę terapeutyczną opartą na sprawdzonych metodach.',
+  },
+  {
+    numeral: 'III',
+    title: 'Integracja',
+    text: 'Wcielanie zmian w życie. Praktyka, wsparcie i utrwalanie nowych wzorców funkcjonowania i komunikacji.',
+  },
+];
+---
+
+<section id="filozofia" class="px-6 md:px-edge-margin py-section-gap max-w-container-max mx-auto" data-animate="section">
+  <div class="flex flex-col items-center text-center mb-24">
+    <h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface tracking-tighter mb-6">Proces &amp; Filozofia</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl" data-animate="section-subtitle">
+      Wierzymy, że zdrowienie to podróż, która wymaga mapy, kompasu i dobrego przewodnika. Nasz proces terapeutyczny prowadzi Cię od pierwszego spotkania po trwałą równowagę.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative" data-animate="cards">
+    <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-[0.5px] bg-primary/20 z-0"></div>
+    {steps.map(step => (
+      <div class="flex flex-col items-center text-center relative z-10" data-animate="card">
+        <div class="w-24 h-24 rounded-full glass-panel flex items-center justify-center mb-8 ambient-shadow">
+          <span class="font-ui-label text-headline-lg text-primary">{step.numeral}</span>
+        </div>
+        <h3 class="font-display-lg text-headline-lg-mobile tracking-tighter text-on-surface mb-4">{step.title}</h3>
+        <p class="font-body-md text-on-surface-variant text-sm">{step.text}</p>
+      </div>
+    ))}
+  </div>
+</section>

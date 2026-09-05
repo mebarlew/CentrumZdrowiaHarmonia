@@ -1,128 +1,73 @@
 ---
+import { categoryLabels } from '../data/services';
+
 const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+const topics = [...Object.values(categoryLabels), 'Umówienie wizyty', 'Inne pytanie'];
+
+const fieldClass = 'w-full bg-transparent border-none p-0 pb-3 font-body-md text-primary placeholder-surface-tint focus:ring-0 focus:outline-none';
+const labelClass = 'block font-ui-label text-[10px] uppercase tracking-widest text-outline mb-3';
+const wrapperClass = 'border-b-[0.5px] border-primary/20 focus-within:border-primary transition-colors duration-300';
 ---
 
-<h3 class="text-xl font-headline font-semibold text-on-surface mb-8">Wyślij wiadomość</h3>
+<h2 class="font-display-lg text-headline-lg-mobile tracking-tighter text-on-surface mb-10">Wyślij wiadomość</h2>
 
-<form id="contact-form" class="space-y-6" action="https://api.web3forms.com/submit" method="POST">
+<form id="contact-form" class="space-y-8" action="https://api.web3forms.com/submit" method="POST">
   <input type="hidden" name="access_key" value={web3formsKey} />
   <input type="hidden" name="subject" value="Nowa wiadomość z formularza kontaktowego - Centrum Harmonia" />
   <input type="hidden" name="from_name" value="Centrum Zdrowia Harmonia" />
   <input type="hidden" name="botcheck" class="hidden" style="display: none;" />
 
-  <!-- Name -->
-  <div class="group">
-    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="name">
-      Imię i nazwisko <span class="text-error">*</span>
-    </label>
-    <input
-      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder-on-surface-variant/40"
-      placeholder="Twoje imię"
-      type="text"
-      id="name"
-      name="name"
-      required
-    />
+  <div class={wrapperClass}>
+    <label class={labelClass} for="name">Imię i nazwisko *</label>
+    <input class={fieldClass} placeholder="Twoje imię i nazwisko" type="text" id="name" name="name" autocomplete="name" required />
   </div>
 
-  <!-- Email -->
-  <div class="group">
-    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="email">
-      Email <span class="text-error">*</span>
-    </label>
-    <input
-      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder-on-surface-variant/40"
-      placeholder="twoj@email.pl"
-      type="email"
-      id="email"
-      name="email"
-      required
-    />
+  <div class={wrapperClass}>
+    <label class={labelClass} for="email">Email *</label>
+    <input class={fieldClass} placeholder="twoj@email.pl" type="email" id="email" name="email" autocomplete="email" required />
   </div>
 
-  <!-- Phone -->
-  <div class="group">
-    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="phone">
-      Telefon
-    </label>
-    <input
-      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder-on-surface-variant/40"
-      placeholder="+48 000 000 000"
-      type="tel"
-      id="phone"
-      name="phone"
-    />
+  <div class={wrapperClass}>
+    <label class={labelClass} for="phone">Telefon</label>
+    <input class={fieldClass} placeholder="+48 000 000 000" type="tel" id="phone" name="phone" autocomplete="tel" />
   </div>
 
-  <!-- Subject -->
-  <div class="group">
-    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="subject">
-      Temat <span class="text-error">*</span>
-    </label>
-    <select
-      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all text-on-surface-variant appearance-auto cursor-pointer"
-      id="subject"
-      name="subject"
-      required
-    >
+  <div class={wrapperClass}>
+    <label class={labelClass} for="topic">Temat *</label>
+    <select class={`${fieldClass} appearance-none cursor-pointer`} id="topic" name="topic" required>
       <option value="">Wybierz temat</option>
-      <option value="psychology">Konsultacja psychologiczna</option>
-      <option value="speech-therapy">Konsultacja logopedyczna</option>
-      <option value="appointment">Umówienie wizyty</option>
-      <option value="other">Inne pytanie</option>
+      {topics.map(topic => <option value={topic}>{topic}</option>)}
     </select>
   </div>
 
-  <!-- Message -->
-  <div class="group">
-    <label class="block text-sm font-label mb-2 text-on-surface-variant" for="message">
-      Wiadomość <span class="text-error">*</span>
-    </label>
-    <textarea
-      class="w-full bg-surface-container-high border-none rounded-md p-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder-on-surface-variant/40 resize-none"
-      placeholder="W czym możemy pomóc?"
-      rows="4"
-      id="message"
-      name="message"
-      required
-    ></textarea>
+  <div class={wrapperClass}>
+    <label class={labelClass} for="message">Wiadomość *</label>
+    <textarea class={`${fieldClass} resize-none`} placeholder="W czym możemy pomóc?" rows="4" id="message" name="message" required></textarea>
   </div>
 
-  <!-- Privacy consent -->
   <div class="flex items-start gap-3">
-    <input
-      type="checkbox"
-      id="privacy"
-      name="privacy"
-      required
-      class="mt-1 w-4 h-4 text-primary border-outline-variant rounded focus:ring-2 focus:ring-primary/20 accent-primary"
-    />
-    <label for="privacy" class="text-sm text-on-surface-variant leading-relaxed">
+    <input type="checkbox" id="privacy" name="privacy" required class="mt-1 w-4 h-4 accent-primary" />
+    <label for="privacy" class="font-body-md text-sm text-on-surface-variant">
       Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z
-      <a href="/polityka-prywatnosci" class="text-primary hover:text-secondary underline">
-        Polityką Prywatności
-      </a> <span class="text-error">*</span>
+      <a href="/polityka-prywatnosci" class="btn-primary text-primary">Polityką Prywatności</a> *
     </label>
   </div>
 
-  <!-- Submit button -->
   <button
     type="submit"
-    class="w-full bg-secondary text-on-secondary py-4 rounded-md font-semibold text-lg hover:scale-[1.02] transition-transform shadow-lg shadow-secondary/20"
+    class="w-full py-4 rounded-xl bg-primary text-on-primary font-ui-label text-ui-label uppercase tracking-widest hover:bg-surface-tint transition-colors duration-300 disabled:opacity-60"
   >
     Wyślij wiadomość
   </button>
 
-  <!-- Success message -->
-  <div id="form-success" class="hidden bg-primary-fixed border border-primary/20 text-on-primary-fixed px-5 py-4 rounded-xl">
-    <p class="font-medium">Dziękujemy za wiadomość!</p>
-    <p class="text-sm mt-1">Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
+  <div id="form-success" class="hidden bg-primary text-on-primary px-6 py-5 rounded-2xl">
+    <p class="font-ui-label text-ui-label uppercase tracking-widest mb-2">Dziękujemy za wiadomość</p>
+    <p class="font-body-md text-sm text-on-primary/70">Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
   </div>
 
-  <!-- Error message -->
-  <div id="form-error" class="hidden bg-error-container border border-error/20 text-on-error-container px-5 py-4 rounded-xl">
-    <p class="font-medium">Wystąpił błąd</p>
-    <p class="text-sm mt-1">Spróbuj ponownie lub skontaktuj się z nami telefonicznie.</p>
+  <div id="form-error" class="hidden bg-error-container text-on-error-container px-6 py-5 rounded-2xl">
+    <p class="font-ui-label text-ui-label uppercase tracking-widest mb-2">Wystąpił błąd</p>
+    <p class="font-body-md text-sm">Spróbuj ponownie lub skontaktuj się z nami telefonicznie.</p>
   </div>
 </form>
 
@@ -131,6 +76,17 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
   const successMessage = document.getElementById('form-success');
   const errorMessage = document.getElementById('form-error');
   const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+  // Prefill from the hero form and pricing CTAs (/kontakt?name=...&topic=...)
+  const params = new URLSearchParams(window.location.search);
+  const nameField = form?.elements.namedItem('name') as HTMLInputElement | null;
+  const topicField = form?.elements.namedItem('topic') as HTMLSelectElement | null;
+  const prefillName = params.get('name');
+  const prefillTopic = params.get('topic');
+  if (nameField && prefillName) nameField.value = prefillName;
+  if (topicField && prefillTopic && [...topicField.options].some(option => option.value === prefillTopic)) {
+    topicField.value = prefillTopic;
+  }
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();

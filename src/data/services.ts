@@ -155,3 +155,11 @@ export const services: Service[] = [
     ],
   },
 ];
+
+export const categoryLabels: Record<Service["category"], string> = {
+  psychology: "Psychologia",
+  "speech-therapy": "Logopedia",
+  pedagogy: "Pedagogika",
+  "feeding-therapy": "Terapia Karmienia",
+  "sensory-integration": "Sensoryka i Emocje",
+};

@@ -1,102 +1,34 @@
 ---
-import type { Specialist } from '../types';
-
-const specialists: Specialist[] = [
-  {
-    id: '1',
-    name: "Joanna Kurczewska-Szczerba",
-    title: "Logopeda, neurologopeda, terapeuta miofunkcjonalny",
-    description: "Logopeda i neurologopeda z wykształcenia, także politolog. Ukończyła wiele studiów podyplomowych. Od wielu lat pracuje z dziećmi i młodzieżą. Ma bardzo dobre podejście do dzieci, dba o swobodę i bezpieczeństwo w terapii przy osiąganiu widocznych postępów.",
-    phone: "505 636 848",
-    email: "logopeda.jkurczewska@gmail.com",
-    image: "/images/specialist-1.webp"
-  },
-  {
-    id: '2',
-    name: "Paulina Baczyńska",
-    title: "Psycholog, psychotraumatolog, pedagog",
-    description: "Psycholog o specjalności klinicznej oraz psychotraumatolog, pedagog z 18-letnim doświadczeniem. Towarzyszy młodym ludziom w rozwoju, wspiera w trudnościach. Stawia na relację, zaufanie i poczucie bezpieczeństwa.",
-    phone: "510 056 057",
-    email: "psycholog.pbaczynska@gmail.com",
-    image: "/images/specialist-2.webp"
-  }
-];
+import { specialists } from '../data/specialists';
 ---
 
-<section id="specjalisci" class="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden relative" data-animate="section">
-  <!-- Abstract Background Elements -->
-  <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-fixed/20 blur-[80px] rounded-full -z-10"></div>
-  <div class="absolute top-1/2 -left-48 w-[500px] h-[500px] bg-tertiary-fixed/10 blur-[100px] rounded-[60%_40%_30%_70%/60%_30%_70%_40%] -z-10"></div>
-
-  <!-- Section Header -->
-  <header class="mb-20">
-    <span class="font-label text-sm uppercase tracking-[0.2em] text-tertiary mb-4 block">Nasz Zespół</span>
-    <h1 class="font-headline text-5xl md:text-7xl font-bold italic text-primary leading-tight max-w-2xl">
-      Nasi Specjaliści
-    </h1>
-    <div class="w-24 h-1 bg-tertiary mt-8 rounded-full"></div>
-  </header>
-
-  <!-- Specialists Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
-    {specialists.map((specialist, index) => (
-      <article class={`group relative ${index === 1 ? 'md:mt-16' : ''}`} data-animate="card">
-        <div class="bg-surface-container-low rounded-xl p-8 md:p-12 transition-all duration-500 hover:bg-surface-container-lowest shadow-[0_12px_32px_rgba(28,28,24,0.04)]">
-          <div class="flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
-            <!-- Photo -->
-            <div class="relative flex-shrink-0">
-              <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-surface-container-highest">
-                <img
-                  alt={specialist.name}
-                  class="w-full h-full object-cover"
-                  src={specialist.image}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <!-- Organic shape accent -->
-              <div class={`absolute w-12 h-12 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] -z-10 ${index === 0 ? '-bottom-4 -right-4 bg-tertiary-container/30' : '-top-4 -left-4 bg-primary-container/30'}`}></div>
-            </div>
-
-            <div class="flex-1">
-              <h2 class="font-headline text-3xl font-bold text-on-surface mb-2">{specialist.name}</h2>
-              <p class="font-label text-sm text-tertiary font-semibold mb-6 tracking-wide">
-                {specialist.title}
-              </p>
-              <p class="font-body text-on-surface-variant leading-relaxed mb-8">
-                {specialist.description}
-              </p>
-            </div>
-          </div>
-
-          <a
-            href={`mailto:${specialist.email}`}
-            class="mt-8 w-full py-4 bg-surface-container-highest text-primary font-bold rounded-xl hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
-          >
-            Napisz wiadomość
-            <span class="material-symbols-outlined text-xl transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
-          </a>
-        </div>
-      </article>
-    ))}
-  </div>
-
-  <!-- Extra content for visual balance -->
-  <div class="mt-32 grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <div class="lg:col-span-2 bg-tertiary-container/10 p-12 rounded-xl flex flex-col justify-center">
-      <h3 class="font-headline text-3xl text-primary italic mb-4">Nie wiesz kogo wybrać?</h3>
-      <p class="text-on-surface-variant font-body mb-8 max-w-md">Nasza koordynatorka terapii pomoże Ci dopasować odpowiedniego specjalistę do Twoich indywidualnych potrzeb lub trudności Twojego dziecka.</p>
-      <div>
-        <a class="text-tertiary font-bold border-b-2 border-tertiary pb-1 hover:text-secondary-container hover:border-secondary-container transition-all" href="#kontakt">Umów bezpłatną konsultację wstępną</a>
-      </div>
+<section id="eksperci" class="px-6 md:px-edge-margin py-section-gap bg-surface-container-low max-w-full" data-animate="section">
+  <div class="max-w-container-max mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-start mb-24 gap-12">
+      <h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface tracking-tighter max-w-2xl">Nasze<br />Specjalistki</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant max-w-md md:mt-6" data-animate="section-subtitle">
+        Poznaj nasze specjalistki, których doświadczenie i pasja tworzą bezpieczną przestrzeń do rozwoju i zmiany.
+      </p>
     </div>
-    <div class="bg-primary p-12 rounded-xl flex flex-col justify-between text-on-primary relative overflow-hidden">
-      <div class="relative z-10">
-        <span class="material-symbols-outlined text-4xl mb-4">favorite</span>
-        <h3 class="font-headline text-2xl italic">Ponad 15 lat doświadczenia</h3>
-        <p class="mt-4 opacity-80 font-body">Zapewniamy wsparcie na najwyższym poziomie merytorycznym i etycznym.</p>
-      </div>
-      <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-on-primary/10 rounded-full rounded-[60%_40%_30%_70%/60%_30%_70%_40%]"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-gutter" data-animate="cards">
+      {specialists.map((specialist, index) => (
+        <article class={`flex flex-col group ${index % 2 === 1 ? 'md:mt-24' : ''}`} data-animate="card">
+          <div class="overflow-hidden rounded-3xl aspect-[3/4] mb-8 relative glass-panel p-2">
+            <img
+              alt={specialist.name}
+              class="w-full h-full object-cover rounded-2xl md:grayscale md:group-hover:grayscale-0 transition-all duration-700 ease-out transform group-hover:scale-105"
+              src={specialist.image}
+              loading="lazy"
+              width="600"
+              height="800"
+            />
+          </div>
+          <h3 class="font-display-lg text-headline-lg tracking-tighter text-on-surface mb-2">{specialist.name}</h3>
+          <p class="font-ui-label text-ui-label text-primary/60 tracking-widest uppercase mb-4">{specialist.title}</p>
+          <p class="font-body-md text-on-surface-variant mb-8">{specialist.description}</p>
+          <a class="btn-primary font-ui-label text-ui-label text-primary self-start" href={`/kontakt#${specialist.id}`}>Skontaktuj się bezpośrednio</a>
+        </article>
+      ))}
     </div>
   </div>
 </section>

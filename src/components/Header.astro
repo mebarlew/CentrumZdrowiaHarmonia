@@ -1,111 +1,89 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.webp';
+
 const navItems = [
-  { href: '#o-nas', label: 'O nas' },
-  { href: '#specjalisci', label: 'Specjaliści' },
-  { href: '#uslugi', label: 'Usługi' },
-  { href: '#cennik', label: 'Cennik' },
-  { href: '#kontakt', label: 'Kontakt' }
+  { href: '/#terapie', label: 'Terapie' },
+  { href: '/#filozofia', label: 'Filozofia' },
+  { href: '/#eksperci', label: 'Eksperci' },
+  { href: '/cennik', label: 'Cennik' },
 ];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => !href.startsWith('/#') && currentPath.startsWith(href);
+
+const activeLink = 'font-ui-label text-ui-label uppercase tracking-widest text-primary font-bold border-b-[0.5px] border-primary pb-1 hover:opacity-80 transition-all duration-500';
+const inactiveLink = 'font-ui-label text-ui-label uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300 hover:opacity-80';
 ---
 
-<!-- Exact Stitch nav -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-[#fff8f3]/80 backdrop-blur-lg transition-all duration-300">
-  <nav class="flex justify-between items-center w-full px-8 py-6 max-w-7xl mx-auto" aria-label="Główna nawigacja">
-    <a href="/" class="flex items-center gap-3" aria-label="Strona główna">
-      <img src="/images/logo.webp" alt="Logo Centrum Zdrowia Harmonia" class="h-12 w-auto" width="48" height="48" fetchpriority="high" />
-      <span class="text-2xl font-headline font-bold text-[#536350] tracking-tight">Harmonia</span>
+<header>
+  <!-- Desktop nav -->
+  <nav
+    class="fixed top-8 left-1/2 -translate-x-1/2 w-[calc(100%-128px)] max-w-container-max rounded-full border-[0.5px] border-white/20 bg-surface-bright/60 backdrop-blur-xl shadow-[0_40px_80px_-15px_rgba(0,0,0,0.05)] z-50 hidden md:flex justify-between items-center px-edge-margin py-4"
+    aria-label="Główna nawigacja"
+  >
+    <a href="/" class="flex items-center hover:opacity-80 transition-opacity duration-500" aria-label="Strona główna">
+      <Image src={logo} alt="Harmonia - Centrum Zdrowia Psychicznego i Mowy" height={64} densities={[1, 2]} loading="eager" class="h-16 w-auto" />
     </a>
-
-    <!-- Mobile menu button -->
-    <button
-      class="mobile-menu-toggle lg:hidden flex flex-col gap-1.5 p-2 rounded-lg"
-      aria-label="Przełącz menu"
-      aria-expanded="false"
-    >
-      <span class="w-6 h-0.5 bg-on-surface transition-all duration-300 origin-center"></span>
-      <span class="w-6 h-0.5 bg-on-surface transition-all duration-300 origin-center"></span>
-      <span class="w-6 h-0.5 bg-on-surface transition-all duration-300 origin-center"></span>
-    </button>
-
-    <!-- Desktop nav -->
-    <div class="hidden lg:flex items-center gap-10">
-      {navItems.map(item => (
-        <a class="nav-link text-[#211b11] hover:text-[#536350] transition-colors duration-300" href={item.href}>
-          {item.label}
-        </a>
-      ))}
-    </div>
-
-    <a href="#kontakt" class="hidden lg:block bg-secondary text-on-secondary px-8 py-3 rounded-full font-semibold hover:bg-on-secondary-container transition-all active:scale-95 duration-200 ease-in-out">
-      Umów wizytę
-    </a>
-
-    <!-- Mobile menu -->
-    <ul class="
-      mobile-menu hidden lg:!hidden
-      absolute top-full left-4 right-4 z-50 bg-surface/95 backdrop-blur-xl rounded-2xl shadow-lg
-      flex-col p-6 gap-4 mt-2
-    ">
+    <ul class="flex gap-gutter items-center">
       {navItems.map(item => (
         <li>
-          <a href={item.href} class="nav-link block py-2 text-on-surface hover:text-primary transition-colors">
-            {item.label}
-          </a>
+          <a class={isActive(item.href) ? activeLink : inactiveLink} href={item.href}>{item.label}</a>
         </li>
       ))}
-      <li>
-        <a href="#kontakt" class="block bg-secondary text-on-secondary px-6 py-3 rounded-full font-semibold text-center mt-2">
-          Umów wizytę
-        </a>
-      </li>
     </ul>
+    <a href="/kontakt" class="font-ui-label text-ui-label uppercase tracking-widest text-primary btn-primary hover:opacity-80 transition-all duration-500">
+      Umów wizytę
+    </a>
   </nav>
+
+  <!-- Mobile bar -->
+  <div class="md:hidden fixed top-0 left-0 w-full px-6 py-4 flex justify-between items-center z-50 bg-surface/80 backdrop-blur-xl text-primary">
+    <a href="/" class="flex items-center" aria-label="Strona główna">
+      <Image src={logo} alt="Harmonia - Centrum Zdrowia Psychicznego i Mowy" height={44} densities={[1, 2, 3]} loading="eager" class="h-11 w-auto" />
+    </a>
+    <button class="mobile-menu-toggle flex items-center" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="material-symbols-outlined text-3xl" aria-hidden="true">menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu hidden md:!hidden fixed inset-0 z-[60] bg-surface/95 backdrop-blur-xl flex-col justify-between p-6 pt-28 pb-10">
+    <button class="mobile-menu-close absolute top-6 right-6 text-primary flex items-center" aria-label="Zamknij menu">
+      <span class="material-symbols-outlined text-3xl" aria-hidden="true">close</span>
+    </button>
+    <ul class="flex flex-col gap-8">
+      {navItems.map(item => (
+        <li>
+          <a href={item.href} class="nav-link font-display-lg text-headline-lg text-on-surface tracking-tighter">{item.label}</a>
+        </li>
+      ))}
+    </ul>
+    <a href="/kontakt" class="nav-link block w-full py-4 rounded-xl bg-primary text-on-primary font-ui-label text-ui-label uppercase tracking-widest text-center">
+      Umów wizytę
+    </a>
+  </div>
 </header>
 
-<style>
-  header.header-scrolled {
-    box-shadow: 0 4px 20px rgba(33, 27, 17, 0.06);
-  }
-  header.header-hidden {
-    transform: translateY(-100%);
-  }
-</style>
-
 <script>
-  const toggle = document.querySelector('.mobile-menu-toggle');
-  const menu = document.querySelector('.mobile-menu');
+  const toggle = document.querySelector<HTMLButtonElement>('.mobile-menu-toggle');
+  const closeButton = document.querySelector<HTMLButtonElement>('.mobile-menu-close');
+  const menu = document.querySelector<HTMLElement>('.mobile-menu');
 
-  function closeMenu() {
-    menu?.classList.add('hidden');
-    toggle?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    const spans = toggle?.querySelectorAll('span');
-    if (spans) {
-      spans[0].style.transform = '';
-      spans[1].style.opacity = '';
-      spans[2].style.transform = '';
-    }
+  function setMenu(open: boolean) {
+    if (!menu || !toggle) return;
+    menu.classList.toggle('hidden', !open);
+    menu.classList.toggle('flex', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
   }
 
-  toggle?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden');
-    const isExpanded = !menu?.classList.contains('hidden');
-    toggle?.setAttribute('aria-expanded', isExpanded.toString());
-    document.body.style.overflow = isExpanded ? 'hidden' : '';
-
-    const spans = toggle.querySelectorAll('span');
-    if (menu?.classList.contains('hidden')) {
-      spans[0].style.transform = '';
-      spans[1].style.opacity = '';
-      spans[2].style.transform = '';
-    } else {
-      spans[0].style.transform = 'rotate(45deg) translateY(6px)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translateY(-6px)';
-    }
+  toggle?.addEventListener('click', () => setMenu(true));
+  closeButton?.addEventListener('click', () => setMenu(false));
+  menu?.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => setMenu(false));
   });
-
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => closeMenu());
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') setMenu(false);
   });
 </script>

@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { pricingData, equipmentRental } from '../data/pricing';
+import { categoryLabels } from '../data/services';
+
+const labelFor = (id: string) => categoryLabels[id as keyof typeof categoryLabels] ?? id;
+const shortTitle = (title: string) => title.split('|')[0].trim();
+const bestSavings = (savings: (number | undefined)[]) => Math.max(...savings.map(value => value ?? 0));
+
+const notes = [
+  'Płatność gotówką lub kartą po spotkaniu. Wystawiamy faktury VAT.',
+  'Pacjenci, którzy regularnie korzystają z naszych usług i mają zaplanowane cykliczne wizyty, pozostają przy dotychczasowym cenniku.',
+  'Pakiety sesji są ważne przez 3 miesiące od zakupu.',
+];
+---
+
+<Layout
+  title="Cennik - Centrum Zdrowia Psychicznego i Mowy Harmonia"
+  description="Pełny cennik usług psychologicznych, logopedycznych, pedagogicznych, terapii karmienia i zajęć sensorycznych w Centrum Harmonia w Inowrocławiu. Pakiety sesji i wypożyczalnia sprzętu."
+>
+  <section class="px-6 md:px-edge-margin pt-40 md:pt-48 pb-24 max-w-container-max mx-auto">
+    <span class="font-ui-label text-ui-label uppercase tracking-widest text-outline mb-6 block">Cennik</span>
+    <h1 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface tracking-tighter mb-8 max-w-3xl">Przejrzysty<br />Cennik</h1>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+      Jasne stawki bez ukrytych kosztów. Każda kategoria ma osobną listę usług, a pakiety sesji pozwalają zaoszczędzić na regularnej terapii.
+    </p>
+  </section>
+
+  <div class="sticky top-24 md:top-36 z-40 px-6 md:px-edge-margin max-w-container-max mx-auto mb-16 pointer-events-none">
+    <nav
+      class="pointer-events-auto glass-panel ambient-shadow rounded-full p-2 flex gap-2 overflow-x-auto md:w-fit [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      aria-label="Kategorie cennika"
+    >
+      {pricingData.map(category => (
+        <a
+          href={`#${category.id}`}
+          class="shrink-0 whitespace-nowrap font-ui-label text-ui-label uppercase tracking-widest px-4 py-2 border-[0.5px] border-primary/20 rounded-full text-primary hover:bg-primary hover:text-on-primary transition-colors duration-300"
+        >
+          {shortTitle(category.title)}
+        </a>
+      ))}
+    </nav>
+  </div>
+
+  {pricingData.map(category => {
+    const packages = category.packages ?? [];
+    const topSavings = bestSavings(packages.map(pkg => pkg.savings));
+    return (
+      <section id={category.id} class="px-6 md:px-edge-margin pb-24 md:pb-32 max-w-container-max mx-auto scroll-mt-44 md:scroll-mt-56">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-gutter items-start">
+          <div class={`${packages.length ? 'lg:col-span-7' : 'lg:col-span-8'} glass-panel rounded-3xl p-8 md:p-12`}>
+            <h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg tracking-tighter text-on-surface mb-10">{category.title}</h2>
+            <ul>
+              {category.items.map(item => (
+                <li class="flex justify-between items-start gap-6 py-5 border-b-[0.5px] border-primary/20 first:pt-0 last:border-b-0 last:pb-0">
+                  <div>
+                    <p class="font-body-md text-body-md text-primary">{item.name}</p>
+                    {item.duration && <p class="font-ui-label text-[10px] uppercase tracking-widest text-outline mt-2">{item.duration}</p>}
+                    {item.description && <p class="font-body-md text-sm text-on-surface-variant mt-2">{item.description}</p>}
+                  </div>
+                  <span class="font-display-lg text-headline-lg-mobile text-primary whitespace-nowrap">{item.priceFrom && 'od '}{item.price} zł</span>
+                </li>
+              ))}
+            </ul>
+            {category.id === 'speech-therapy' && (
+              <div class="mt-10 pt-8 border-t-[0.5px] border-primary/20">
+                <p class="font-ui-label text-ui-label uppercase tracking-widest text-primary mb-6">Wypożyczalnia elektrostymulatora</p>
+                <dl class="grid grid-cols-3 gap-4">
+                  <div>
+                    <dt class="font-ui-label text-[10px] uppercase tracking-widest text-outline mb-2">Tydzień</dt>
+                    <dd class="font-display-lg text-headline-lg-mobile text-primary">{equipmentRental.electrostimulator.weekly} zł</dd>
+                  </div>
+                  <div>
+                    <dt class="font-ui-label text-[10px] uppercase tracking-widest text-outline mb-2">Miesiąc</dt>
+                    <dd class="font-display-lg text-headline-lg-mobile text-primary">{equipmentRental.electrostimulator.monthly} zł</dd>
+                  </div>
+                  <div>
+                    <dt class="font-ui-label text-[10px] uppercase tracking-widest text-outline mb-2">Kaucja zwrotna</dt>
+                    <dd class="font-display-lg text-headline-lg-mobile text-primary">{equipmentRental.electrostimulator.deposit} zł</dd>
+                  </div>
+                </dl>
+              </div>
+            )}
+          </div>
+
+          {packages.length > 0 && (
+            <div class="lg:col-span-5 flex flex-col gap-6">
+              <h3 class="font-ui-label text-ui-label uppercase tracking-widest text-primary px-2">Pakiety sesji</h3>
+              {packages.map(pkg => {
+                const best = topSavings > 0 && pkg.savings === topSavings;
+                return (
+                  <article class={`glass-panel rounded-3xl p-8 flex flex-col gap-6 relative ${best ? 'bg-surface-container-high/30' : ''}`}>
+                    {best && (
+                      <div class="absolute top-0 right-8 bg-primary text-on-primary font-ui-label text-[10px] px-3 py-1 rounded-b-lg tracking-widest uppercase">Najlepsza wartość</div>
+                    )}
+                    <div class="flex justify-between items-baseline gap-4">
+                      <h4 class="font-display-lg text-headline-lg-mobile tracking-tighter text-on-surface">{pkg.name}</h4>
+                      <span class="font-display-lg text-headline-lg-mobile text-primary whitespace-nowrap">{pkg.price} zł</span>
+                    </div>
+                    <p class="font-ui-label text-[10px] uppercase tracking-widest text-outline">
+                      {pkg.sessions} sesji · ważny {pkg.validityMonths} mies.{pkg.savings ? ` · oszczędzasz ${pkg.savings} zł` : ''}
+                    </p>
+                    <a href={`/kontakt?topic=${encodeURIComponent(labelFor(category.id))}`} class="btn-primary font-ui-label text-ui-label uppercase tracking-widest text-primary self-start">
+                      Zapytaj o pakiet
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  })}
+
+  <section class="px-6 md:px-edge-margin pb-section-gap max-w-container-max mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-gutter items-stretch">
+      <div class="md:col-span-7 glass-panel rounded-3xl p-8 md:p-12">
+        <h2 class="font-display-lg text-headline-lg-mobile md:text-headline-lg tracking-tighter text-on-surface mb-8">Warto wiedzieć</h2>
+        <ul class="flex flex-col gap-5">
+          {notes.map(note => (
+            <li class="flex items-start gap-3 font-body-md text-body-md text-on-surface-variant">
+              <span class="material-symbols-outlined text-primary text-sm mt-1.5" aria-hidden="true">check</span>
+              {note}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="md:col-span-5 rounded-3xl p-8 md:p-12 bg-primary text-on-primary flex flex-col justify-between gap-12">
+        <div>
+          <h2 class="font-display-lg text-headline-lg tracking-tighter mb-6">Nie wiesz, którą terapię wybrać?</h2>
+          <p class="font-body-md text-body-md text-on-primary/70">Zadzwoń lub napisz. Pomożemy dobrać specjalistkę i formę wsparcia dopasowaną do sytuacji.</p>
+        </div>
+        <a href="/kontakt" class="block text-center w-full py-4 rounded-xl bg-on-primary text-primary font-ui-label text-ui-label uppercase tracking-widest hover:bg-surface-container-high transition-colors duration-300">
+          Umów wizytę
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
