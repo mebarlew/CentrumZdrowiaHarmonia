@@ -3,7 +3,6 @@ export interface Specialist {
   name: string;
   title: string;
   description: string;
-  phone: string;
   email: string;
   image?: string;
 }
